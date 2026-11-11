@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos Collections | MY HOUSE Showroom Hammam Sousse</title>
+  <meta name="description" content="Catalogue complet des collections MY HOUSE : Carrelage effet marbre, pierre, béton, bois, grès cérame technique et univers salle de bain à Hammam Sousse.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Navigation -->
+  <header class="nav scrolled">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="MY HOUSE Accueil">
+        <img src="assets/images/brand/logo.svg" alt="MY HOUSE Logo" class="nav__logo-icon" style="width: auto; height: 38px;">
+      </a>
+
+      <nav class="nav__menu">
+        <div class="nav__links">
+          <a href="index.html" class="nav__link" data-i18n="nav_home">Accueil</a>
+          <a href="collections.html" class="nav__link active" data-i18n="nav_collections">Collections</a>
+          <a href="salles-de-bain.html" class="nav__link" data-i18n="nav_bathrooms">Salles de bain</a>
+          <a href="inspirations.html" class="nav__link" data-i18n="nav_inspirations">Inspirations</a>
+          <a href="a-propos.html" class="nav__link" data-i18n="nav_about">À propos</a>
+          <a href="contact.html" class="nav__link" data-i18n="nav_contact">Contact</a>
+        </div>
+
+        <div class="nav__actions">
+          <a href="contact.html" class="nav__cta" data-i18n="nav_visit">Visiter le showroom</a>
+          <div class="nav__lang">
+            <button type="button" class="nav__lang-btn active" data-lang="fr">FR</button>
+            <span class="nav__lang-divider">|</span>
+            <button type="button" class="nav__lang-btn" data-lang="ar">عربي</button>
+          </div>
+        </div>
+      </nav>
+
+      <button type="button" class="nav__burger" aria-label="Ouvrir le menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero__bg" style="background-image: url('assets/images/headers/hero_collections.jpg'); background-position: center;"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content reveal">
+      <span class="section-label" style="color: var(--sand);">CATALOGUE OFFICIEL 2026</span>
+      <h1 class="page-hero__title">Nos Collections</h1>
+      <p class="page-hero__subtitle">Une infinité de nuances, textures et formats pour magnifier chaque projet d'architecture.</p>
+    </div>
+  </section>
+
+  <!-- Catalog Section with Filters & Search -->
+  <section class="section section--ivory">
+    <div class="container">
+      
+      <!-- Surface Tile Estimator / Calculator Widget -->
+      <div class="tile-calculator reveal" style="margin-bottom: var(--space-4xl);">
+        <span class="section-label">ASSISTANCE PROJET &bull; MÉTRÉ EN DIRECT</span>
+        <h3 style="font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem;">Calculateur de surface et de conditionnement</h3>
+        <p style="color: var(--stone); font-size: 0.95rem;">
+          Estimez en quelques secondes le nombre de cartons et la marge de découpe nécessaire pour vos pièces ou terrasses.
+        </p>
+
+        <div class="tile-calc-grid">
+          <div class="form-group">
+            <label class="form-label" for="calc-area">Surface de votre pièce (m²)</label>
+            <input type="number" id="calc-area" class="form-input" placeholder="Ex: 45" min="1" step="0.5" oninput="calculateTileBoxes()">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="calc-format">Format sélectionné</label>
+            <select id="calc-format" class="form-select" onchange="calculateTileBoxes()">
+              <option value="1.42">60 &times; 120 cm (1.42 m² / carton - 2 pcs)</option>
+              <option value="1.26">80 &times; 80 cm (1.26 m² / carton - 2 pcs)</option>
+              <option value="1.42">60 &times; 60 cm (1.42 m² / carton - 4 pcs)</option>
+              <option value="0.94">20 &times; 120 cm Lames bois (0.94 m² / 4 pcs)</option>
+              <option value="1.24">30 &times; 90 cm Faïence (1.24 m² / carton)</option>
+              <option value="0.70">15 &times; 15 cm Pierre (0.70 m² / 31 pcs)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="calc-waste">Marge de coupe conseillée</label>
+            <select id="calc-waste" class="form-select" onchange="calculateTileBoxes()">
+              <option value="1.10">+10% (Pose droite classique standard)</option>
+              <option value="1.15">+15% (Pose décalée ou diagonale)</option>
+              <option value="1.05">+5% (Grandes pièces régulières)</option>
+            </select>
+          </div>
+
+          <div class="calc-result-box">
+            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--stone); margin-bottom: 2px;">Quantité estimée :</span>
+            <div id="calc-result-boxes" class="calc-result-number">0 cartons</div>
+            <span id="calc-result-sqm" style="font-size: 0.85rem; color: var(--stone); margin-top: 4px;">0 m² à commander</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Surface Texture Simulator Widget -->
+      <div class="surface-simulator reveal" style="margin-bottom: var(--space-4xl);">
+        <div>
+          <span class="section-label">SIMULATEUR DE MATIÈRES</span>
+          <h2 style="font-size: 1.85rem; font-weight: 500; margin-bottom: 1rem;">Comparez les finitions en lumière réelle</h2>
+          <p style="color: var(--stone); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+            Sélectionnez une finition pour apprécier le comportement de la céramique face à la lumière et visualiser le rendu d'ambiance.
+          </p>
+          <div class="surface-simulator__tabs">
+            <button type="button" class="surface-tab-btn active" onclick="switchSimulator('assets/images/catalog/cat_p9_0.jpeg', 'Poli Miroir (Brillant)', 'Reflet cristallin qui maximise la luminosité naturelle et la sensation d\'espace.', this)">
+              <div>
+                <div class="surface-tab-btn__title">Finition Poli Miroir (Glace)</div>
+                <div class="surface-tab-btn__desc">Profondeur visuelle &amp; brillance absolue</div>
+              </div>
+              <span class="surface-tab-btn__badge">Luxe</span>
+            </button>
+            <button type="button" class="surface-tab-btn" onclick="switchSimulator('assets/images/catalog/cat_p14_0.jpeg', 'Finition Mat Pénétrant', 'Texture soyeuse anti-traces créant une ambiance feutrée et apaisante.', this)">
+              <div>
+                <div class="surface-tab-btn__title">Finition Mat Pénétrant</div>
+                <div class="surface-tab-btn__desc">Douceur tactile &amp; élégance contemporaine</div>
+              </div>
+              <span class="surface-tab-btn__badge">Tendance</span>
+            </button>
+            <button type="button" class="surface-tab-btn" onclick="switchSimulator('assets/images/catalog/cat_p64_0.jpeg', 'Finition Structurée R11 (Extérieur)', 'Adhérence renforcée certifiée pour terrasses, cours et plages de piscine.', this)">
+              <div>
+                <div class="surface-tab-btn__title">Finition Structurée Antidérapante</div>
+                <div class="surface-tab-btn__desc">Sécurité maximale &amp; résistance intempéries R11</div>
+              </div>
+              <span class="surface-tab-btn__badge">Outdoor</span>
+            </button>
+          </div>
+        </div>
+        <div class="surface-simulator__preview">
+          <img id="sim-preview-img" src="assets/images/catalog/cat_p9_0.jpeg" alt="Simulateur de finition MY HOUSE">
+        </div>
+      </div>
+
+      <!-- Filters and Search Bar -->
+      <div class="catalog-filters">
+        <button type="button" class="catalog-filter active" data-category="all" data-i18n="filter_all">Toutes les collections</button>
+        <button type="button" class="catalog-filter" data-category="marbre" data-i18n="filter_marbre">Effet marbre</button>
+        <button type="button" class="catalog-filter" data-category="pierre" data-i18n="filter_pierre">Effet pierre</button>
+        <button type="button" class="catalog-filter" data-category="beton" data-i18n="filter_beton">Effet béton</button>
+        <button type="button" class="catalog-filter" data-category="interieur" data-i18n="filter_interieur">Carrelage intérieur</button>
+        <button type="button" class="catalog-filter" data-category="exterieur" data-i18n="filter_exterieur">Carrelage extérieur</button>
+        <button type="button" class="catalog-filter" data-category="gres" data-i18n="filter_gres">Grès cérame</button>
+        <button type="button" class="catalog-filter" data-category="bain" data-i18n="filter_bain">Salles de bain</button>
+
+        <div class="catalog-search">
+          <svg class="catalog-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="catalog-search-input" class="catalog-search__input" placeholder="Rechercher une collection..." data-i18n-placeholder="search_placeholder">
+        </div>
+      </div>
+
+      <!-- Dynamic Products Grid populated by main.js from PRODUCTS_DATA -->
+      <div id="products-grid" class="products-grid">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Informative Box on Standards & Technical Specifications -->
+      <div style="margin-top: var(--space-4xl); background: var(--white); border-radius: var(--radius-md); padding: var(--space-2xl); border-left: 4px solid var(--house-red); box-shadow: var(--shadow-sm);">
+        <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem;">Garantie et Caractéristiques Techniques d'Origine</h3>
+        <p style="color: var(--stone); font-size: 0.95rem; line-height: 1.8;">
+          Tous les carrelages et dalles en grès porcelaine proposés chez <strong>MY HOUSE</strong> répondent rigoureusement aux normes européennes et internationales ISO 9001:2015 et ISO 10545 (résistance à la flexion, absorption d'eau minimale BIa, résistance à l'abrasion U4, insensibilité aux chocs thermiques et tenue aux produits d'entretien).
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html">
+            <img src="assets/images/brand/logo-white.svg" alt="MY HOUSE" style="height: 36px;">
+          </a>
+          <p class="footer__brand-text" data-i18n="footer_desc">
+            Showroom d'exception spécialisé dans les carrelages de luxe, le grès cérame grand format et les univers de salle de bain contemporains à Hammam Sousse, Tunisie.
+          </p>
+          <div class="footer__social">
+            <a href="https://www.instagram.com/myhouse.sousse2026" class="footer__social-link" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61596303636473" class="footer__social-link" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title">Navigation</h4>
+          <a href="index.html" class="footer__link">Accueil</a>
+          <a href="collections.html" class="footer__link">Nos Collections</a>
+          <a href="salles-de-bain.html" class="footer__link">Salles de bain</a>
+          <a href="inspirations.html" class="footer__link">Inspirations</a>
+          <a href="a-propos.html" class="footer__link">À propos</a>
+          <a href="contact.html" class="footer__link">Contact</a>
+        </div>
+        <div>
+          <h4 class="footer__title">Collections</h4>
+          <a href="collections.html" class="footer__link">Effet marbre</a>
+          <a href="collections.html" class="footer__link">Effet pierre</a>
+          <a href="collections.html" class="footer__link">Effet béton</a>
+          <a href="collections.html" class="footer__link">Effet bois &amp; parquet</a>
+          <a href="collections.html" class="footer__link">Extérieur &amp; terrasses</a>
+          <a href="collections.html" class="footer__link">Grès cérame 80&times;80</a>
+        </div>
+        <div>
+          <h4 class="footer__title">Showroom</h4>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>MY HOUSE Céramique & Cuisine, Rte de la Plage (à côté de City Market), Hammam Sousse 4011, Tunisie</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+21651056656" style="color: inherit;">+216 51 056 656</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div>&copy; 2026 MY HOUSE Showroom. Tous droits réservés.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/21651056656?text=Bonjour%20MY%20HOUSE,%20je%20souhaite%20des%20renseignements%20sur%20vos%20collections." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.301-.15-1.78-.879-2.056-.98-.276-.1-.477-.15-.678.15-.2.301-.778.98-.953 1.18-.176.2-.351.226-.653.075s-1.272-.469-2.424-1.496c-.896-.799-1.501-1.787-1.677-2.088-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.2-.301.301-.502.101-.2.05-.376-.025-.527-.075-.15-.678-1.635-.929-2.239-.245-.588-.494-.509-.678-.518l-.578-.01c-.2 0-.527.075-.803.376s-1.054 1.029-1.054 2.509 1.079 2.91 1.229 3.111c.15.2 2.124 3.243 5.147 4.549.719.311 1.28.497 1.718.636.723.23 1.381.198 1.901.12.58-.088 1.78-.728 2.031-1.431.251-.703.251-1.305.176-1.431-.076-.126-.277-.201-.578-.351z"/></svg>
+  </a>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

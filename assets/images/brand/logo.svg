@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" fill="none">
+  <!-- House Mark -->
+  <g transform="translate(0, 4)">
+    <!-- House outline with uniform stroke -->
+    <path d="M28 2 L52 22 V54 H4 V22 Z" stroke="#B3202A" stroke-width="4.5" stroke-linejoin="miter" stroke-miterlimit="10" fill="none"/>
+    <!-- Centered H -->
+    <path d="M20 25 V45 M36 25 V45 M20 35 H36" stroke="#B3202A" stroke-width="4.5" stroke-linecap="square"/>
+  </g>
+  <!-- Brand Typography -->
+  <text x="70" y="42" font-family="'Readex Pro', -apple-system, BlinkMacSystemFont, sans-serif" font-weight="600" font-size="28" letter-spacing="0.12em" fill="#17191B">MY HOUSE</text>
+</svg>
