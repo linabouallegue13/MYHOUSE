@@ -58,6 +58,8 @@ const TRANSLATIONS = {
     nav_inspirations: "Inspirations",
     nav_about: "À propos",
     nav_contact: "Contact",
+    nav_nouveautes: "Nouveautés",
+    filter_accessoires: "Équipements & Accessoires",
     nav_visit: "Visiter le showroom",
     hero_headline: "L'élégance commence chez vous.",
     hero_sub: "Découvrez nos collections de carrelage, grès cérame et sanitaires pour créer des espaces qui vous ressemblent.",
@@ -72,8 +74,8 @@ const TRANSLATIONS = {
     filter_exterieur: "Carrelage extérieur",
     filter_gres: "Grès cérame",
     filter_bain: "Salles de bain",
-    filter_electromenager: "Électroménager FOCUS",
-    filter_sanitaire: "Sanitaires SANIBEL",
+    filter_electromenager: "Électroménager",
+    filter_sanitaire: "Sanitaires & Salles de bain",
     search_placeholder: "Rechercher une collection...",
     footer_desc: "Showroom haut de gamme dédié aux carrelages, grès cérame et univers de salle de bain à Hammam Sousse, Tunisie."
   },
@@ -84,6 +86,8 @@ const TRANSLATIONS = {
     nav_inspirations: "إلهام وتصاميم",
     nav_about: "من نحن",
     nav_contact: "اتصل بنا",
+    nav_nouveautes: "وصل حديثاً",
+    filter_accessoires: "تجهيزات وإكسسوارات",
     nav_visit: "زيارة المعرض",
     hero_headline: "الأناقة تبدأ في منزلك.",
     hero_sub: "اكتشف مجموعاتنا المميزة من البلاط، الخزف الحجري والأطقم الصحية لابتكار مساحات تليق بذوقك الرفيع.",
@@ -98,8 +102,8 @@ const TRANSLATIONS = {
     filter_exterieur: "بلاط خارجي",
     filter_gres: "خزف حجري",
     filter_bain: "تصاميم حمامات",
-    filter_electromenager: "أجهزة كهرومنزلية FOCUS",
-    filter_sanitaire: "أطقم حمامات SANIBEL",
+    filter_electromenager: "أجهزة كهرومنزلية",
+    filter_sanitaire: "أطقم حمامات",
     search_placeholder: "بحث عن مجموعة...",
     footer_desc: "صالة عرض راقية متخصصة في الخزف الرفيع، البورسلان وتجهيزات الحمامات الفاخرة بحمام سوسة، تونس."
   }
@@ -208,7 +212,7 @@ function initCatalog() {
       card.className = 'product-card reveal revealed';
       
       const isFav = myFavorites.some(f => f.name === item.name);
-      const brandBadge = item.brand ? `<span class="collection-card__badge" style="background:var(--ink); font-size:0.65rem; top:10px; left:10px;">${item.brand}</span>` : '';
+      const brandBadge = item.featured ? `<span class="collection-card__badge" style="background:var(--house-red); font-size:0.65rem; top:10px; left:10px;">SÉLECTION</span>` : '';
       const colorsHtml = (item.colors || []).map((c, i) => 
         `<span class="product-card__color-dot" style="background-color: ${c};" title="${(item.colorNames && item.colorNames[i]) || ''}"></span>`
       ).join('');
@@ -822,7 +826,7 @@ function openProductQuickview(productId) {
 
   document.getElementById('qv-img').src = prod.image;
   document.getElementById('qv-img').alt = prod.name;
-  document.getElementById('qv-brand').textContent = prod.brand ? `${prod.brand} • ${prod.categoryLabel}` : prod.categoryLabel;
+  document.getElementById('qv-brand').textContent = prod.categoryLabel;
   document.getElementById('qv-title').textContent = prod.name;
   document.getElementById('qv-desc').textContent = prod.description || "Collection d'exception sélectionnée par MY HOUSE Showroom.";
   document.getElementById('qv-finish').textContent = prod.finish || 'Standard';
@@ -832,7 +836,7 @@ function openProductQuickview(productId) {
 
   const waBtn = document.getElementById('qv-wa-btn');
   waBtn.onclick = () => {
-    const text = `Bonjour MY HOUSE Showroom,\n\nJe souhaite recevoir un devis et les détails pour le produit : *${prod.name}* (Réf: ${prod.reference || 'N/A'}, Marque: ${prod.brand || 'MY HOUSE'}, Dimensions: ${prod.dimensions}). Merci !`;
+    const text = `Bonjour MY HOUSE Showroom,\n\nJe souhaite recevoir un devis et les détails pour le produit : *${prod.name}* (Réf: ${prod.reference || 'N/A'}, Dimensions: ${prod.dimensions}). Merci !`;
     window.open(`https://wa.me/21651056656?text=${encodeURIComponent(text)}`, '_blank');
   };
 
