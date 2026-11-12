@@ -72,6 +72,8 @@ const TRANSLATIONS = {
     filter_exterieur: "Carrelage extérieur",
     filter_gres: "Grès cérame",
     filter_bain: "Salles de bain",
+    filter_electromenager: "Électroménager FOCUS",
+    filter_sanitaire: "Sanitaires SANIBEL",
     search_placeholder: "Rechercher une collection...",
     footer_desc: "Showroom haut de gamme dédié aux carrelages, grès cérame et univers de salle de bain à Hammam Sousse, Tunisie."
   },
@@ -96,6 +98,8 @@ const TRANSLATIONS = {
     filter_exterieur: "بلاط خارجي",
     filter_gres: "خزف حجري",
     filter_bain: "تصاميم حمامات",
+    filter_electromenager: "أجهزة كهرومنزلية FOCUS",
+    filter_sanitaire: "أطقم حمامات SANIBEL",
     search_placeholder: "بحث عن مجموعة...",
     footer_desc: "صالة عرض راقية متخصصة في الخزف الرفيع، البورسلان وتجهيزات الحمامات الفاخرة بحمام سوسة، تونس."
   }
@@ -204,28 +208,34 @@ function initCatalog() {
       card.className = 'product-card reveal revealed';
       
       const isFav = myFavorites.some(f => f.name === item.name);
-      const colorsHtml = item.colors.map((c, i) => 
-        `<span class="product-card__color-dot" style="background-color: ${c};" title="${item.colorNames[i] || ''}"></span>`
+      const brandBadge = item.brand ? `<span class="collection-card__badge" style="background:var(--ink); font-size:0.65rem; top:10px; left:10px;">${item.brand}</span>` : '';
+      const colorsHtml = (item.colors || []).map((c, i) => 
+        `<span class="product-card__color-dot" style="background-color: ${c};" title="${(item.colorNames && item.colorNames[i]) || ''}"></span>`
       ).join('');
 
       card.innerHTML = `
         <button type="button" class="product-fav-btn ${isFav ? 'active' : ''}" data-name="${item.name}" title="Ajouter à mes favoris" onclick="toggleFavoriteProduct('${item.name}', '${item.dimensions}', '${item.finish}', '${item.image}', this)">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         </button>
-        <div class="product-card__image">
+        ${brandBadge}
+        <div class="product-card__image" onclick="openProductQuickview('${item.id}')" title="Cliquer pour voir la fiche d'architecture complète">
           <img src="${item.image}" alt="Collection ${item.name} - MY HOUSE Hammam Sousse" loading="lazy">
         </div>
         <div class="product-card__body">
-          <div class="product-card__category">${item.categoryLabel}</div>
-          <h3 class="product-card__name">${item.name}</h3>
+          <div class="product-card__category">${item.brand ? `${item.brand} &bull; ` : ''}${item.categoryLabel}</div>
+          <h3 class="product-card__name" onclick="openProductQuickview('${item.id}')" style="cursor:pointer;">${item.name}</h3>
           <div class="product-card__info"><strong>Finition :</strong> ${item.finish}</div>
           <div class="product-card__info"><strong>Dimensions :</strong> ${item.dimensions}</div>
           <div class="product-card__colors">${colorsHtml}</div>
           <div class="product-card__ref">${item.reference ? `Réf : ${item.reference}` : ''}</div>
-          <button type="button" class="product-card__btn" onclick="openProductInquiry('${item.name}', '${item.reference || ''}', '${item.dimensions}', '${item.finish}')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-            <span data-i18n="btn_inquire">Demander des informations</span>
-          </button>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem; margin-top:0.5rem;">
+            <button type="button" class="btn btn--outline-dark btn--sm" onclick="openProductQuickview('${item.id}')">
+              Fiche détails
+            </button>
+            <button type="button" class="btn btn--primary btn--sm" onclick="openProductInquiry('${item.name}', '${item.reference || ''}', '${item.dimensions}', '${item.finish}')">
+              Devis WhatsApp
+            </button>
+          </div>
         </div>
       `;
       grid.appendChild(card);
@@ -674,4 +684,184 @@ function calculateTileBoxes() {
 
   document.getElementById('calc-result-sqm').textContent = `${totalSqmNeeded} m²`;
   document.getElementById('calc-result-boxes').textContent = `${boxesNeeded} cartons (${(boxesNeeded * sqmPerBox).toFixed(2)} m²)`;
+}
+
+
+/* ============================================================
+   CREATIVE DYNAMIC EXTENSIONS: Custom Cursor, Space Visualizer,
+   Enhanced QuickView Modal, and Live Filter Badges
+   ============================================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initCustomCursor();
+  initSpaceVisualizer();
+  initQuickviewModalDOM();
+  updateCatalogFilterCounts();
+});
+
+/* 1. Custom Magnetic Cursor */
+function initCustomCursor() {
+  if (window.matchMedia('(pointer: coarse)').matches) return; // Skip on mobile/touch
+
+  const dot = document.createElement('div');
+  dot.className = 'custom-cursor-dot';
+  const ring = document.createElement('div');
+  ring.className = 'custom-cursor-ring';
+
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+
+  let mouseX = -100, mouseY = -100;
+  let ringX = -100, ringY = -100;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
+  }, { passive: true });
+
+  const renderRing = () => {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
+    requestAnimationFrame(renderRing);
+  };
+  requestAnimationFrame(renderRing);
+
+  // Hover detection
+  const addHoverListeners = () => {
+    document.querySelectorAll('a, button, input, select, textarea, .collection-card, .product-card, .category-card, .partner-card, .space-visualizer__step').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+  };
+  addHoverListeners();
+  // Re-run on dynamic updates
+  setTimeout(addHoverListeners, 1000);
+}
+
+/* 2. Interactive Space Visualizer on Homepage */
+function initSpaceVisualizer() {
+  const steps = document.querySelectorAll('.space-visualizer__step');
+  const slides = document.querySelectorAll('.space-visualizer__slide');
+  if (!steps.length || !slides.length) return;
+
+  steps.forEach((step, idx) => {
+    step.addEventListener('click', () => {
+      steps.forEach(s => s.classList.remove('active'));
+      slides.forEach(sl => sl.classList.remove('active'));
+
+      step.classList.add('active');
+      if (slides[idx]) {
+        slides[idx].classList.add('active');
+      }
+    });
+  });
+}
+
+/* 3. Product QuickView Modal DOM & Logic */
+function initQuickviewModalDOM() {
+  if (document.getElementById('quickview-modal')) return;
+
+  const modal = document.createElement('div');
+  modal.id = 'quickview-modal';
+  modal.className = 'product-quickview-modal';
+  modal.innerHTML = `
+    <div class="product-quickview-card">
+      <button class="product-quickview__close" id="close-quickview">&times;</button>
+      <div class="product-quickview__media">
+        <img id="qv-img" src="" alt="Aperçu produit MY HOUSE">
+      </div>
+      <div class="product-quickview__details">
+        <div class="product-quickview__brand-tag" id="qv-brand">MY HOUSE</div>
+        <h3 class="product-quickview__title" id="qv-title">Produit</h3>
+        <p class="product-quickview__desc" id="qv-desc">Description</p>
+        
+        <table class="product-quickview__specs-table">
+          <tbody>
+            <tr><td>Finition</td><td id="qv-finish">-</td></tr>
+            <tr><td>Dimensions</td><td id="qv-dimensions">-</td></tr>
+            <tr><td>Matière</td><td id="qv-material">-</td></tr>
+            <tr><td>Référence</td><td id="qv-ref">-</td></tr>
+          </tbody>
+        </table>
+
+        <div class="product-quickview__actions">
+          <button type="button" class="btn btn--primary" id="qv-wa-btn" style="width:100%; display:flex; gap:0.5rem; justify-content:center; align-items:center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.301-.15-1.78-.879-2.056-.98-.276-.1-.477-.15-.678.15-.2.301-.778.98-.953 1.18-.176.2-.351.226-.653.075s-1.272-.469-2.424-1.496c-.896-.799-1.501-1.787-1.677-2.088-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.2-.301.301-.502.101-.2.05-.376-.025-.527-.075-.15-.678-1.635-.929-2.239-.245-.588-.494-.509-.678-.518l-.578-.01c-.2 0-.527.075-.803.376s-1.054 1.029-1.054 2.509 1.079 2.91 1.229 3.111c.15.2 2.124 3.243 5.147 4.549.719.311 1.28.497 1.718.636.723.23 1.381.198 1.901.12.58-.088 1.78-.728 2.031-1.431.251-.703.251-1.305.176-1.431-.076-.126-.277-.201-.578-.351z"/></svg>
+            Demander un devis WhatsApp (+216 51 056 656)
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const closeBtn = document.getElementById('close-quickview');
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+}
+
+function openProductQuickview(productId) {
+  if (typeof PRODUCTS_DATA === 'undefined') return;
+  const prod = PRODUCTS_DATA.find(p => p.id === productId);
+  if (!prod) return;
+
+  const modal = document.getElementById('quickview-modal');
+  if (!modal) return;
+
+  document.getElementById('qv-img').src = prod.image;
+  document.getElementById('qv-img').alt = prod.name;
+  document.getElementById('qv-brand').textContent = prod.brand ? `${prod.brand} • ${prod.categoryLabel}` : prod.categoryLabel;
+  document.getElementById('qv-title').textContent = prod.name;
+  document.getElementById('qv-desc').textContent = prod.description || "Collection d'exception sélectionnée par MY HOUSE Showroom.";
+  document.getElementById('qv-finish').textContent = prod.finish || 'Standard';
+  document.getElementById('qv-dimensions').textContent = prod.dimensions || '-';
+  document.getElementById('qv-material').textContent = prod.material || 'Céramique premium';
+  document.getElementById('qv-ref').textContent = prod.reference || 'Sur demande';
+
+  const waBtn = document.getElementById('qv-wa-btn');
+  waBtn.onclick = () => {
+    const text = `Bonjour MY HOUSE Showroom,\n\nJe souhaite recevoir un devis et les détails pour le produit : *${prod.name}* (Réf: ${prod.reference || 'N/A'}, Marque: ${prod.brand || 'MY HOUSE'}, Dimensions: ${prod.dimensions}). Merci !`;
+    window.open(`https://wa.me/21651056656?text=${encodeURIComponent(text)}`, '_blank');
+  };
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+/* 4. Update Filter Badges with Real Counts */
+function updateCatalogFilterCounts() {
+  if (typeof PRODUCTS_DATA === 'undefined') return;
+  const buttons = document.querySelectorAll('.catalog-filter');
+  if (!buttons.length) return;
+
+  buttons.forEach(btn => {
+    const cat = btn.dataset.category;
+    let count = 0;
+    if (cat === 'all') {
+      count = PRODUCTS_DATA.length;
+    } else {
+      count = PRODUCTS_DATA.filter(p => p.category === cat).length;
+    }
+    const existingBadge = btn.querySelector('.catalog-filter__badge');
+    if (existingBadge) {
+      existingBadge.textContent = count;
+    } else {
+      const badge = document.createElement('span');
+      badge.className = 'catalog-filter__badge';
+      badge.textContent = count;
+      btn.appendChild(badge);
+    }
+  });
 }
