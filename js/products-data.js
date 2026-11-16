@@ -421,7 +421,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Onyx blanc", "Reflets ambre"],
     reference: "SO-ONYX-3090",
     rectified: true,
-    image: "assets/images/catalog/cat_p101_0.jpeg",
+    image: "assets/images/sanitaire/suite_travertine_onyx.jpg",
     description: "Une suite de salle de bain d'inspiration palace. Les reflets translucides de l'onyx magnifient les vasques et parois de douche.",
     featured: true
   },
@@ -438,7 +438,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Beige poudré", "Gris minéral"],
     reference: "SO-ROT-3090",
     rectified: true,
-    image: "assets/images/catalog/cat_p103_0.jpeg",
+    image: "assets/images/sanitaire/suite_minimal_rotterdam.jpg",
     description: "Design épuré et contemporain associant carrelage grand format et receveur de douche encastré pour une sensation d'espace absolu.",
     featured: false
   },
@@ -455,7 +455,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Statuaire royal", "Noir mat accent"],
     reference: "SO-MAJ-3090",
     rectified: true,
-    image: "assets/images/catalog/cat_p104_0.jpeg",
+    image: "assets/images/sanitaire/suite_marble_palace.jpg",
     description: "Concept complet de salle de bain bien-être combinant carrelage effet marbre noble, robinetterie encastrée et sanitaires suspendus.",
     featured: true
   }
@@ -630,7 +630,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Velouté", "Blanc Pur"],
     reference: "MH-BAI-170M",
     rectified: true,
-    image: "assets/images/sanitaire/bath_freestanding_tub.jpg",
+    image: "assets/images/sanitaire/bath_freestanding_mineral.jpg",
     description: "Pièce maîtresse d'une salle de bain contemporaine. Monobloc sans raccord procurant un toucher doux et soyeux, une chaleur d'eau conservée durablement et un entretien facile. Bonde pop-up incluse.",
     featured: true
   },
@@ -647,7 +647,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Pur", "Bicolore Noir/Blanc"],
     reference: "MH-BAI-170D",
     rectified: true,
-    image: "assets/images/sanitaire/bath_tub_luxury_suite.jpg",
+    image: "assets/images/sanitaire/bath_oval_luxury.jpg",
     description: "Silhouette ovoïde sensuelle et intemporelle. Double dossier symétrique pour une assise détendue, vidage central affleurant et renforts haute stabilité.",
     featured: true
   },
@@ -664,7 +664,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Sanitaire"],
     reference: "MH-BAL-160",
     rectified: true,
-    image: "assets/images/sanitaire/bath_balneo_spa.jpg",
+    image: "assets/images/sanitaire/bath_balneo_wellness.jpg",
     description: "L'expérience spa de palace à domicile. Système mixte air/eau combinant 6 hydro-jets dorsaux et latéraux réglables, 12 injecteurs d'air d'assise, chromothérapie 7 couleurs et commande tactile étanche.",
     featured: true
   },
@@ -681,7 +681,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir Ardoise", "Gris Minéral", "Sable"],
     reference: "MH-REC-120A",
     rectified: true,
-    image: "assets/images/sanitaire/bath_shower_italian.jpg",
+    image: "assets/images/sanitaire/shower_slate_black.jpg",
     description: "Receveur de douche ultra-résistant au relief de pierre d'ardoise naturelle. Antidérapant classe C certifié (sécurité maximale), antibactérien avec grille d'évacuation inox affleurante.",
     featured: true
   },
@@ -698,7 +698,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Polaire", "Gris Béton", "Anthracite"],
     reference: "MH-REC-160P",
     rectified: true,
-    image: "assets/images/sanitaire/bath_shower_italian.jpg",
+    image: "assets/images/sanitaire/shower_italian_minimal.jpg",
     description: "Solution idéale pour les douches à l'italienne de plain-pied sans rupture de sol. Recoupable sur-mesure au millimètre près en usine. Caniveau d'évacuation masqué amovible.",
     featured: false
   },
@@ -715,7 +715,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Chêne Naturel", "Blanc Minéral", "Noir Mat"],
     reference: "MH-MEU-120",
     rectified: true,
-    image: "assets/images/sanitaire/bath_vanity_stone.jpg",
+    image: "assets/images/sanitaire/vanity_oak_stone_120.jpg",
     description: "Ensemble composé d'un plan vasque 120 cm d'un seul tenant sans joint en résine minérale antibactérienne et d'un meuble suspendu 2 grands tiroirs amortis Soft-Close avec prise en main biseautée.",
     featured: true
   },
@@ -732,7 +732,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Mat", "Noir Mat"],
     reference: "MH-VAS-42S",
     rectified: true,
-    image: "assets/images/sanitaire/bath_vessel_sink.jpg",
+    image: "assets/images/sanitaire/sink_vessel_square.jpg",
     description: "Vasque à poser aux lignes pures et géométriques. Bords affinés de 5 mm obtenus par une technologie céramique de précision. Traitement de surface hydrofuge et antitache.",
     featured: false
   },
@@ -749,7 +749,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Brillant Palace"],
     reference: "MH-BOL-47T",
     rectified: true,
-    image: "assets/images/sanitaire/bath_vessel_sink.jpg",
+    image: "assets/images/sanitaire/sink_bowl_round.jpg",
     description: "Vasque bol sphérique généreuse de 47 cm de diamètre. Sa forme galbée évite toute projection d'eau et apporte une touche organique et zen aux comptoirs de salle de bains.",
     featured: true
   },
