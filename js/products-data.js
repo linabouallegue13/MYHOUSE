@@ -475,7 +475,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir Profond", "Inox Sombre"],
     reference: "MH-FOUR-66L",
     rectified: true,
-    image: "assets/images/electromenager/appliance_oven_built_in.jpg",
+    image: "assets/images/electromenager/oven_quadra_66_studio.jpg",
     description: "Four encastrable haute performance à chaleur tournante pulsée. Porte tempérée 3 vitres démontables, 9 fonctions de cuisson, commandes push-pull escamotables et cavité émail EasyClean.",
     featured: true
   },
@@ -509,7 +509,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir", "Inox"],
     reference: "MH-MO-25L",
     rectified: true,
-    image: "assets/images/electromenager/appliance_microwave_built.jpg",
+    image: "assets/images/electromenager/microwave_quadra_50_studio.jpg",
     description: "Micro-ondes combiné grill quartz 1000W. Cavité inox facile d'entretien, 8 programmes automatiques, décongélation au poids et affichage digital LED blanc.",
     featured: true
   },
@@ -526,7 +526,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir Vitrocéramique"],
     reference: "MH-IND-80A",
     rectified: true,
-    image: "assets/images/electromenager/appliance_hob_induction.jpg",
+    image: "assets/images/electromenager/hob_sofia_induction_studio.jpg",
     description: "Le summum de la cuisine contemporaine : 4 zones induction avec Boosters couplées à une aspiration centrale puissante intégrée (650 m³/h classe A+). Commandes Slider tactiles indépendantes.",
     featured: true
   },
