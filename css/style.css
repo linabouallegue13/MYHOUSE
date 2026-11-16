@@ -3333,6 +3333,16 @@ h6 {
   background: var(--house-red);
 }
 
+.universe-jump-btn.active {
+  border-color: var(--house-red) !important;
+  box-shadow: 0 12px 28px rgba(179, 32, 42, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+.universe-jump-btn.active::after {
+  background: var(--house-red);
+}
+
 .universe-section {
   transition: opacity var(--transition-base);
 }
