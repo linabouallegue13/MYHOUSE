@@ -18,7 +18,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir poli"],
     reference: "GDKP72609",
     rectified: true,
-    image: "assets/images/catalog/cat_p9_0.jpeg",
+    image: "assets/images/catalog/volcano_landscape_1200.jpg",
     description: "Inspiré de la pierre volcanique et des marbres noirs intenses, Volcano offre une profondeur visuelle remarquable et une brillance miroir de prestige.",
     featured: true
   },
@@ -35,7 +35,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Marron impérial", "Bronze"],
     reference: "GDKP72605",
     rectified: true,
-    image: "assets/images/catalog/cat_p10_0.jpeg",
+    image: "assets/images/catalog/emperador_landscape_1200.jpg",
     description: "Le marbre Emperador avec ses veines ambrées et cuivrées. Une incarnation du luxe classique adapté aux intérieurs contemporains.",
     featured: true
   },
@@ -52,7 +52,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc veiné or", "Ivoire doré"],
     reference: "GDGP72803 / GDSR72803",
     rectified: true,
-    image: "assets/images/catalog/cat_p11_0.jpeg",
+    image: "assets/images/catalog/carrara_gold_landscape_1200.jpg",
     description: "L'élégance intemporelle du marbre de Carrare rehaussée de délicates veines dorées. Disponible en finition polie brillante ou satinée douce.",
     featured: true
   },
@@ -475,7 +475,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir Profond", "Inox Sombre"],
     reference: "MH-FOUR-66L",
     rectified: true,
-    image: "assets/images/electromenager/cat_four_quadra_66.png",
+    image: "assets/images/electromenager/appliance_oven_built_in.jpg",
     description: "Four encastrable haute performance à chaleur tournante pulsée. Porte tempérée 3 vitres démontables, 9 fonctions de cuisson, commandes push-pull escamotables et cavité émail EasyClean.",
     featured: true
   },
@@ -509,7 +509,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir", "Inox"],
     reference: "MH-MO-25L",
     rectified: true,
-    image: "assets/images/electromenager/cat_micro_ondes_50.png",
+    image: "assets/images/electromenager/appliance_microwave_built.jpg",
     description: "Micro-ondes combiné grill quartz 1000W. Cavité inox facile d'entretien, 8 programmes automatiques, décongélation au poids et affichage digital LED blanc.",
     featured: true
   },
@@ -526,7 +526,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir Vitrocéramique"],
     reference: "MH-IND-80A",
     rectified: true,
-    image: "assets/images/electromenager/cat_plaque_induction_sofia.png",
+    image: "assets/images/electromenager/appliance_hob_induction.jpg",
     description: "Le summum de la cuisine contemporaine : 4 zones induction avec Boosters couplées à une aspiration centrale puissante intégrée (650 m³/h classe A+). Commandes Slider tactiles indépendantes.",
     featured: true
   },

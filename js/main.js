@@ -282,22 +282,81 @@ function initCatalog() {
       item.categoryLabel.toLowerCase().includes(searchTerm);
   }
 
+    // Selected 3 premier flagship references per universe
+  const SANITAIRES_TOP3_IDS = ['baignoire-ilot-mineral', 'baignoire-balneo-spa', 'receveur-ardoise-mineral'];
+  const ELECTRO_TOP3_IDS = ['four-quadra-66', 'table-induction-aspirante', 'micro-ondes-integre'];
+  const CARRELAGE_TOP3_IDS = ['volcano', 'emperador', 'carrara-gold'];
+
+  function createCatalogPromoCard(universeId) {
+    const card = document.createElement('div');
+    card.className = 'product-card catalog-promo-card reveal revealed';
+    card.style.cssText = 'grid-column: 1 / -1; margin-top: 1.5rem; background: linear-gradient(135deg, #1b1e22 0%, #121416 100%); border-radius: var(--radius-lg); padding: 2rem; border: 1.5px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.25);';
+
+    let title = "", sub = "", previewImg = "", catParam = "", pages = "", color = "#b3202a";
+    if (universeId === 'sanitaires') {
+      title = "Catalogue Officiel Sanitaires, Bains & Balnéo 2026";
+      sub = "Découvrez l'intégralité de nos 62 pages : receveurs minéraux, baignoires îlots, balnéothérapie, vasques en céramique noble et parois de douche.";
+      previewImg = "assets/images/catalogues/preview_sanitaire.jpg";
+      catParam = "sanitaire";
+      pages = "62 pages";
+      color = "var(--house-red)";
+    } else if (universeId === 'electromenager') {
+      title = "Catalogue Officiel Électroménager Encastrable & Cuisine 2026";
+      sub = "Feuilletez nos 29 pages d'équipements contemporains : tables induction aspirantes, fours multifonctions haute précision, hottes îlot et éviers.";
+      previewImg = "assets/images/catalogues/preview_electromenager.jpg";
+      catParam = "electromenager";
+      pages = "29 pages";
+      color = "#c9a86a";
+    } else {
+      title = "Grand Catalogue Céramique, Marbre & Grès Cérame 2026";
+      sub = "Explorez nos 166 pages haute définition : formats 60×120, 80×80, finitions poli miroir, mat soyeux, dalles antidérapantes R11 pour intérieur et extérieur.";
+      previewImg = "assets/images/catalogues/preview_carrelage.jpg";
+      catParam = "carrelage";
+      pages = "166 pages";
+      color = "#ffffff";
+    }
+
+    card.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 1.75rem; flex: 1; min-width: 300px;">
+        <div style="width: 100px; height: 140px; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5); flex-shrink: 0; border: 1.5px solid rgba(255,255,255,0.2); transform: rotate(-2deg); transition: transform 0.3s ease;">
+          <img src="${previewImg}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div>
+          <span style="display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; background: rgba(255,255,255,0.12); color: ${color}; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.4rem;">OUVRAGE INTÉGRAL &bull; ${pages.toUpperCase()}</span>
+          <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff; margin: 0 0 0.4rem 0;">${title}</h3>
+          <p style="color: var(--warm-grey); font-size: 0.9rem; line-height: 1.5; margin: 0; max-width: 600px;">${sub}</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a href="catalogues.html?cat=${catParam}" class="btn btn--primary" style="padding: 0.85rem 1.6rem; font-size: 0.95rem; font-weight: 600;">
+          📖 Feuilleter comme un livre (${pages}) &rarr;
+        </a>
+      </div>
+    `;
+    return card;
+  }
+
   function renderUniverses() {
     if (!gridSanitaires) return;
 
-    // Filter by Universe and Search Term
-    const sanitairesList = PRODUCTS_DATA.filter(item => 
-      (item.category === 'sanitaire' || item.category === 'bain') && matchesSearch(item)
-    );
+    // Filter by Universe and Search Term, showing the 3 curated references unless searching
+    const sanitairesList = PRODUCTS_DATA.filter(item => {
+      if (item.category !== 'sanitaire' && item.category !== 'bain') return false;
+      if (!searchTerm && !SANITAIRES_TOP3_IDS.includes(item.id)) return false;
+      return matchesSearch(item);
+    });
 
-    const electroList = PRODUCTS_DATA.filter(item => 
-      (item.category === 'electromenager' || item.category === 'accessoires') && matchesSearch(item)
-    );
+    const electroList = PRODUCTS_DATA.filter(item => {
+      if (item.category !== 'electromenager' && item.category !== 'accessoires') return false;
+      if (!searchTerm && !ELECTRO_TOP3_IDS.includes(item.id)) return false;
+      return matchesSearch(item);
+    });
 
     const carrelageList = PRODUCTS_DATA.filter(item => {
       const isCarrelage = ['marbre', 'pierre', 'beton', 'interieur', 'exterieur', 'gres'].includes(item.category);
       if (!isCarrelage) return false;
       if (activeCarrelageCat !== 'all-carrelage' && item.category !== activeCarrelageCat) return false;
+      if (!searchTerm && activeCarrelageCat === 'all-carrelage' && !CARRELAGE_TOP3_IDS.includes(item.id)) return false;
       return matchesSearch(item);
     });
 
@@ -314,6 +373,9 @@ function initCatalog() {
     }
     if (sanitairesList.length > 0) {
       sanitairesList.forEach(item => gridSanitaires.appendChild(createProductCard(item)));
+      if (!searchTerm) {
+        gridSanitaires.appendChild(createCatalogPromoCard('sanitaires'));
+      }
     } else if (!searchTerm && showSanitaires) {
       gridSanitaires.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucun produit disponible.</p>`;
     }
@@ -331,6 +393,9 @@ function initCatalog() {
     }
     if (electroList.length > 0) {
       electroList.forEach(item => gridElectro.appendChild(createProductCard(item)));
+      if (!searchTerm) {
+        gridElectro.appendChild(createCatalogPromoCard('electromenager'));
+      }
     } else if (!searchTerm && showElectro) {
       gridElectro.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucun produit disponible.</p>`;
     }
@@ -348,6 +413,9 @@ function initCatalog() {
     }
     if (carrelageList.length > 0) {
       carrelageList.forEach(item => gridCarrelage.appendChild(createProductCard(item)));
+      if (!searchTerm && activeCarrelageCat === 'all-carrelage') {
+        gridCarrelage.appendChild(createCatalogPromoCard('carrelage'));
+      }
     } else if (!searchTerm && showCarrelage) {
       gridCarrelage.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucune série dans cette finition.</p>`;
     }

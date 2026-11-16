@@ -1137,9 +1137,15 @@
       renderSpread();
     });
 
-    // Init
+    // Init with URL param support (?cat=sanitaire | ?cat=electromenager | ?cat=carrelage)
     document.addEventListener('DOMContentLoaded', () => {
-      selectCatalog('sanitaire');
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = urlParams.get('cat');
+      if (catParam && CATALOGS[catParam]) {
+        selectCatalog(catParam);
+      } else {
+        selectCatalog('sanitaire');
+      }
     });
   </script>
   <script src="js/main.js"></script>
