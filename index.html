@@ -20,9 +20,7 @@
       <nav class="nav__menu">
         <div class="nav__links">
           <a href="index.html" class="nav__link active" data-i18n="nav_home">Accueil</a>
-          <a href="collections.html" class="nav__link" data-i18n="nav_collections">Collections</a>
-          <a href="salles-de-bain.html" class="nav__link" data-i18n="nav_bathrooms">Salles de bain</a>
-          <a href="nouveautes.html" class="nav__link" data-i18n="nav_nouveautes">Nouveautés</a>
+          <a href="collections.html" class="nav__link" data-i18n="nav_collections">Collections</a>          <a href="nouveautes.html" class="nav__link" data-i18n="nav_nouveautes">Nouveautés</a>
                     <a href="catalogues.html" class="nav__link" data-i18n="nav_catalogues">Catalogues</a>
 <a href="inspirations.html" class="nav__link" data-i18n="nav_inspirations">Inspirations</a>
           <a href="a-propos.html" class="nav__link" data-i18n="nav_about">À propos</a>
@@ -52,13 +50,17 @@
     <div class="hero__bg" style="background-image: url('assets/images/headers/hero_home.jpg'); background-position: center;"></div>
     <div class="hero__overlay"></div>
     <div class="hero__content reveal">
-      <div class="hero__label">SHOWROOM D'EXCEPTION &bull; HAMMAM SOUSSE</div>
-      <h1 class="hero__title">L'art de vivre commence chez vous.</h1>
-      <p class="hero__subtitle">Bienvenue chez MY HOUSE. Votre destination de référence pour sublimer chaque espace : carrelage grand format, sanitaires d'architecte, électroménager contemporain et équipements pour la maison.</p>
+      <div class="hero__label" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); padding: 0.45rem 1.4rem; border-radius: 9999px; border: 1px solid rgba(220,208,186,0.35); letter-spacing: 0.15em;">
+        <span style="color: var(--sand);">✦</span> BIENVENUE AU SHOWROOM &bull; HAMMAM SOUSSE
+      </div>
+      <h1 class="hero__title">L'art de vivre et de bâtir avec distinction.</h1>
+      <p class="hero__subtitle">
+        Toute l'équipe de <strong>MY HOUSE</strong> vous accueille chaleureusement au showroom pour concrétiser vos projets d'habitat les plus raffinés : <strong>Carrelage &amp; Grès cérame</strong> grand format, <strong>Sanitaires &amp; Salles de bain</strong> d'exception et <strong>Électroménager contemporain</strong> réuni sous un même toit.
+      </p>
       <div class="hero__buttons">
-        <a href="collections.html" class="btn btn--primary">Explorer notre catalogue</a>
-        <a href="nouveautes.html" class="btn btn--outline">Voir les nouveautés 2026</a>
-        <a href="contact.html" class="btn btn--outline">Venir au showroom</a>
+        <a href="collections.html" class="btn btn--primary">Explorer nos 3 Univers</a>
+        <a href="catalogues.html" class="btn btn--outline" style="border-color: var(--sand); color: #fff;">Feuilleter les catalogues</a>
+        <a href="contact.html" class="btn btn--outline">Visiter le showroom</a>
       </div>
     </div>
     <div class="hero__scroll">
@@ -359,7 +361,7 @@
         </div>
 
         <!-- Gamme 2: Sanitaires & Salles de bain -->
-        <div class="category-card reveal reveal-delay-1" onclick="location.href='salles-de-bain.html'">
+        <div class="category-card reveal reveal-delay-1" onclick="location.href='collections.html#section-sanitaires'">
           <img src="assets/images/sanitaire/bath_freestanding_mineral.jpg" alt="Sanitaires et baignoires contemporaines" loading="lazy">
           <div class="category-card__overlay"></div>
           <div class="category-card__content">
@@ -370,7 +372,7 @@
         </div>
 
         <!-- Gamme 3: Électroménager -->
-        <div class="category-card reveal reveal-delay-2" onclick="location.href='collections.html'">
+        <div class="category-card reveal reveal-delay-2" onclick="location.href='collections.html#section-electromenager'">
           <img src="assets/images/electromenager/appliance_oven_built_in.jpg" alt="Électroménager contemporain encastrable" loading="lazy">
           <div class="category-card__overlay"></div>
           <div class="category-card__content">
@@ -381,7 +383,7 @@
         </div>
 
         <!-- Gamme 4: Équipements & Accessoires Maison -->
-        <div class="category-card reveal reveal-delay-3" onclick="location.href='collections.html'">
+        <div class="category-card reveal reveal-delay-3" onclick="location.href='collections.html#section-electromenager'">
           <img src="assets/images/accessoires/sink_kitchen_granite.jpg" alt="Équipements et accessoires pour la maison" loading="lazy">
           <div class="category-card__overlay"></div>
           <div class="category-card__content">
@@ -462,7 +464,7 @@
               <span>Conseil d'intégration sur-mesure</span>
             </div>
           </div>
-          <a href="collections.html" class="btn btn--primary">Découvrir l'électroménager &rarr;</a>
+          <a href="collections.html#section-electromenager" class="btn btn--primary">Découvrir l'électroménager &rarr;</a>
         </div>
       </div>
 
@@ -498,7 +500,7 @@
               <span>Plans-vasques suspendus monoblocs</span>
             </div>
           </div>
-          <a href="salles-de-bain.html" class="btn btn--outline-dark">Explorer les salles de bain &rarr;</a>
+          <a href="collections.html#section-sanitaires" class="btn btn--outline-dark">Découvrir l'univers Sanitaires &rarr;</a>
         </div>
       </div>
 
@@ -675,9 +677,7 @@
         <div>
           <h4 class="footer__title">Navigation</h4>
           <a href="index.html" class="footer__link">Accueil</a>
-          <a href="collections.html" class="footer__link">Nos Collections</a>
-          <a href="salles-de-bain.html" class="footer__link">Salles de bain</a>
-          <a href="nouveautes.html" class="footer__link">Nouveautés</a>
+          <a href="collections.html" class="footer__link">Nos Collections</a>          <a href="nouveautes.html" class="footer__link">Nouveautés</a>
           <a href="inspirations.html" class="footer__link">Inspirations</a>
           <a href="a-propos.html" class="footer__link">À propos</a>
           <a href="contact.html" class="footer__link">Contact</a>

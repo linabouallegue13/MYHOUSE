@@ -20,9 +20,7 @@
       <nav class="nav__menu">
         <div class="nav__links">
           <a href="index.html" class="nav__link" data-i18n="nav_home">Accueil</a>
-          <a href="collections.html" class="nav__link active" data-i18n="nav_collections">Collections</a>
-          <a href="salles-de-bain.html" class="nav__link" data-i18n="nav_bathrooms">Salles de bain</a>
-          <a href="nouveautes.html" class="nav__link" data-i18n="nav_nouveautes">Nouveautés</a>
+          <a href="collections.html" class="nav__link active" data-i18n="nav_collections">Collections</a>          <a href="nouveautes.html" class="nav__link" data-i18n="nav_nouveautes">Nouveautés</a>
                     <a href="catalogues.html" class="nav__link" data-i18n="nav_catalogues">Catalogues</a>
 <a href="inspirations.html" class="nav__link" data-i18n="nav_inspirations">Inspirations</a>
           <a href="a-propos.html" class="nav__link" data-i18n="nav_about">À propos</a>
@@ -157,27 +155,169 @@
         </div>
       </div>
 
-      <!-- Filters and Search Bar -->
-      <div class="catalog-filters">
-        <button type="button" class="catalog-filter active" data-category="all">Toutes les collections</button>
-        <button type="button" class="catalog-filter" data-category="marbre">Effet marbre</button>
-        <button type="button" class="catalog-filter" data-category="pierre">Effet pierre</button>
-        <button type="button" class="catalog-filter" data-category="beton">Effet béton</button>
-        <button type="button" class="catalog-filter" data-category="interieur">Bois &amp; Parquet</button>
-        <button type="button" class="catalog-filter" data-category="exterieur">Extérieur &amp; R11</button>
-        <button type="button" class="catalog-filter" data-category="sanitaire">Sanitaires &amp; Bains</button>
-        <button type="button" class="catalog-filter" data-category="electromenager">Électroménager</button>
-        <button type="button" class="catalog-filter" data-category="accessoires">Équipements &amp; Accessoires</button>
+      <!-- 3 Universes Selector & Global Search Bar -->
+      <div class="universes-nav-bar reveal" style="margin-bottom: 3.5rem;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <span class="section-label" style="color: var(--house-red);">ORGANISATION DU SHOWROOM</span>
+          <h2 style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 0.5rem;">Explorez nos 3 Grands Univers</h2>
+          <p style="color: var(--stone); max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
+            Découvrez nos collections réparties par univers thématiques, ou accédez directement à votre domaine d'intérêt :
+          </p>
+        </div>
 
-        <div class="catalog-search">
-          <svg class="catalog-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="text" id="catalog-search-input" class="catalog-search__input" placeholder="Rechercher une collection..." data-i18n-placeholder="search_placeholder">
+        <div class="universes-tabs" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+          <!-- Universe 1 Button -->
+          <a href="#section-sanitaires" class="universe-jump-btn" style="background: var(--white); border: 2px solid rgba(179,32,42,0.15); border-radius: var(--radius-lg); padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1.2rem; transition: all 0.3s ease; box-shadow: var(--shadow-sm);">
+            <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(179,32,42,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">
+              🛁
+            </div>
+            <div>
+              <span style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 01</span>
+              <h3 style="font-size: 1.15rem; color: var(--ink); margin: 0.15rem 0 0.25rem 0;">Sanitaires &amp; Bains</h3>
+              <span style="font-size: 0.82rem; color: var(--house-red); font-weight: 600;">11 Références &bull; Catalogue 62p &darr;</span>
+            </div>
+          </a>
+
+          <!-- Universe 2 Button -->
+          <a href="#section-electromenager" class="universe-jump-btn" style="background: var(--white); border: 2px solid rgba(220,208,186,0.5); border-radius: var(--radius-lg); padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1.2rem; transition: all 0.3s ease; box-shadow: var(--shadow-sm);">
+            <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(220,208,186,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">
+              🍳
+            </div>
+            <div>
+              <span style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 02</span>
+              <h3 style="font-size: 1.15rem; color: var(--ink); margin: 0.15rem 0 0.25rem 0;">Électroménager &amp; Cuisine</h3>
+              <span style="font-size: 0.82rem; color: #8A6D3B; font-weight: 600;">13 Références &bull; Catalogue 29p &darr;</span>
+            </div>
+          </a>
+
+          <!-- Universe 3 Button -->
+          <a href="#section-carrelage" class="universe-jump-btn" style="background: var(--white); border: 2px solid rgba(23,25,27,0.12); border-radius: var(--radius-lg); padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1.2rem; transition: all 0.3s ease; box-shadow: var(--shadow-sm);">
+            <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(23,25,27,0.07); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">
+              🏛️
+            </div>
+            <div>
+              <span style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 03</span>
+              <h3 style="font-size: 1.15rem; color: var(--ink); margin: 0.15rem 0 0.25rem 0;">Carrelage &amp; Grès Cérame</h3>
+              <span style="font-size: 0.82rem; color: var(--ink); font-weight: 600;">23 Références &bull; Catalogue 166p &darr;</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Global Search Bar -->
+        <div style="max-width: 650px; margin: 0 auto; position: relative;">
+          <svg style="position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--stone);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="catalog-search-input" class="form-input" style="padding-left: 3.25rem; height: 52px; border-radius: 9999px; box-shadow: var(--shadow-sm); font-size: 1rem; width: 100%; border: 1.5px solid rgba(0,0,0,0.12); background: #fff;" placeholder="Rechercher une collection, un modèle, un format dans les 3 univers..." data-i18n-placeholder="search_placeholder">
         </div>
       </div>
 
-      <!-- Dynamic Products Grid populated by main.js from PRODUCTS_DATA -->
-      <div id="products-grid" class="products-grid">
-        <!-- Rendered dynamically -->
+      <!-- ========================================================
+           UNIVERS 01 : SANITAIRES & SALLES DE BAIN
+           ======================================================== -->
+      <section id="section-sanitaires" class="universe-section reveal" style="margin-bottom: 5rem; scroll-margin-top: 100px;">
+        <!-- Universe Banner Card -->
+        <div style="background: linear-gradient(135deg, #1f2328 0%, #17191b 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid var(--house-red); box-shadow: var(--shadow-md); color: #fff;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+            <div style="max-width: 750px;">
+              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(179,32,42,0.25); color: #ff7d85; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.6rem;">UNIVERS 01 &bull; SALLES DE BAIN &bull; 11 RÉFÉRENCES</span>
+              <h2 style="font-family: var(--font-heading); font-size: 1.85rem; color: #fff; margin-bottom: 0.5rem;">Sanitaires, Baignoires Îlots &amp; Receveurs Minéraux</h2>
+              <p style="color: var(--warm-grey); font-size: 0.92rem; line-height: 1.6; margin: 0;">
+                Baignoires autoportantes ergonomiques, systèmes balnéo hydromassage, receveurs texturés ardoise antidérapants certifiés et plans-vasques sculptés en résine minérale.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="catalogues.html" class="btn btn--primary btn--sm" style="padding: 0.75rem 1.4rem;">
+                📖 Feuilleter l'ouvrage (62p)
+              </a>
+              <a href="assets/catalogues/catalogue-sanitaires-bains-myhouse.pdf" target="_blank" download class="btn btn--outline btn--sm" style="padding: 0.75rem 1.4rem;">
+                📥 Télécharger PDF
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid for Sanitaires Products -->
+        <div id="grid-sanitaires" class="products-grid">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ========================================================
+           UNIVERS 02 : ÉLECTROMÉNAGER ENCASTRABLE & CUISINE
+           ======================================================== -->
+      <section id="section-electromenager" class="universe-section reveal" style="margin-bottom: 5rem; scroll-margin-top: 100px;">
+        <!-- Universe Banner Card -->
+        <div style="background: linear-gradient(135deg, #22262b 0%, #1a1c1e 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid #c9a86a; box-shadow: var(--shadow-md); color: #fff;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+            <div style="max-width: 750px;">
+              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(201,168,106,0.25); color: #e5cd9c; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.6rem;">UNIVERS 02 &bull; CUISINE CONTEMPORAINE &bull; 13 RÉFÉRENCES</span>
+              <h2 style="font-family: var(--font-heading); font-size: 1.85rem; color: #fff; margin-bottom: 0.5rem;">Électroménager Encastrable &amp; Équipements de Cuisine</h2>
+              <p style="color: var(--warm-grey); font-size: 0.92rem; line-height: 1.6; margin: 0;">
+                Fours multifonctions haute précision, tables induction avec commande tactile, hottes décoratives &amp; îlot ultra-silencieuses, micro-ondes intégrés et éviers de prestige.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="catalogues.html" class="btn btn--sm" style="background: #c9a86a; color: #17191b; font-weight: 700; padding: 0.75rem 1.4rem;">
+                📖 Feuilleter l'ouvrage (29p)
+              </a>
+              <a href="assets/catalogues/catalogue-electromenager-myhouse.pdf" target="_blank" download class="btn btn--outline btn--sm" style="padding: 0.75rem 1.4rem;">
+                📥 Télécharger PDF
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid for Electromenager Products -->
+        <div id="grid-electromenager" class="products-grid">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ========================================================
+           UNIVERS 03 : CARRELAGE & GRÈS CÉRAME D'EXCEPTION
+           ======================================================== -->
+      <section id="section-carrelage" class="universe-section reveal" style="margin-bottom: 5rem; scroll-margin-top: 100px;">
+        <!-- Universe Banner Card -->
+        <div style="background: linear-gradient(135deg, #1a1e22 0%, #141618 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid #ffffff; box-shadow: var(--shadow-md); color: #fff;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+            <div style="max-width: 750px;">
+              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(255,255,255,0.15); color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.6rem;">UNIVERS 03 &bull; SURFACES CÉRAMIQUES &bull; 23 RÉFÉRENCES</span>
+              <h2 style="font-family: var(--font-heading); font-size: 1.85rem; color: #fff; margin-bottom: 0.5rem;">Carrelage &amp; Grès Cérame Grand Format</h2>
+              <p style="color: var(--warm-grey); font-size: 0.92rem; line-height: 1.6; margin: 0;">
+                Séries céramiques de prestige : Volcano, Emperador, Carrara Gold, Corniolo, dalles d'extérieur antidérapantes certifiées R11 et revêtements muraux coordonnés.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="catalogues.html" class="btn btn--outline btn--sm" style="padding: 0.75rem 1.4rem; background: rgba(255,255,255,0.1);">
+                📖 Feuilleter l'ouvrage (166p)
+              </a>
+              <a href="assets/catalogues/catalogue-carrelage-gres-cerame-myhouse.pdf" target="_blank" download class="btn btn--outline btn--sm" style="padding: 0.75rem 1.4rem;">
+                📥 Télécharger PDF
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carrelage Specific Sub-Filters -->
+        <div class="catalog-filters" style="margin-bottom: 2rem;">
+          <button type="button" class="catalog-filter active" data-category="all-carrelage">Tous les carrelages</button>
+          <button type="button" class="catalog-filter" data-category="marbre">Effet marbre</button>
+          <button type="button" class="catalog-filter" data-category="pierre">Effet pierre</button>
+          <button type="button" class="catalog-filter" data-category="beton">Effet béton</button>
+          <button type="button" class="catalog-filter" data-category="interieur">Bois &amp; Parquet</button>
+          <button type="button" class="catalog-filter" data-category="exterieur">Extérieur &amp; R11</button>
+        </div>
+
+        <!-- Grid for Carrelage Products -->
+        <div id="grid-carrelage" class="products-grid">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- Global Fallback / Empty Search Message Container -->
+      <div id="search-empty-state" style="display: none; text-align: center; padding: 4rem 1rem; color: var(--stone);">
+        <p style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--ink);">Aucune collection ne correspond à votre recherche.</p>
+        <p style="font-size: 0.95rem;">Contactez notre équipe showroom sur WhatsApp pour toute référence personnalisée.</p>
+        <a href="https://wa.me/21651056656?text=Bonjour%20MY%20HOUSE,%20je%20recherche%20une%20r%C3%A9f%C3%A9rence%20particuli%C3%A8re." target="_blank" class="btn btn--primary btn--sm" style="margin-top: 1rem;">Contacter le showroom</a>
       </div>
 
       <!-- Informative Box on Standards & Guarantee -->
@@ -220,9 +360,7 @@
         <div>
           <h4 class="footer__title">Navigation</h4>
           <a href="index.html" class="footer__link">Accueil</a>
-          <a href="collections.html" class="footer__link">Nos Collections</a>
-          <a href="salles-de-bain.html" class="footer__link">Salles de bain</a>
-          <a href="nouveautes.html" class="footer__link">Nouveautés</a>
+          <a href="collections.html" class="footer__link">Nos Collections</a>          <a href="nouveautes.html" class="footer__link">Nouveautés</a>
           <a href="inspirations.html" class="footer__link">Inspirations</a>
           <a href="a-propos.html" class="footer__link">À propos</a>
           <a href="contact.html" class="footer__link">Contact</a>

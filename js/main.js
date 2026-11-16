@@ -176,31 +176,141 @@ function initScrollReveal() {
   reveals.forEach(el => observer.observe(el));
 }
 
-/* ---------- Catalog Filtering & Search ---------- */
+/* ---------- Catalog Filtering & Search (3 Distinct Universes & Single Grids) ---------- */
 function initCatalog() {
-  const grid = document.getElementById('products-grid');
-  if (!grid || typeof PRODUCTS_DATA === 'undefined') return;
+  if (typeof PRODUCTS_DATA === 'undefined') return;
 
-  const filterBtns = document.querySelectorAll('.catalog-filter');
+  const gridSanitaires = document.getElementById('grid-sanitaires');
+  const gridElectro = document.getElementById('grid-electromenager');
+  const gridCarrelage = document.getElementById('grid-carrelage');
+  const singleGrid = document.getElementById('products-grid');
   const searchInput = document.getElementById('catalog-search-input');
-  let activeCategory = 'all';
+  const emptyState = document.getElementById('search-empty-state');
+  const carrelageFilters = document.querySelectorAll('.catalog-filter');
+
+  if (!gridSanitaires && !singleGrid) return;
+
+  let activeCarrelageCat = 'all-carrelage';
   let searchTerm = '';
 
-  function renderProducts() {
-    grid.innerHTML = '';
+  function createProductCard(item) {
+    const card = document.createElement('div');
+    card.className = 'product-card reveal revealed';
+    
+    const isFav = myFavorites.some(f => f.name === item.name);
+    const brandBadge = item.featured ? `<span class="collection-card__badge" style="background:var(--house-red); font-size:0.65rem; top:10px; left:10px;">SÉLECTION</span>` : '';
+    const colorsHtml = (item.colors || []).map((c, i) => 
+      `<span class="product-card__color-dot" style="background-color: ${c};" title="${(item.colorNames && item.colorNames[i]) || ''}"></span>`
+    ).join('');
 
-    const filtered = PRODUCTS_DATA.filter(item => {
-      const matchCat = activeCategory === 'all' || item.category === activeCategory;
-      const matchSearch = !searchTerm ||
-        item.name.toLowerCase().includes(searchTerm) ||
-        item.finish.toLowerCase().includes(searchTerm) ||
-        (item.reference && item.reference.toLowerCase().includes(searchTerm)) ||
-        item.categoryLabel.toLowerCase().includes(searchTerm);
-      return matchCat && matchSearch;
+    card.innerHTML = `
+      <button type="button" class="product-fav-btn ${isFav ? 'active' : ''}" data-name="${item.name}" title="Ajouter à mes favoris" onclick="toggleFavoriteProduct('${item.name}', '${item.dimensions}', '${item.finish}', '${item.image}', this)">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </button>
+      ${brandBadge}
+      <div class="product-card__image" onclick="openProductQuickview('${item.id}')" title="Cliquer pour voir la fiche d'architecture complète">
+        <img src="${item.image}" alt="Collection ${item.name} - MY HOUSE Hammam Sousse" loading="lazy">
+      </div>
+      <div class="product-card__body">
+        <div class="product-card__category">${item.brand ? `${item.brand} &bull; ` : ''}${item.categoryLabel}</div>
+        <h3 class="product-card__name" onclick="openProductQuickview('${item.id}')" style="cursor:pointer;">${item.name}</h3>
+        <div class="product-card__info"><strong>Finition :</strong> ${item.finish}</div>
+        <div class="product-card__info"><strong>Dimensions :</strong> ${item.dimensions}</div>
+        <div class="product-card__colors">${colorsHtml}</div>
+        <div class="product-card__ref">${item.reference ? `Réf : ${item.reference}` : ''}</div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem; margin-top:0.5rem;">
+          <button type="button" class="btn btn--outline-dark btn--sm" onclick="openProductQuickview('${item.id}')">
+            Fiche détails
+          </button>
+          <button type="button" class="btn btn--primary btn--sm" onclick="openProductInquiry('${item.name}', '${item.reference || ''}', '${item.dimensions}', '${item.finish}')">
+            Devis WhatsApp
+          </button>
+        </div>
+      </div>
+    `;
+    return card;
+  }
+
+  function matchesSearch(item) {
+    if (!searchTerm) return true;
+    return item.name.toLowerCase().includes(searchTerm) ||
+      item.finish.toLowerCase().includes(searchTerm) ||
+      (item.reference && item.reference.toLowerCase().includes(searchTerm)) ||
+      (item.description && item.description.toLowerCase().includes(searchTerm)) ||
+      item.categoryLabel.toLowerCase().includes(searchTerm);
+  }
+
+  function renderUniverses() {
+    if (!gridSanitaires) return;
+
+    // Filter by Universe and Search Term
+    const sanitairesList = PRODUCTS_DATA.filter(item => 
+      (item.category === 'sanitaire' || item.category === 'bain') && matchesSearch(item)
+    );
+
+    const electroList = PRODUCTS_DATA.filter(item => 
+      (item.category === 'electromenager' || item.category === 'accessoires') && matchesSearch(item)
+    );
+
+    const carrelageList = PRODUCTS_DATA.filter(item => {
+      const isCarrelage = ['marbre', 'pierre', 'beton', 'interieur', 'exterieur', 'gres'].includes(item.category);
+      if (!isCarrelage) return false;
+      if (activeCarrelageCat !== 'all-carrelage' && item.category !== activeCarrelageCat) return false;
+      return matchesSearch(item);
     });
 
+    // Render Sanitaires
+    gridSanitaires.innerHTML = '';
+    const secSanitaires = document.getElementById('section-sanitaires');
+    if (sanitairesList.length === 0) {
+      if (secSanitaires) secSanitaires.style.display = searchTerm ? 'none' : 'block';
+      if (!searchTerm) {
+        gridSanitaires.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucun produit disponible.</p>`;
+      }
+    } else {
+      if (secSanitaires) secSanitaires.style.display = 'block';
+      sanitairesList.forEach(item => gridSanitaires.appendChild(createProductCard(item)));
+    }
+
+    // Render Electromenager
+    gridElectro.innerHTML = '';
+    const secElectro = document.getElementById('section-electromenager');
+    if (electroList.length === 0) {
+      if (secElectro) secElectro.style.display = searchTerm ? 'none' : 'block';
+      if (!searchTerm) {
+        gridElectro.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucun produit disponible.</p>`;
+      }
+    } else {
+      if (secElectro) secElectro.style.display = 'block';
+      electroList.forEach(item => gridElectro.appendChild(createProductCard(item)));
+    }
+
+    // Render Carrelage
+    gridCarrelage.innerHTML = '';
+    const secCarrelage = document.getElementById('section-carrelage');
+    if (carrelageList.length === 0) {
+      if (secCarrelage) secCarrelage.style.display = searchTerm ? 'none' : 'block';
+      if (!searchTerm) {
+        gridCarrelage.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucune série dans cette finition.</p>`;
+      }
+    } else {
+      if (secCarrelage) secCarrelage.style.display = 'block';
+      carrelageList.forEach(item => gridCarrelage.appendChild(createProductCard(item)));
+    }
+
+    // Handle overall empty state
+    const totalFound = sanitairesList.length + electroList.length + carrelageList.length;
+    if (emptyState) {
+      emptyState.style.display = totalFound === 0 ? 'block' : 'none';
+    }
+  }
+
+  function renderSingleGrid() {
+    if (!singleGrid) return;
+    singleGrid.innerHTML = '';
+    const filtered = PRODUCTS_DATA.filter(matchesSearch);
     if (filtered.length === 0) {
-      grid.innerHTML = `
+      singleGrid.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--stone);">
           <p style="font-size: 1.25rem; margin-bottom: 0.5rem;">Aucune collection ne correspond à votre recherche.</p>
           <p style="font-size: 0.9rem;">Contactez notre showroom pour découvrir nos séries exclusives.</p>
@@ -208,64 +318,37 @@ function initCatalog() {
       `;
       return;
     }
-
-    filtered.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'product-card reveal revealed';
-      
-      const isFav = myFavorites.some(f => f.name === item.name);
-      const brandBadge = item.featured ? `<span class="collection-card__badge" style="background:var(--house-red); font-size:0.65rem; top:10px; left:10px;">SÉLECTION</span>` : '';
-      const colorsHtml = (item.colors || []).map((c, i) => 
-        `<span class="product-card__color-dot" style="background-color: ${c};" title="${(item.colorNames && item.colorNames[i]) || ''}"></span>`
-      ).join('');
-
-      card.innerHTML = `
-        <button type="button" class="product-fav-btn ${isFav ? 'active' : ''}" data-name="${item.name}" title="Ajouter à mes favoris" onclick="toggleFavoriteProduct('${item.name}', '${item.dimensions}', '${item.finish}', '${item.image}', this)">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-        </button>
-        ${brandBadge}
-        <div class="product-card__image" onclick="openProductQuickview('${item.id}')" title="Cliquer pour voir la fiche d'architecture complète">
-          <img src="${item.image}" alt="Collection ${item.name} - MY HOUSE Hammam Sousse" loading="lazy">
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__category">${item.brand ? `${item.brand} &bull; ` : ''}${item.categoryLabel}</div>
-          <h3 class="product-card__name" onclick="openProductQuickview('${item.id}')" style="cursor:pointer;">${item.name}</h3>
-          <div class="product-card__info"><strong>Finition :</strong> ${item.finish}</div>
-          <div class="product-card__info"><strong>Dimensions :</strong> ${item.dimensions}</div>
-          <div class="product-card__colors">${colorsHtml}</div>
-          <div class="product-card__ref">${item.reference ? `Réf : ${item.reference}` : ''}</div>
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem; margin-top:0.5rem;">
-            <button type="button" class="btn btn--outline-dark btn--sm" onclick="openProductQuickview('${item.id}')">
-              Fiche détails
-            </button>
-            <button type="button" class="btn btn--primary btn--sm" onclick="openProductInquiry('${item.name}', '${item.reference || ''}', '${item.dimensions}', '${item.finish}')">
-              Devis WhatsApp
-            </button>
-          </div>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
+    filtered.forEach(item => singleGrid.appendChild(createProductCard(item)));
   }
 
-  filterBtns.forEach(btn => {
+  function renderAll() {
+    if (gridSanitaires) {
+      renderUniverses();
+    } else if (singleGrid) {
+      renderSingleGrid();
+    }
+  }
+
+  // Carrelage sub-filters
+  carrelageFilters.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      carrelageFilters.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      activeCategory = btn.dataset.category;
-      renderProducts();
+      activeCarrelageCat = btn.dataset.category;
+      renderAll();
     });
   });
 
+  // Search input
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       searchTerm = e.target.value.trim().toLowerCase();
-      renderProducts();
+      renderAll();
     });
   }
 
   // Initial render
-  renderProducts();
+  renderAll();
 }
 
 /* ---------- Product Inquiry (Modal & Direct WhatsApp) ---------- */
