@@ -191,7 +191,49 @@ function initCatalog() {
   if (!gridSanitaires && !singleGrid) return;
 
   let activeCarrelageCat = 'all-carrelage';
+  let activeUniverse = 'all';
   let searchTerm = '';
+  const universeBtns = document.querySelectorAll('.universe-jump-btn');
+
+  function setUniverse(uId, doScroll = true) {
+    activeUniverse = uId;
+    universeBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.universe === uId);
+    });
+    renderUniverses();
+    if (doScroll) {
+      let targetSection = null;
+      if (uId === 'sanitaires') targetSection = document.getElementById('section-sanitaires');
+      else if (uId === 'electromenager') targetSection = document.getElementById('section-electromenager');
+      else if (uId === 'carrelage') targetSection = document.getElementById('section-carrelage');
+      else targetSection = document.querySelector('.universes-nav-bar');
+
+      if (targetSection) {
+        setTimeout(() => {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
+    }
+  }
+
+  universeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      setUniverse(btn.dataset.universe);
+    });
+  });
+
+  function checkHash() {
+    const hash = window.location.hash.toLowerCase();
+    if (hash.includes('carrelage')) {
+      setUniverse('carrelage', true);
+    } else if (hash.includes('sanitaire') || hash.includes('bain')) {
+      setUniverse('sanitaires', true);
+    } else if (hash.includes('electro') || hash.includes('cuisine')) {
+      setUniverse('electromenager', true);
+    }
+  }
+
+  window.addEventListener('hashchange', checkHash);
 
   function createProductCard(item) {
     const card = document.createElement('div');
@@ -262,40 +304,52 @@ function initCatalog() {
     // Render Sanitaires
     gridSanitaires.innerHTML = '';
     const secSanitaires = document.getElementById('section-sanitaires');
-    if (sanitairesList.length === 0) {
-      if (secSanitaires) secSanitaires.style.display = searchTerm ? 'none' : 'block';
-      if (!searchTerm) {
-        gridSanitaires.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucun produit disponible.</p>`;
+    const showSanitaires = (activeUniverse === 'all' || activeUniverse === 'sanitaires');
+    if (secSanitaires) {
+      if (searchTerm) {
+        secSanitaires.style.display = (showSanitaires && sanitairesList.length > 0) ? 'block' : 'none';
+      } else {
+        secSanitaires.style.display = showSanitaires ? 'block' : 'none';
       }
-    } else {
-      if (secSanitaires) secSanitaires.style.display = 'block';
+    }
+    if (sanitairesList.length > 0) {
       sanitairesList.forEach(item => gridSanitaires.appendChild(createProductCard(item)));
+    } else if (!searchTerm && showSanitaires) {
+      gridSanitaires.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucun produit disponible.</p>`;
     }
 
     // Render Electromenager
     gridElectro.innerHTML = '';
     const secElectro = document.getElementById('section-electromenager');
-    if (electroList.length === 0) {
-      if (secElectro) secElectro.style.display = searchTerm ? 'none' : 'block';
-      if (!searchTerm) {
-        gridElectro.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucun produit disponible.</p>`;
+    const showElectro = (activeUniverse === 'all' || activeUniverse === 'electromenager');
+    if (secElectro) {
+      if (searchTerm) {
+        secElectro.style.display = (showElectro && electroList.length > 0) ? 'block' : 'none';
+      } else {
+        secElectro.style.display = showElectro ? 'block' : 'none';
       }
-    } else {
-      if (secElectro) secElectro.style.display = 'block';
+    }
+    if (electroList.length > 0) {
       electroList.forEach(item => gridElectro.appendChild(createProductCard(item)));
+    } else if (!searchTerm && showElectro) {
+      gridElectro.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucun produit disponible.</p>`;
     }
 
     // Render Carrelage
     gridCarrelage.innerHTML = '';
     const secCarrelage = document.getElementById('section-carrelage');
-    if (carrelageList.length === 0) {
-      if (secCarrelage) secCarrelage.style.display = searchTerm ? 'none' : 'block';
-      if (!searchTerm) {
-        gridCarrelage.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucune série dans cette finition.</p>`;
+    const showCarrelage = (activeUniverse === 'all' || activeUniverse === 'carrelage');
+    if (secCarrelage) {
+      if (searchTerm) {
+        secCarrelage.style.display = (showCarrelage && carrelageList.length > 0) ? 'block' : 'none';
+      } else {
+        secCarrelage.style.display = showCarrelage ? 'block' : 'none';
       }
-    } else {
-      if (secCarrelage) secCarrelage.style.display = 'block';
+    }
+    if (carrelageList.length > 0) {
       carrelageList.forEach(item => gridCarrelage.appendChild(createProductCard(item)));
+    } else if (!searchTerm && showCarrelage) {
+      gridCarrelage.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--stone); padding: 2rem;">Aucune série dans cette finition.</p>`;
     }
 
     // Handle overall empty state
@@ -349,6 +403,7 @@ function initCatalog() {
 
   // Initial render
   renderAll();
+  checkHash();
 }
 
 /* ---------- Product Inquiry (Modal & Direct WhatsApp) ---------- */

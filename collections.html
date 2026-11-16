@@ -22,8 +22,7 @@
           <a href="index.html" class="nav__link" data-i18n="nav_home">Accueil</a>
           <a href="collections.html" class="nav__link active" data-i18n="nav_collections">Collections</a>          <a href="nouveautes.html" class="nav__link" data-i18n="nav_nouveautes">Nouveautés</a>
                     <a href="catalogues.html" class="nav__link" data-i18n="nav_catalogues">Catalogues</a>
-<a href="inspirations.html" class="nav__link" data-i18n="nav_inspirations">Inspirations</a>
-          <a href="a-propos.html" class="nav__link" data-i18n="nav_about">À propos</a>
+<a href="a-propos.html" class="nav__link" data-i18n="nav_about">À propos</a>
           <a href="contact.html" class="nav__link" data-i18n="nav_contact">Contact</a>
         </div>
 
@@ -165,42 +164,54 @@
           </p>
         </div>
 
-        <div class="universes-tabs" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+        <div class="universes-tabs" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+          <!-- All Universes -->
+          <button type="button" class="universe-jump-btn active" data-universe="all" style="background: var(--white); border: 2px solid rgba(23,25,27,0.15); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(23,25,27,0.06); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
+              ✨
+            </div>
+            <div>
+              <span style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">TOUT LE SHOWROOM</span>
+              <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0.1rem 0;">Tous nos Univers</h3>
+              <span style="font-size: 0.8rem; color: var(--house-red); font-weight: 600;">47 Références au total</span>
+            </div>
+          </button>
+
           <!-- Universe 1 Button -->
-          <a href="#section-sanitaires" class="universe-jump-btn" style="background: var(--white); border: 2px solid rgba(179,32,42,0.15); border-radius: var(--radius-lg); padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1.2rem; transition: all 0.3s ease; box-shadow: var(--shadow-sm);">
-            <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(179,32,42,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">
+          <button type="button" class="universe-jump-btn" data-universe="sanitaires" style="background: var(--white); border: 2px solid rgba(179,32,42,0.18); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(179,32,42,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
               🛁
             </div>
             <div>
-              <span style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 01</span>
-              <h3 style="font-size: 1.15rem; color: var(--ink); margin: 0.15rem 0 0.25rem 0;">Sanitaires &amp; Bains</h3>
-              <span style="font-size: 0.82rem; color: var(--house-red); font-weight: 600;">11 Références &bull; Catalogue 62p &darr;</span>
+              <span style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 01</span>
+              <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0.1rem 0;">Sanitaires &amp; Bains</h3>
+              <span style="font-size: 0.8rem; color: var(--house-red); font-weight: 600;">11 Références &bull; Catalogue 62p</span>
             </div>
-          </a>
+          </button>
 
           <!-- Universe 2 Button -->
-          <a href="#section-electromenager" class="universe-jump-btn" style="background: var(--white); border: 2px solid rgba(220,208,186,0.5); border-radius: var(--radius-lg); padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1.2rem; transition: all 0.3s ease; box-shadow: var(--shadow-sm);">
-            <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(220,208,186,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">
+          <button type="button" class="universe-jump-btn" data-universe="electromenager" style="background: var(--white); border: 2px solid rgba(201,168,106,0.4); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(201,168,106,0.18); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
               🍳
             </div>
             <div>
-              <span style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 02</span>
-              <h3 style="font-size: 1.15rem; color: var(--ink); margin: 0.15rem 0 0.25rem 0;">Électroménager &amp; Cuisine</h3>
-              <span style="font-size: 0.82rem; color: #8A6D3B; font-weight: 600;">13 Références &bull; Catalogue 29p &darr;</span>
+              <span style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 02</span>
+              <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0.1rem 0;">Électroménager &amp; Cuisine</h3>
+              <span style="font-size: 0.8rem; color: #8A6D3B; font-weight: 600;">13 Références &bull; Catalogue 29p</span>
             </div>
-          </a>
+          </button>
 
           <!-- Universe 3 Button -->
-          <a href="#section-carrelage" class="universe-jump-btn" style="background: var(--white); border: 2px solid rgba(23,25,27,0.12); border-radius: var(--radius-lg); padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1.2rem; transition: all 0.3s ease; box-shadow: var(--shadow-sm);">
-            <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(23,25,27,0.07); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0;">
+          <button type="button" class="universe-jump-btn" data-universe="carrelage" style="background: var(--white); border: 2px solid rgba(23,25,27,0.18); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
+            <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(23,25,27,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
               🏛️
             </div>
             <div>
-              <span style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 03</span>
-              <h3 style="font-size: 1.15rem; color: var(--ink); margin: 0.15rem 0 0.25rem 0;">Carrelage &amp; Grès Cérame</h3>
-              <span style="font-size: 0.82rem; color: var(--ink); font-weight: 600;">23 Références &bull; Catalogue 166p &darr;</span>
+              <span style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 03</span>
+              <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0.1rem 0;">Carrelage &amp; Grès Cérame</h3>
+              <span style="font-size: 0.8rem; color: var(--ink); font-weight: 600;">23 Références &bull; Catalogue 166p</span>
             </div>
-          </a>
+          </button>
         </div>
 
         <!-- Global Search Bar -->
@@ -213,7 +224,7 @@
       <!-- ========================================================
            UNIVERS 01 : SANITAIRES & SALLES DE BAIN
            ======================================================== -->
-      <section id="section-sanitaires" class="universe-section reveal" style="margin-bottom: 5rem; scroll-margin-top: 100px;">
+      <section id="section-sanitaires" class="universe-section" style="margin-bottom: 5rem; scroll-margin-top: 100px; opacity: 1 !important; transform: none !important;">
         <!-- Universe Banner Card -->
         <div style="background: linear-gradient(135deg, #1f2328 0%, #17191b 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid var(--house-red); box-shadow: var(--shadow-md); color: #fff;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
@@ -244,7 +255,7 @@
       <!-- ========================================================
            UNIVERS 02 : ÉLECTROMÉNAGER ENCASTRABLE & CUISINE
            ======================================================== -->
-      <section id="section-electromenager" class="universe-section reveal" style="margin-bottom: 5rem; scroll-margin-top: 100px;">
+      <section id="section-electromenager" class="universe-section" style="margin-bottom: 5rem; scroll-margin-top: 100px; opacity: 1 !important; transform: none !important;">
         <!-- Universe Banner Card -->
         <div style="background: linear-gradient(135deg, #22262b 0%, #1a1c1e 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid #c9a86a; box-shadow: var(--shadow-md); color: #fff;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
@@ -275,7 +286,7 @@
       <!-- ========================================================
            UNIVERS 03 : CARRELAGE & GRÈS CÉRAME D'EXCEPTION
            ======================================================== -->
-      <section id="section-carrelage" class="universe-section reveal" style="margin-bottom: 5rem; scroll-margin-top: 100px;">
+      <section id="section-carrelage" class="universe-section" style="margin-bottom: 5rem; scroll-margin-top: 100px; opacity: 1 !important; transform: none !important;">
         <!-- Universe Banner Card -->
         <div style="background: linear-gradient(135deg, #1a1e22 0%, #141618 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid #ffffff; box-shadow: var(--shadow-md); color: #fff;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
@@ -361,7 +372,6 @@
           <h4 class="footer__title">Navigation</h4>
           <a href="index.html" class="footer__link">Accueil</a>
           <a href="collections.html" class="footer__link">Nos Collections</a>          <a href="nouveautes.html" class="footer__link">Nouveautés</a>
-          <a href="inspirations.html" class="footer__link">Inspirations</a>
           <a href="a-propos.html" class="footer__link">À propos</a>
           <a href="contact.html" class="footer__link">Contact</a>
         </div>
