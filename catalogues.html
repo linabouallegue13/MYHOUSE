@@ -8,13 +8,15 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Real 3D Book Experience */
+    /* Catalog Reader Section & Lighting */
     .catalog-reader-section {
       padding: var(--space-2xl) 0 var(--space-4xl);
-      background: radial-gradient(ellipse at top center, #1c2026 0%, #0d0f11 80%, #08090a 100%);
+      background: #111315;
+      background-image: 
+        radial-gradient(ellipse at 50% 0%, rgba(184, 151, 120, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 50% 50%, #1a1e24 0%, #0d0f11 100%);
       position: relative;
-      min-height: 90vh;
-      overflow: hidden;
+      min-height: 85vh;
     }
 
     .catalog-tabs {
@@ -32,7 +34,7 @@
       font-weight: 600;
       letter-spacing: 0.03em;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text-secondary);
       cursor: pointer;
       display: inline-flex;
@@ -46,7 +48,7 @@
       color: var(--gold-light);
       border-color: var(--gold-primary);
       transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.09);
     }
 
     .catalog-tab-btn.active {
@@ -60,20 +62,19 @@
       display: inline-block;
       padding: 0.15rem 0.55rem;
       border-radius: 9999px;
-      background: rgba(0, 0, 0, 0.18);
+      background: rgba(0, 0, 0, 0.2);
       font-size: 0.78rem;
       font-weight: 700;
     }
 
-    /* Flipbook Outer Stage */
+    /* Flipbook Outer Frame */
     .book-wrapper {
       max-width: 1240px;
       margin: 0 auto;
-      background: rgba(13, 15, 17, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #15181c;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-xl);
-      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
       overflow: hidden;
       position: relative;
     }
@@ -140,67 +141,113 @@
       transform: translateY(-1px);
     }
 
-    /* Interactive 3D Canvas Area */
+    /* Flipbook Viewer Stage */
     .book-stage-area {
       position: relative;
-      padding: 2.5rem 1rem;
-      min-height: 640px;
+      padding: 2rem 1rem;
+      min-height: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at center, rgba(35, 42, 50, 0.6) 0%, rgba(13, 15, 17, 0.95) 75%);
-    }
-
-    /* Flipbook Element */
-    #flipbook {
-      margin: 0 auto;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
-      border-radius: 4px;
-    }
-
-    .page {
-      background-color: #f7f7f7;
-      overflow: hidden;
-    }
-
-    .page-content {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0f1113;
-      position: relative;
-    }
-
-    .page-content img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      background: #181c22;
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.6);
+      perspective: 2000px;
       user-select: none;
+    }
+
+    /* Double Page Book Layout (Open Book Look) */
+    .open-book {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+      border-radius: 6px;
+      background: #222;
+      overflow: hidden;
+      max-width: 95%;
+    }
+
+    /* Central Book Spine Shadow */
+    .book-spine-shadow {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(255, 255, 255, 0.1) 50%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.45) 100%);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    /* Leaf container */
+    .book-leaf {
+      position: relative;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .book-leaf img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
       pointer-events: none;
     }
 
-    .page--cover {
-      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
+    /* Single page mode for cover */
+    .open-book.is-cover .book-leaf.leaf-left {
+      display: none;
+    }
+    .open-book.is-cover .book-spine-shadow {
+      display: none;
     }
 
-    /* Navigation Arrows floating */
+    /* Page Turn Animation */
+    .book-leaf.turning-forward {
+      animation: turnForward 0.45s ease-in-out;
+      transform-origin: left center;
+    }
+
+    .book-leaf.turning-backward {
+      animation: turnBackward 0.45s ease-in-out;
+      transform-origin: right center;
+    }
+
+    @keyframes turnForward {
+      0% { transform: rotateY(0deg); opacity: 1; filter: brightness(1); }
+      50% { transform: rotateY(-40deg); opacity: 0.7; filter: brightness(0.75); }
+      100% { transform: rotateY(0deg); opacity: 1; filter: brightness(1); }
+    }
+
+    @keyframes turnBackward {
+      0% { transform: rotateY(0deg); opacity: 1; filter: brightness(1); }
+      50% { transform: rotateY(40deg); opacity: 0.7; filter: brightness(0.75); }
+      100% { transform: rotateY(0deg); opacity: 1; filter: brightness(1); }
+    }
+
+    /* Navigation Arrows */
     .stage-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 54px;
-      height: 54px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      background: rgba(18, 20, 24, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(22, 26, 32, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       z-index: 50;
       transition: all 0.25s ease;
       backdrop-filter: blur(8px);
@@ -224,29 +271,30 @@
       pointer-events: none;
     }
 
-    /* Flip hint overlay */
+    /* Flip hint */
     .book-hint {
       position: absolute;
       bottom: 1.25rem;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 0.4rem 1rem;
+      background: rgba(0, 0, 0, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.45rem 1.2rem;
       border-radius: 9999px;
-      color: var(--text-muted);
-      font-size: 0.78rem;
+      color: var(--gold-light);
+      font-size: 0.8rem;
       letter-spacing: 0.04em;
       pointer-events: none;
       backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
 
     /* Controls Bar Bottom */
     .book-bottom-bar {
-      padding: 1.2rem 2rem;
+      padding: 1.25rem 2rem;
       background: rgba(255, 255, 255, 0.02);
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
@@ -257,11 +305,28 @@
     }
 
     .book-page-counter {
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--gold-light);
       font-variant-numeric: tabular-nums;
-      min-width: 130px;
+      min-width: 140px;
+    }
+
+    .book-slider-wrap {
+      flex: 1;
+      max-width: 400px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .book-slider {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.12);
+      accent-color: var(--gold-primary);
+      cursor: pointer;
     }
 
     .book-nav-pills {
@@ -271,48 +336,21 @@
     }
 
     .btn-page-ctrl {
-      padding: 0.5rem 1rem;
+      padding: 0.55rem 1.1rem;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 6px;
       font-size: 0.82rem;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text-secondary);
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .btn-page-ctrl:hover {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.15);
       color: var(--gold-light);
       border-color: var(--gold-primary);
-    }
-
-    /* Loading Spinner */
-    .book-loading {
-      position: absolute;
-      inset: 0;
-      background: rgba(13, 15, 17, 0.95);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      transition: opacity 0.3s;
-    }
-
-    .book-spinner {
-      width: 48px;
-      height: 48px;
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      border-top-color: var(--gold-primary);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-bottom: 1rem;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
     }
 
     /* Catalog Cards Overview Grid */
@@ -403,13 +441,22 @@
 
     @media (max-width: 900px) {
       .book-stage-area {
-        min-height: 480px;
+        min-height: 440px;
         padding: 1.5rem 0.5rem;
       }
+      .open-book {
+        flex-direction: column;
+      }
+      .book-spine-shadow {
+        display: none;
+      }
+      .book-leaf.leaf-left {
+        display: none;
+      }
       .stage-arrow {
-        width: 42px;
-        height: 42px;
-        font-size: 1.1rem;
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
       }
       .stage-arrow.prev { left: 0.5rem; }
       .stage-arrow.next { right: 0.5rem; }
@@ -424,6 +471,9 @@
       .book-nav-pills {
         justify-content: center;
         flex-wrap: wrap;
+      }
+      .book-slider-wrap {
+        max-width: 100%;
       }
     }
   </style>
@@ -503,7 +553,7 @@
         </button>
       </div>
 
-      <!-- Real 3D Flipbook Stage -->
+      <!-- Real Book Outer Frame -->
       <div class="book-wrapper reveal">
         <!-- Top Bar -->
         <div class="book-top-bar">
@@ -524,35 +574,42 @@
           </div>
         </div>
 
-        <!-- 3D Flip Stage -->
+        <!-- 3D Book Viewing Stage -->
         <div class="book-stage-area">
-          <div id="bookLoading" class="book-loading">
-            <div class="book-spinner"></div>
-            <span style="color: var(--text-secondary); font-size: 0.9rem;">Chargement des pages du livre...</span>
-          </div>
-
           <button type="button" class="stage-arrow prev" id="btnFlipPrev" aria-label="Page précédente">&#10094;</button>
 
-          <!-- Book Container for StPageFlip -->
-          <div id="flipbook"></div>
+          <!-- Double-Page Book Mockup -->
+          <div class="open-book is-cover" id="openBook">
+            <div class="book-leaf leaf-left" id="leafLeft">
+              <img id="imgLeft" src="" alt="Page gauche">
+            </div>
+            <div class="book-spine-shadow"></div>
+            <div class="book-leaf leaf-right" id="leafRight">
+              <img id="imgRight" src="assets/catalogues/pages_sanitaire/page_001.jpg" alt="Page de couverture">
+            </div>
+          </div>
 
           <button type="button" class="stage-arrow next" id="btnFlipNext" aria-label="Page suivante">&#10095;</button>
 
           <div class="book-hint">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M16 6l6 6-6 6M8 18l-6-6 6-6"/></svg>
-            Cliquez sur le coin ou glissez avec la souris pour tourner la page
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M16 6l6 6-6 6M8 18l-6-6 6-6"/></svg>
+            Cliquez sur les flèches ou glissez sur la page pour défiler
           </div>
         </div>
 
         <!-- Bottom Controls -->
         <div class="book-bottom-bar">
-          <div class="book-page-counter" id="pageDisplay">Page 1 / 62</div>
+          <div class="book-page-counter" id="pageDisplay">Couverture (Page 1 / 62)</div>
+
+          <div class="book-slider-wrap">
+            <input type="range" class="book-slider" id="bookSlider" min="1" max="62" value="1">
+          </div>
 
           <div class="book-nav-pills">
-            <button type="button" class="btn-page-ctrl" id="btnFirst"> Première page</button>
-            <button type="button" class="btn-page-ctrl" id="btnPrev10">-10 pages</button>
-            <button type="button" class="btn-page-ctrl" id="btnNext10">+10 pages</button>
-            <button type="button" class="btn-page-ctrl" id="btnLast">Dernière page </button>
+            <button type="button" class="btn-page-ctrl" id="btnFirst"> Début</button>
+            <button type="button" class="btn-page-ctrl" id="btnPrev10">-10</button>
+            <button type="button" class="btn-page-ctrl" id="btnNext10">+10</button>
+            <button type="button" class="btn-page-ctrl" id="btnLast">Fin </button>
           </div>
         </div>
       </div>
@@ -653,8 +710,7 @@
     </div>
   </footer>
 
-  <!-- PageFlip Realistic Book Engine -->
-  <script src="js/page-flip.browser.js"></script>
+  <!-- Ultra-Reliable Realistic Double-Page Book Controller -->
   <script>
     const CATALOGS = {
       sanitaire: {
@@ -684,11 +740,15 @@
     };
 
     let activeKey = 'sanitaire';
-    let pageFlipInstance = null;
+    let currentSpread = 0; // 0 = Cover (page 1), 1 = Pages 2-3, 2 = Pages 4-5...
 
-    const bookEl = document.getElementById('flipbook');
+    const openBook = document.getElementById('openBook');
+    const leafLeft = document.getElementById('leafLeft');
+    const leafRight = document.getElementById('leafRight');
+    const imgLeft = document.getElementById('imgLeft');
+    const imgRight = document.getElementById('imgRight');
     const pageDisplay = document.getElementById('pageDisplay');
-    const loadingEl = document.getElementById('bookLoading');
+    const bookSlider = document.getElementById('bookSlider');
     const btnPrev = document.getElementById('btnFlipPrev');
     const btnNext = document.getElementById('btnFlipNext');
 
@@ -696,146 +756,192 @@
       return String(n).padStart(3, '0');
     }
 
-    function initBook(catalogKey) {
-      activeKey = catalogKey;
-      const cat = CATALOGS[catalogKey];
+    function calculatePageSizes() {
+      const cat = CATALOGS[activeKey];
+      const winW = window.innerWidth;
+      const isMobile = winW < 900;
 
-      // Update meta texts
-      document.getElementById('bookTitle').textContent = cat.title;
-      document.getElementById('bookSubtitle').textContent = cat.subtitle;
-      document.getElementById('bookDownloadLink').href = cat.pdfUrl;
+      let singleW, singleH;
 
-      // Update active tabs
-      document.querySelectorAll('.catalog-tab-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.catalog === catalogKey);
-      });
+      if (isMobile) {
+        singleW = Math.min(winW - 40, 500);
+        singleH = Math.round(singleW * cat.ratio);
+        leafLeft.style.width = '0px';
+        leafLeft.style.height = '0px';
+        leafRight.style.width = singleW + 'px';
+        leafRight.style.height = singleH + 'px';
+      } else {
+        const availableW = Math.min(winW - 120, 1080);
+        singleW = Math.floor(availableW / 2);
+        singleH = Math.round(singleW * cat.ratio);
 
-      // Show loading
-      loadingEl.style.display = 'flex';
-      loadingEl.style.opacity = '1';
-
-      // Destroy previous instance
-      if (pageFlipInstance) {
-        try {
-          pageFlipInstance.destroy();
-        } catch (e) {
-          console.warn('Destroy error', e);
+        // Constrain height if screen is smaller
+        const maxH = Math.min(window.innerHeight * 0.72, 720);
+        if (singleH > maxH) {
+          singleH = Math.round(maxH);
+          singleW = Math.round(singleH / cat.ratio);
         }
-        pageFlipInstance = null;
+
+        leafLeft.style.width = singleW + 'px';
+        leafLeft.style.height = singleH + 'px';
+        leafRight.style.width = singleW + 'px';
+        leafRight.style.height = singleH + 'px';
       }
-
-      bookEl.innerHTML = '';
-
-      // Build pages HTML
-      for (let i = 1; i <= cat.totalPages; i++) {
-        const pageDiv = document.createElement('div');
-        pageDiv.className = 'page' + (i === 1 || i === cat.totalPages ? ' page--cover' : '');
-        pageDiv.innerHTML = `
-          <div class="page-content">
-            <img src="${cat.folder}/page_${pad(i)}.jpg" alt="Page ${i} - ${cat.title}" loading="eager">
-          </div>
-        `;
-        bookEl.appendChild(pageDiv);
-      }
-
-      // Responsive dimensions calculation
-      const containerWidth = Math.min(window.innerWidth - 40, 1100);
-      const isMobile = window.innerWidth < 768;
-
-      // Page size
-      const singlePageWidth = isMobile ? Math.min(window.innerWidth - 60, 480) : Math.min(520, Math.floor(containerWidth / 2));
-      const singlePageHeight = Math.floor(singlePageWidth * cat.ratio);
-
-      // Create StPageFlip
-      pageFlipInstance = new St.PageFlip(bookEl, {
-        width: singlePageWidth,
-        height: singlePageHeight,
-        size: "stretch",
-        minWidth: 280,
-        maxWidth: 600,
-        minHeight: 400,
-        maxHeight: 850,
-        showCover: true,
-        maxShadowOpacity: 0.6,
-        mobileScrollSupport: false,
-        flippingTime: 700,
-        usePortrait: isMobile,
-        startPage: 0
-      });
-
-      // Load pages
-      pageFlipInstance.loadFromHtml(bookEl.querySelectorAll('.page'));
-
-      // Event listener when flipping
-      pageFlipInstance.on('flip', (e) => {
-        updatePageDisplay(e.data);
-      });
-
-      pageFlipInstance.on('init', () => {
-        setTimeout(() => {
-          loadingEl.style.opacity = '0';
-          setTimeout(() => { loadingEl.style.display = 'none'; }, 300);
-          updatePageDisplay(0);
-        }, 400);
-      });
     }
 
-    function updatePageDisplay(pageIdx) {
+    function renderSpread(direction = null) {
       const cat = CATALOGS[activeKey];
-      const currentPageNum = pageIdx + 1;
-      pageDisplay.textContent = `Page ${currentPageNum} / ${cat.totalPages}`;
+      const isMobile = window.innerWidth < 900;
+      calculatePageSizes();
 
-      btnPrev.disabled = (pageIdx <= 0);
-      btnNext.disabled = (pageIdx >= cat.totalPages - 1);
+      if (direction === 'forward') {
+        leafRight.classList.remove('turning-forward', 'turning-backward');
+        void leafRight.offsetWidth;
+        leafRight.classList.add('turning-forward');
+      } else if (direction === 'backward') {
+        leafLeft.classList.remove('turning-forward', 'turning-backward');
+        void leafLeft.offsetWidth;
+        leafLeft.classList.add('turning-backward');
+      }
+
+      if (isMobile) {
+        // Mobile single page mode
+        openBook.classList.add('is-cover');
+        const pNum = Math.min(currentSpread + 1, cat.totalPages);
+        imgRight.src = `${cat.folder}/page_${pad(pNum)}.jpg`;
+        pageDisplay.textContent = `Page ${pNum} / ${cat.totalPages}`;
+        bookSlider.value = pNum;
+        btnPrev.disabled = (pNum <= 1);
+        btnNext.disabled = (pNum >= cat.totalPages);
+        return;
+      }
+
+      // Desktop double page mode
+      if (currentSpread === 0) {
+        // Cover
+        openBook.classList.add('is-cover');
+        imgRight.src = `${cat.folder}/page_001.jpg`;
+        pageDisplay.textContent = `Couverture (Page 1 / ${cat.totalPages})`;
+        bookSlider.value = 1;
+        btnPrev.disabled = true;
+        btnNext.disabled = false;
+      } else {
+        openBook.classList.remove('is-cover');
+        const pLeft = currentSpread * 2;
+        const pRight = pLeft + 1;
+
+        imgLeft.src = `${cat.folder}/page_${pad(pLeft)}.jpg`;
+
+        if (pRight <= cat.totalPages) {
+          imgRight.src = `${cat.folder}/page_${pad(pRight)}.jpg`;
+          leafRight.style.visibility = 'visible';
+          pageDisplay.textContent = `Pages ${pLeft} - ${pRight} / ${cat.totalPages}`;
+        } else {
+          leafRight.style.visibility = 'hidden';
+          pageDisplay.textContent = `Page ${pLeft} (Dernière) / ${cat.totalPages}`;
+        }
+
+        bookSlider.value = pLeft;
+        btnPrev.disabled = false;
+        btnNext.disabled = (pLeft >= cat.totalPages || pRight >= cat.totalPages);
+      }
     }
 
     function selectCatalog(key) {
-      if (CATALOGS[key] && key !== activeKey) {
-        initBook(key);
+      if (!CATALOGS[key]) return;
+      activeKey = key;
+      currentSpread = 0;
+
+      const cat = CATALOGS[key];
+      document.getElementById('bookTitle').textContent = cat.title;
+      document.getElementById('bookSubtitle').textContent = cat.subtitle;
+      document.getElementById('bookDownloadLink').href = cat.pdfUrl;
+      bookSlider.max = cat.totalPages;
+
+      document.querySelectorAll('.catalog-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.catalog === key);
+      });
+
+      renderSpread();
+    }
+
+    // Navigation events
+    function flipNext() {
+      const cat = CATALOGS[activeKey];
+      const isMobile = window.innerWidth < 900;
+
+      if (isMobile) {
+        if (currentSpread < cat.totalPages - 1) {
+          currentSpread++;
+          renderSpread('forward');
+        }
+      } else {
+        const maxSpread = Math.ceil((cat.totalPages - 1) / 2);
+        if (currentSpread < maxSpread) {
+          currentSpread++;
+          renderSpread('forward');
+        }
       }
     }
 
-    // Button controls
-    btnPrev.addEventListener('click', () => {
-      if (pageFlipInstance) pageFlipInstance.flipPrev();
+    function flipPrev() {
+      if (currentSpread > 0) {
+        currentSpread--;
+        renderSpread('backward');
+      }
+    }
+
+    btnNext.addEventListener('click', flipNext);
+    btnPrev.addEventListener('click', flipPrev);
+
+    // Click right leaf to go forward, left leaf to go backward
+    leafRight.addEventListener('click', flipNext);
+    leafLeft.addEventListener('click', flipPrev);
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        flipNext();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        flipPrev();
+      }
     });
 
-    btnNext.addEventListener('click', () => {
-      if (pageFlipInstance) pageFlipInstance.flipNext();
+    // Slider
+    bookSlider.addEventListener('input', (e) => {
+      const p = parseInt(e.target.value, 10);
+      const isMobile = window.innerWidth < 900;
+      if (isMobile) {
+        currentSpread = p - 1;
+      } else {
+        currentSpread = p <= 1 ? 0 : Math.floor(p / 2);
+      }
+      renderSpread();
     });
 
     document.getElementById('btnFirst').addEventListener('click', () => {
-      if (pageFlipInstance) pageFlipInstance.flip(0);
+      currentSpread = 0;
+      renderSpread('backward');
     });
 
     document.getElementById('btnLast').addEventListener('click', () => {
       const cat = CATALOGS[activeKey];
-      if (pageFlipInstance) pageFlipInstance.flip(cat.totalPages - 1);
+      const isMobile = window.innerWidth < 900;
+      currentSpread = isMobile ? cat.totalPages - 1 : Math.ceil((cat.totalPages - 1) / 2);
+      renderSpread('forward');
     });
 
     document.getElementById('btnPrev10').addEventListener('click', () => {
-      if (pageFlipInstance) {
-        const cur = pageFlipInstance.getCurrentPageIndex();
-        pageFlipInstance.flip(Math.max(0, cur - 10));
-      }
+      currentSpread = Math.max(0, currentSpread - 5);
+      renderSpread('backward');
     });
 
     document.getElementById('btnNext10').addEventListener('click', () => {
-      if (pageFlipInstance) {
-        const cat = CATALOGS[activeKey];
-        const cur = pageFlipInstance.getCurrentPageIndex();
-        pageFlipInstance.flip(Math.min(cat.totalPages - 1, cur + 10));
-      }
-    });
-
-    // Keyboard navigation
-    window.addEventListener('keydown', (e) => {
-      if (!pageFlipInstance) return;
-      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
-        pageFlipInstance.flipNext();
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-        pageFlipInstance.flipPrev();
-      }
+      const cat = CATALOGS[activeKey];
+      const isMobile = window.innerWidth < 900;
+      const maxSpread = isMobile ? cat.totalPages - 1 : Math.ceil((cat.totalPages - 1) / 2);
+      currentSpread = Math.min(maxSpread, currentSpread + 5);
+      renderSpread('forward');
     });
 
     // Tab buttons
@@ -845,24 +951,14 @@
       });
     });
 
-    // Window resize handler
-    let resizeTimer;
+    // Window resize
     window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        if (pageFlipInstance) {
-          const curPage = pageFlipInstance.getCurrentPageIndex();
-          initBook(activeKey);
-          setTimeout(() => {
-            if (pageFlipInstance && curPage > 0) pageFlipInstance.flip(curPage);
-          }, 600);
-        }
-      }, 300);
+      renderSpread();
     });
 
-    // Start with sanitaire
+    // Init
     document.addEventListener('DOMContentLoaded', () => {
-      initBook('sanitaire');
+      selectCatalog('sanitaire');
     });
   </script>
   <script src="js/main.js"></script>
