@@ -475,7 +475,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir Profond", "Inox Sombre"],
     reference: "MH-FOUR-66L",
     rectified: true,
-    image: "assets/images/electromenager/appliance_oven_built_in.jpg",
+    image: "assets/images/electromenager/cat_four_quadra_66.png",
     description: "Four encastrable haute performance à chaleur tournante pulsée. Porte tempérée 3 vitres démontables, 9 fonctions de cuisson, commandes push-pull escamotables et cavité émail EasyClean.",
     featured: true
   },
@@ -492,7 +492,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Inox Brossé", "Noir"],
     reference: "MH-FOUR-56L",
     rectified: true,
-    image: "assets/images/electromenager/appliance_microwave_built.jpg",
+    image: "assets/images/electromenager/cat_four_smart_56.png",
     description: "Four encastrable à convection naturelle et assistée. Minuterie mécanique 120 minutes, double vitrage isolant et consommation énergétique optimisée.",
     featured: false
   },
@@ -509,7 +509,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir", "Inox"],
     reference: "MH-MO-25L",
     rectified: true,
-    image: "assets/images/electromenager/appliance_microwave_built.jpg",
+    image: "assets/images/electromenager/cat_micro_ondes_50.png",
     description: "Micro-ondes combiné grill quartz 1000W. Cavité inox facile d'entretien, 8 programmes automatiques, décongélation au poids et affichage digital LED blanc.",
     featured: true
   },
@@ -526,7 +526,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir Vitrocéramique"],
     reference: "MH-IND-80A",
     rectified: true,
-    image: "assets/images/electromenager/appliance_hob_induction.jpg",
+    image: "assets/images/electromenager/cat_plaque_induction_sofia.png",
     description: "Le summum de la cuisine contemporaine : 4 zones induction avec Boosters couplées à une aspiration centrale puissante intégrée (650 m³/h classe A+). Commandes Slider tactiles indépendantes.",
     featured: true
   },
@@ -543,7 +543,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Verre Noir & Fonte"],
     reference: "MH-GAZ-60V",
     rectified: true,
-    image: "assets/images/electromenager/appliance_hob_induction.jpg",
+    image: "assets/images/electromenager/cat_plaque_zen_vitro.png",
     description: "Table de cuisson gaz 4 foyers sur verre trempé noir élégant. Comprend un brûleur triple couronne Wok ultra-puissant 3.8 kW, sécurité thermocouples totale et allumage une main intégré.",
     featured: false
   },
@@ -560,7 +560,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir & Inox"],
     reference: "MH-HOT-90M",
     rectified: true,
-    image: "assets/images/electromenager/appliance_hood_design.jpg",
+    image: "assets/images/electromenager/cat_hotte_baretta.png",
     description: "Hotte murale design à haute capacité d'aspiration 1000 m³/h. Éclairage LED blanc chaud, commandes tactiles sensitives et filtres à graisse lavables.",
     featured: true
   },
@@ -577,7 +577,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir Mat"],
     reference: "MH-HOT-ILOT",
     rectified: true,
-    image: "assets/images/electromenager/appliance_hood_design.jpg",
+    image: "assets/images/electromenager/cat_hotte_lago.png",
     description: "Hotte suspendue cylindrique pour îlot central. Lignes pures et sculpturales, moteur silencieux 850 m³/h et double spot d'éclairage directionnel.",
     featured: true
   },
@@ -594,7 +594,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir Intégrable"],
     reference: "MH-LV-15C",
     rectified: true,
-    image: "assets/images/electromenager/appliance_dishwasher.jpg",
+    image: "assets/images/electromenager/cat_lave_vaisselle_1510.png",
     description: "Lave-vaisselle 15 couverts haute capacité. Tiroir supérieur à couverts modulable, moteur Inverter ultra-silencieux 42 dB, 8 programmes et classe énergétique A+++.",
     featured: false
   },
@@ -611,7 +611,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Dark Inox", "Graphite"],
     reference: "MH-REF-340L",
     rectified: true,
-    image: "assets/images/electromenager/appliance_fridge_kitchen.jpg",
+    image: "assets/images/electromenager/cat_refrigerateur_3900.png",
     description: "Combiné réfrigérateur congélateur Total No Frost évitant tout givre. Éclairage LED colonne, zone fraîcheur régulée pour les fruits et légumes, compresseur tropicalisé robuste.",
     featured: true
   },
@@ -630,7 +630,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Velouté", "Blanc Pur"],
     reference: "MH-BAI-170M",
     rectified: true,
-    image: "assets/images/sanitaire/bath_freestanding_mineral.jpg",
+    image: "assets/images/sanitaire/cat_baignoire_regency.png",
     description: "Pièce maîtresse d'une salle de bain contemporaine. Monobloc sans raccord procurant un toucher doux et soyeux, une chaleur d'eau conservée durablement et un entretien facile. Bonde pop-up incluse.",
     featured: true
   },
@@ -647,7 +647,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Pur", "Bicolore Noir/Blanc"],
     reference: "MH-BAI-170D",
     rectified: true,
-    image: "assets/images/sanitaire/bath_oval_luxury.jpg",
+    image: "assets/images/sanitaire/cat_baignoire_dolce.png",
     description: "Silhouette ovoïde sensuelle et intemporelle. Double dossier symétrique pour une assise détendue, vidage central affleurant et renforts haute stabilité.",
     featured: true
   },
@@ -664,7 +664,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Sanitaire"],
     reference: "MH-BAL-160",
     rectified: true,
-    image: "assets/images/sanitaire/bath_balneo_wellness.jpg",
+    image: "assets/images/sanitaire/cat_baignoire_balneo.png",
     description: "L'expérience spa de palace à domicile. Système mixte air/eau combinant 6 hydro-jets dorsaux et latéraux réglables, 12 injecteurs d'air d'assise, chromothérapie 7 couleurs et commande tactile étanche.",
     featured: true
   },
@@ -681,7 +681,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir Ardoise", "Gris Minéral", "Sable"],
     reference: "MH-REC-120A",
     rectified: true,
-    image: "assets/images/sanitaire/shower_slate_black.jpg",
+    image: "assets/images/sanitaire/cat_receveur_ardoise.png",
     description: "Receveur de douche ultra-résistant au relief de pierre d'ardoise naturelle. Antidérapant classe C certifié (sécurité maximale), antibactérien avec grille d'évacuation inox affleurante.",
     featured: true
   },
@@ -698,7 +698,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Polaire", "Gris Béton", "Anthracite"],
     reference: "MH-REC-160P",
     rectified: true,
-    image: "assets/images/sanitaire/shower_italian_minimal.jpg",
+    image: "assets/images/sanitaire/cat_receveur_galaxite.png",
     description: "Solution idéale pour les douches à l'italienne de plain-pied sans rupture de sol. Recoupable sur-mesure au millimètre près en usine. Caniveau d'évacuation masqué amovible.",
     featured: false
   },
@@ -715,7 +715,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Chêne Naturel", "Blanc Minéral", "Noir Mat"],
     reference: "MH-MEU-120",
     rectified: true,
-    image: "assets/images/sanitaire/vanity_oak_stone_120.jpg",
+    image: "assets/images/sanitaire/cat_plan_stone_120.png",
     description: "Ensemble composé d'un plan vasque 120 cm d'un seul tenant sans joint en résine minérale antibactérienne et d'un meuble suspendu 2 grands tiroirs amortis Soft-Close avec prise en main biseautée.",
     featured: true
   },
@@ -732,7 +732,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Mat", "Noir Mat"],
     reference: "MH-VAS-42S",
     rectified: true,
-    image: "assets/images/sanitaire/sink_vessel_square.jpg",
+    image: "assets/images/sanitaire/cat_vasque_square.png",
     description: "Vasque à poser aux lignes pures et géométriques. Bords affinés de 5 mm obtenus par une technologie céramique de précision. Traitement de surface hydrofuge et antitache.",
     featured: false
   },
@@ -749,7 +749,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Blanc Brillant Palace"],
     reference: "MH-BOL-47T",
     rectified: true,
-    image: "assets/images/sanitaire/sink_bowl_round.jpg",
+    image: "assets/images/sanitaire/cat_bol_tempo.png",
     description: "Vasque bol sphérique généreuse de 47 cm de diamètre. Sa forme galbée évite toute projection d'eau et apporte une touche organique et zen aux comptoirs de salle de bains.",
     featured: true
   },
@@ -768,7 +768,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Noir Graphite", "Gris Titane"],
     reference: "MH-EVI-100G",
     rectified: true,
-    image: "assets/images/accessoires/sink_kitchen_granite.jpg",
+    image: "assets/images/accessoires/cat_evier_studio.png",
     description: "Évier de cuisine 1 très grand bac et égouttoir rainuré. Résistance extrême aux chocs thermiques jusqu'à 280°C, aux rayures d'ustensiles et aux taches. Réversible gauche/droite.",
     featured: true
   },
@@ -785,7 +785,7 @@ const PRODUCTS_DATA = [
     colorNames: ["Gris Béton Soie", "Noir Profond"],
     reference: "MH-EVI-116D",
     rectified: true,
-    image: "assets/images/accessoires/sink_kitchen_granite.jpg",
+    image: "assets/images/accessoires/cat_evier_double_papillon.png",
     description: "Grand évier double cuve profonde de 21 cm avec égouttoir profilé. Conçu pour le confort d'usage intensif en cuisine de gourmet. Équipé d'un traitement antibactérien aux ions d'argent.",
     featured: false
   },
