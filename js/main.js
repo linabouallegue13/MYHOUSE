@@ -238,10 +238,10 @@ function initCatalog() {
   function createProductCard(item) {
     const card = document.createElement('div');
     card.className = 'product-card reveal revealed';
-    
+
     const isFav = myFavorites.some(f => f.name === item.name);
     const brandBadge = item.featured ? `<span class="collection-card__badge" style="background:var(--house-red); font-size:0.65rem; top:10px; left:10px;">SÉLECTION</span>` : '';
-    const colorsHtml = (item.colors || []).map((c, i) => 
+    const colorsHtml = (item.colors || []).map((c, i) =>
       `<span class="product-card__color-dot" style="background-color: ${c};" title="${(item.colorNames && item.colorNames[i]) || ''}"></span>`
     ).join('');
 
@@ -282,7 +282,7 @@ function initCatalog() {
       item.categoryLabel.toLowerCase().includes(searchTerm);
   }
 
-    // Selected 3 premier flagship references per universe
+  // Selected 3 premier flagship references per universe
   const SANITAIRES_TOP3_IDS = ['baignoire-ilot-mineral', 'baignoire-balneo-spa', 'receveur-ardoise-mineral'];
   const ELECTRO_TOP3_IDS = ['four-quadra-66', 'table-induction-aspirante', 'micro-ondes-integre'];
   const CARRELAGE_TOP3_IDS = ['volcano', 'emperador', 'carrara-gold'];
@@ -520,7 +520,7 @@ function openProductInquiry(name, ref, dim, finish) {
   if (!modal) return;
 
   document.getElementById('modal-product-title').textContent = `Collection ${name}`;
-  document.getElementById('modal-product-specs').textContent = 
+  document.getElementById('modal-product-specs').textContent =
     `Dimensions : ${dim} | Finition : ${finish} ${ref ? `| Réf : ${ref}` : ''}`;
 
   modal.style.display = 'flex';
@@ -533,7 +533,7 @@ function openProductInquiry(name, ref, dim, finish) {
     const clientMsg = document.getElementById('inquiry-msg').value;
 
     const text = `Bonjour MY HOUSE Showroom,\n\nJe souhaite avoir des informations sur la collection : *${name}* (${dim}, ${finish}${ref ? `, Réf: ${ref}` : ''}).\n\nNom : ${clientName}\nTéléphone : ${clientPhone}\n${clientMsg ? `Message : ${clientMsg}` : ''}`;
-    
+
     const waUrl = `https://wa.me/21651056656?text=${encodeURIComponent(text)}`;
     window.open(waUrl, '_blank');
     modal.style.display = 'none';
@@ -806,7 +806,7 @@ function toggleFavoriteProduct(name, dimensions, finish, image, btnEl) {
   }
   localStorage.setItem('myhouse_lang_favs', JSON.stringify(myFavorites));
   localStorage.setItem('myhouse_favs', JSON.stringify(myFavorites));
-  
+
   const badge = document.getElementById('fav-badge');
   if (badge) badge.textContent = myFavorites.length;
 

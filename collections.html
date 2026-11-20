@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nos Collections | MY HOUSE Showroom Hammam Sousse</title>
-  <meta name="description" content="Catalogue complet des collections MY HOUSE : Carrelage effet marbre, pierre, béton, bois, grès cérame technique et univers salle de bain à Hammam Sousse.">
+  <meta name="description"
+    content="Catalogue complet des collections MY HOUSE : Carrelage effet marbre, pierre, béton, bois, grès cérame technique et univers salle de bain à Hammam Sousse.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <!-- Sticky Navigation -->
   <header class="nav scrolled">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="MY HOUSE Accueil">
-        <img src="assets/images/brand/logo.svg" alt="MY HOUSE Logo" class="nav__logo-icon" style="width: auto; height: 38px;">
+        <img src="assets/images/brand/logo.svg" alt="MY HOUSE Logo" class="nav__logo-icon"
+          style="width: auto; height: 38px;">
       </a>
 
       <nav class="nav__menu">
@@ -47,31 +51,36 @@
 
   <!-- Page Hero -->
   <section class="page-hero">
-    <div class="page-hero__bg" style="background-image: url('assets/images/headers/hero_collections.jpg'); background-position: center;"></div>
+    <div class="page-hero__bg"
+      style="background-image: url('assets/images/headers/hero_collections.jpg'); background-position: center;"></div>
     <div class="page-hero__overlay"></div>
     <div class="page-hero__content reveal">
       <span class="section-label" style="color: var(--sand);">CATALOGUE OFFICIEL 2026</span>
       <h1 class="page-hero__title">Nos Collections</h1>
-      <p class="page-hero__subtitle">Collections officielles 2026 : Céramique SOMOCER, Électroménager encastrable MY HOUSE et Sanitaires Duralite® MY HOUSE réunis à Hammam Sousse.</p>
+      <p class="page-hero__subtitle">Collections officielles 2026 : Céramique SOMOCER, Électroménager encastrable MY
+        HOUSE et Sanitaires Duralite® MY HOUSE réunis à Hammam Sousse.</p>
     </div>
   </section>
 
   <!-- Catalog Section with Filters & Search -->
   <section class="section section--ivory">
     <div class="container">
-      
+
       <!-- Surface Tile Estimator / Calculator Widget -->
       <div class="tile-calculator reveal" style="margin-bottom: var(--space-4xl);">
         <span class="section-label">ASSISTANCE PROJET &bull; MÉTRÉ EN DIRECT</span>
-        <h3 style="font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem;">Calculateur de surface et de conditionnement</h3>
+        <h3 style="font-size: 1.5rem; font-weight: 500; margin-bottom: 0.5rem;">Calculateur de surface et de
+          conditionnement</h3>
         <p style="color: var(--stone); font-size: 0.95rem;">
-          Estimez en quelques secondes le nombre de cartons et la marge de découpe nécessaire pour vos pièces ou terrasses.
+          Estimez en quelques secondes le nombre de cartons et la marge de découpe nécessaire pour vos pièces ou
+          terrasses.
         </p>
 
         <div class="tile-calc-grid">
           <div class="form-group">
             <label class="form-label" for="calc-area">Surface de votre pièce (m²)</label>
-            <input type="number" id="calc-area" class="form-input" placeholder="Ex: 45" min="1" step="0.5" oninput="calculateTileBoxes()">
+            <input type="number" id="calc-area" class="form-input" placeholder="Ex: 45" min="1" step="0.5"
+              oninput="calculateTileBoxes()">
           </div>
 
           <div class="form-group">
@@ -96,9 +105,12 @@
           </div>
 
           <div class="calc-result-box">
-            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--stone); margin-bottom: 2px;">Quantité estimée :</span>
+            <span
+              style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--stone); margin-bottom: 2px;">Quantité
+              estimée :</span>
             <div id="calc-result-boxes" class="calc-result-number">0 cartons</div>
-            <span id="calc-result-sqm" style="font-size: 0.85rem; color: var(--stone); margin-top: 4px;">0 m² à commander</span>
+            <span id="calc-result-sqm" style="font-size: 0.85rem; color: var(--stone); margin-top: 4px;">0 m² à
+              commander</span>
           </div>
         </div>
       </div>
@@ -107,26 +119,31 @@
       <div class="surface-simulator reveal" style="margin-bottom: var(--space-4xl);">
         <div>
           <span class="section-label">SIMULATEUR DE MATIÈRES</span>
-          <h2 style="font-size: 1.85rem; font-weight: 500; margin-bottom: 1rem;">Comparez les finitions en lumière réelle</h2>
+          <h2 style="font-size: 1.85rem; font-weight: 500; margin-bottom: 1rem;">Comparez les finitions en lumière
+            réelle</h2>
           <p style="color: var(--stone); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
-            Sélectionnez une finition pour apprécier le comportement de la céramique face à la lumière et visualiser le rendu d'ambiance.
+            Sélectionnez une finition pour apprécier le comportement de la céramique face à la lumière et visualiser le
+            rendu d'ambiance.
           </p>
           <div class="surface-simulator__tabs">
-            <button type="button" class="surface-tab-btn active" onclick="switchSimulator('assets/images/catalog/cat_p9_0.jpeg', 'Poli Miroir (Brillant)', 'Reflet cristallin qui maximise la luminosité naturelle et la sensation d\'espace.', this)">
+            <button type="button" class="surface-tab-btn active"
+              onclick="switchSimulator('assets/images/catalog/cat_p9_0.jpeg', 'Poli Miroir (Brillant)', 'Reflet cristallin qui maximise la luminosité naturelle et la sensation d\'espace.', this)">
               <div>
                 <div class="surface-tab-btn__title">Finition Poli Miroir (Glace)</div>
                 <div class="surface-tab-btn__desc">Profondeur visuelle &amp; brillance absolue</div>
               </div>
               <span class="surface-tab-btn__badge">Luxe</span>
             </button>
-            <button type="button" class="surface-tab-btn" onclick="switchSimulator('assets/images/catalog/cat_p14_0.jpeg', 'Finition Mat Pénétrant', 'Texture soyeuse anti-traces créant une ambiance feutrée et apaisante.', this)">
+            <button type="button" class="surface-tab-btn"
+              onclick="switchSimulator('assets/images/catalog/cat_p14_0.jpeg', 'Finition Mat Pénétrant', 'Texture soyeuse anti-traces créant une ambiance feutrée et apaisante.', this)">
               <div>
                 <div class="surface-tab-btn__title">Finition Mat Pénétrant</div>
                 <div class="surface-tab-btn__desc">Douceur tactile &amp; élégance contemporaine</div>
               </div>
               <span class="surface-tab-btn__badge">Tendance</span>
             </button>
-            <button type="button" class="surface-tab-btn" onclick="switchSimulator('assets/images/catalog/cat_p64_0.jpeg', 'Finition Structurée R11 (Extérieur)', 'Adhérence renforcée certifiée pour terrasses, cours et plages de piscine.', this)">
+            <button type="button" class="surface-tab-btn"
+              onclick="switchSimulator('assets/images/catalog/cat_p64_0.jpeg', 'Finition Structurée R11 (Extérieur)', 'Adhérence renforcée certifiée pour terrasses, cours et plages de piscine.', this)">
               <div>
                 <div class="surface-tab-btn__title">Finition Structurée Antidérapante</div>
                 <div class="surface-tab-btn__desc">Sécurité maximale &amp; résistance intempéries R11</div>
@@ -140,18 +157,22 @@
         </div>
       </div>
 
-      
+
       <!-- Catalogues Callout Header in Collections -->
-      <div class="reveal" style="background: linear-gradient(135deg, #17191B 0%, #202428 100%); border-radius: var(--radius-lg); padding: 2rem 2.5rem; margin-bottom: 3rem; border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+      <div class="reveal"
+        style="background: linear-gradient(135deg, #17191B 0%, #202428 100%); border-radius: var(--radius-lg); padding: 2rem 2.5rem; margin-bottom: 3rem; border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
         <div>
           <span class="section-label" style="color: var(--gold-light);">NOUVEAUTÉ DIGITALE</span>
-          <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.4rem; margin: 0.3rem 0;">Consultez nos catalogues complets comme un livre virtuel</h3>
+          <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.4rem; margin: 0.3rem 0;">Consultez nos
+            catalogues complets comme un livre virtuel</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0; max-width: 600px;">
-            Feuilletez en haute résolution nos 3 catalogues officiels : <strong>Sanitaires &amp; Bains (62 pages)</strong>, <strong>Électroménager (29 pages)</strong> et <strong>Carrelage (166 pages)</strong>.
+            Feuilletez en haute résolution nos 3 catalogues officiels : <strong>Sanitaires &amp; Bains (62
+              pages)</strong>, <strong>Électroménager (29 pages)</strong> et <strong>Carrelage (166 pages)</strong>.
           </p>
         </div>
         <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
-          <a href="catalogues.html" class="btn btn--primary btn--sm" style="padding: 0.75rem 1.4rem;">Feuilleter les catalogues &rarr;</a>
+          <a href="catalogues.html" class="btn btn--primary btn--sm" style="padding: 0.75rem 1.4rem;">Feuilleter les
+            catalogues &rarr;</a>
         </div>
       </div>
 
@@ -159,88 +180,126 @@
       <div class="universes-nav-bar reveal" style="margin-bottom: 3.5rem;">
         <div style="text-align: center; margin-bottom: 2rem;">
           <span class="section-label" style="color: var(--house-red);">ORGANISATION DU SHOWROOM</span>
-          <h2 style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 0.5rem;">Explorez nos 3 Grands Univers</h2>
+          <h2 style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 0.5rem;">Explorez nos 3 Grands
+            Univers</h2>
           <p style="color: var(--stone); max-width: 650px; margin: 0 auto; font-size: 0.95rem;">
-            Découvrez nos collections réparties par univers thématiques, ou accédez directement à votre domaine d'intérêt :
+            Découvrez nos collections réparties par univers thématiques, ou accédez directement à votre domaine
+            d'intérêt :
           </p>
         </div>
 
-        <div class="universes-tabs" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+        <div class="universes-tabs"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
           <!-- All Universes -->
-          <button type="button" class="universe-jump-btn active" data-universe="all" style="background: var(--white); border: 2px solid rgba(23,25,27,0.15); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
-            <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(23,25,27,0.06); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
+          <button type="button" class="universe-jump-btn active" data-universe="all"
+            style="background: var(--white); border: 2px solid rgba(23,25,27,0.15); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
+            <div
+              style="width: 50px; height: 50px; border-radius: 12px; background: rgba(23,25,27,0.06); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
               ✨
             </div>
             <div>
-              <span style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">TOUT LE SHOWROOM</span>
+              <span
+                style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">TOUT
+                LE SHOWROOM</span>
               <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0.1rem 0;">Tous nos Univers</h3>
-              <span style="font-size: 0.8rem; color: var(--house-red); font-weight: 600;">3 Grands Univers &bull; 3 Catalogues</span>
+              <span style="font-size: 0.8rem; color: var(--house-red); font-weight: 600;">3 Grands Univers &bull; 3
+                Catalogues</span>
             </div>
           </button>
 
           <!-- Universe 1 Button -->
-          <button type="button" class="universe-jump-btn" data-universe="sanitaires" style="background: var(--white); border: 2px solid rgba(179,32,42,0.18); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
-            <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(179,32,42,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
+          <button type="button" class="universe-jump-btn" data-universe="sanitaires"
+            style="background: var(--white); border: 2px solid rgba(179,32,42,0.18); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
+            <div
+              style="width: 50px; height: 50px; border-radius: 12px; background: rgba(179,32,42,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
               🛁
             </div>
             <div>
-              <span style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 01</span>
+              <span
+                style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS
+                01</span>
               <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0.1rem 0;">Sanitaires &amp; Bains</h3>
-              <span style="font-size: 0.8rem; color: var(--house-red); font-weight: 600;">Sélection &bull; Catalogue 62p</span>
+              <span style="font-size: 0.8rem; color: var(--house-red); font-weight: 600;">Sélection &bull; Catalogue
+                62p</span>
             </div>
           </button>
 
           <!-- Universe 2 Button -->
-          <button type="button" class="universe-jump-btn" data-universe="electromenager" style="background: var(--white); border: 2px solid rgba(201,168,106,0.4); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
-            <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(201,168,106,0.18); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
+          <button type="button" class="universe-jump-btn" data-universe="electromenager"
+            style="background: var(--white); border: 2px solid rgba(201,168,106,0.4); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
+            <div
+              style="width: 50px; height: 50px; border-radius: 12px; background: rgba(201,168,106,0.18); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
               🍳
             </div>
             <div>
-              <span style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 02</span>
+              <span
+                style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS
+                02</span>
               <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0.1rem 0;">Électroménager &amp; Cuisine</h3>
               <span style="font-size: 0.8rem; color: #8A6D3B; font-weight: 600;">Sélection &bull; Catalogue 29p</span>
             </div>
           </button>
 
           <!-- Universe 3 Button -->
-          <button type="button" class="universe-jump-btn" data-universe="carrelage" style="background: var(--white); border: 2px solid rgba(23,25,27,0.18); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
-            <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(23,25,27,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
+          <button type="button" class="universe-jump-btn" data-universe="carrelage"
+            style="background: var(--white); border: 2px solid rgba(23,25,27,0.18); border-radius: var(--radius-lg); padding: 1.25rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; cursor: pointer; text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
+            <div
+              style="width: 50px; height: 50px; border-radius: 12px; background: rgba(23,25,27,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
               🏛️
             </div>
             <div>
-              <span style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS 03</span>
+              <span
+                style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); font-weight: 700; display: block;">UNIVERS
+                03</span>
               <h3 style="font-size: 1.1rem; color: var(--ink); margin: 0.1rem 0;">Carrelage &amp; Grès Cérame</h3>
-              <span style="font-size: 0.8rem; color: var(--ink); font-weight: 600;">Sélection &bull; Catalogue 166p</span>
+              <span style="font-size: 0.8rem; color: var(--ink); font-weight: 600;">Sélection &bull; Catalogue
+                166p</span>
             </div>
           </button>
         </div>
 
         <!-- Global Search Bar -->
         <div style="max-width: 650px; margin: 0 auto; position: relative;">
-          <svg style="position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--stone);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="text" id="catalog-search-input" class="form-input" style="padding-left: 3.25rem; height: 52px; border-radius: 9999px; box-shadow: var(--shadow-sm); font-size: 1rem; width: 100%; border: 1.5px solid rgba(0,0,0,0.12); background: #fff;" placeholder="Rechercher une collection, un modèle, un format dans les 3 univers..." data-i18n-placeholder="search_placeholder">
+          <svg
+            style="position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--stone);"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input type="text" id="catalog-search-input" class="form-input"
+            style="padding-left: 3.25rem; height: 52px; border-radius: 9999px; box-shadow: var(--shadow-sm); font-size: 1rem; width: 100%; border: 1.5px solid rgba(0,0,0,0.12); background: #fff;"
+            placeholder="Rechercher une collection, un modèle, un format dans les 3 univers..."
+            data-i18n-placeholder="search_placeholder">
         </div>
       </div>
 
       <!-- ========================================================
            UNIVERS 01 : SANITAIRES & SALLES DE BAIN
            ======================================================== -->
-      <section id="section-sanitaires" class="universe-section" style="margin-bottom: 5rem; scroll-margin-top: 100px; opacity: 1 !important; transform: none !important;">
+      <section id="section-sanitaires" class="universe-section"
+        style="margin-bottom: 5rem; scroll-margin-top: 100px; opacity: 1 !important; transform: none !important;">
         <!-- Universe Banner Card -->
-        <div style="background: linear-gradient(135deg, #1f2328 0%, #17191b 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid var(--house-red); box-shadow: var(--shadow-md); color: #fff;">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+        <div
+          style="background: linear-gradient(135deg, #1f2328 0%, #17191b 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid var(--house-red); box-shadow: var(--shadow-md); color: #fff;">
+          <div
+            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
             <div style="max-width: 750px;">
-              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(179,32,42,0.25); color: #ff7d85; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.6rem;">UNIVERS 01 &bull; SALLES DE BAIN &bull; CATALOGUE COMPLET 62 PAGES</span>
-              <h2 style="font-family: var(--font-heading); font-size: 1.85rem; color: #fff; margin-bottom: 0.5rem;">Sanitaires, Baignoires Îlots &amp; Receveurs Minéraux</h2>
+              <span
+                style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(179,32,42,0.25); color: #ff7d85; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.6rem;">UNIVERS
+                01 &bull; SALLES DE BAIN &bull; CATALOGUE COMPLET 62 PAGES</span>
+              <h2 style="font-family: var(--font-heading); font-size: 1.85rem; color: #fff; margin-bottom: 0.5rem;">
+                Sanitaires, Baignoires Îlots &amp; Receveurs Minéraux</h2>
               <p style="color: var(--warm-grey); font-size: 0.92rem; line-height: 1.6; margin: 0;">
-                Baignoires autoportantes ergonomiques, systèmes balnéo hydromassage, receveurs texturés ardoise antidérapants certifiés et plans-vasques sculptés en résine minérale.
+                Baignoires autoportantes ergonomiques, systèmes balnéo hydromassage, receveurs texturés ardoise
+                antidérapants certifiés et plans-vasques sculptés en résine minérale.
               </p>
             </div>
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
               <a href="catalogues.html?cat=sanitaire" class="btn btn--primary btn--sm" style="padding: 0.75rem 1.4rem;">
                 📖 Feuilleter l'ouvrage (62p)
               </a>
-              <a href="assets/catalogues/catalogue-sanitaires-bains-myhouse.pdf" target="_blank" download class="btn btn--outline btn--sm" style="padding: 0.75rem 1.4rem;">
+              <a href="assets/catalogues/catalogue-sanitaires-bains-myhouse.pdf" target="_blank" download
+                class="btn btn--outline btn--sm" style="padding: 0.75rem 1.4rem;">
                 📥 Télécharger PDF
               </a>
             </div>
@@ -256,22 +315,31 @@
       <!-- ========================================================
            UNIVERS 02 : ÉLECTROMÉNAGER ENCASTRABLE & CUISINE
            ======================================================== -->
-      <section id="section-electromenager" class="universe-section" style="margin-bottom: 5rem; scroll-margin-top: 100px; opacity: 1 !important; transform: none !important;">
+      <section id="section-electromenager" class="universe-section"
+        style="margin-bottom: 5rem; scroll-margin-top: 100px; opacity: 1 !important; transform: none !important;">
         <!-- Universe Banner Card -->
-        <div style="background: linear-gradient(135deg, #22262b 0%, #1a1c1e 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid #c9a86a; box-shadow: var(--shadow-md); color: #fff;">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+        <div
+          style="background: linear-gradient(135deg, #22262b 0%, #1a1c1e 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid #c9a86a; box-shadow: var(--shadow-md); color: #fff;">
+          <div
+            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
             <div style="max-width: 750px;">
-              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(201,168,106,0.25); color: #e5cd9c; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.6rem;">UNIVERS 02 &bull; CUISINE CONTEMPORAINE &bull; CATALOGUE COMPLET 29 PAGES</span>
-              <h2 style="font-family: var(--font-heading); font-size: 1.85rem; color: #fff; margin-bottom: 0.5rem;">Électroménager Encastrable &amp; Équipements de Cuisine</h2>
+              <span
+                style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(201,168,106,0.25); color: #e5cd9c; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.6rem;">UNIVERS
+                02 &bull; CUISINE CONTEMPORAINE &bull; CATALOGUE COMPLET 29 PAGES</span>
+              <h2 style="font-family: var(--font-heading); font-size: 1.85rem; color: #fff; margin-bottom: 0.5rem;">
+                Électroménager Encastrable &amp; Équipements de Cuisine</h2>
               <p style="color: var(--warm-grey); font-size: 0.92rem; line-height: 1.6; margin: 0;">
-                Fours multifonctions haute précision, tables induction avec commande tactile, hottes décoratives &amp; îlot ultra-silencieuses, micro-ondes intégrés et éviers de prestige.
+                Fours multifonctions haute précision, tables induction avec commande tactile, hottes décoratives &amp;
+                îlot ultra-silencieuses, micro-ondes intégrés et éviers de prestige.
               </p>
             </div>
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <a href="catalogues.html?cat=electromenager" class="btn btn--sm" style="background: #c9a86a; color: #17191b; font-weight: 700; padding: 0.75rem 1.4rem;">
+              <a href="catalogues.html?cat=electromenager" class="btn btn--sm"
+                style="background: #c9a86a; color: #17191b; font-weight: 700; padding: 0.75rem 1.4rem;">
                 📖 Feuilleter l'ouvrage (29p)
               </a>
-              <a href="assets/catalogues/catalogue-electromenager-myhouse.pdf" target="_blank" download class="btn btn--outline btn--sm" style="padding: 0.75rem 1.4rem;">
+              <a href="assets/catalogues/catalogue-electromenager-myhouse.pdf" target="_blank" download
+                class="btn btn--outline btn--sm" style="padding: 0.75rem 1.4rem;">
                 📥 Télécharger PDF
               </a>
             </div>
@@ -287,22 +355,31 @@
       <!-- ========================================================
            UNIVERS 03 : CARRELAGE & GRÈS CÉRAME D'EXCEPTION
            ======================================================== -->
-      <section id="section-carrelage" class="universe-section" style="margin-bottom: 5rem; scroll-margin-top: 100px; opacity: 1 !important; transform: none !important;">
+      <section id="section-carrelage" class="universe-section"
+        style="margin-bottom: 5rem; scroll-margin-top: 100px; opacity: 1 !important; transform: none !important;">
         <!-- Universe Banner Card -->
-        <div style="background: linear-gradient(135deg, #1a1e22 0%, #141618 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid #ffffff; box-shadow: var(--shadow-md); color: #fff;">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+        <div
+          style="background: linear-gradient(135deg, #1a1e22 0%, #141618 100%); border-radius: var(--radius-lg); padding: 2.25rem; margin-bottom: 2rem; border-left: 5px solid #ffffff; box-shadow: var(--shadow-md); color: #fff;">
+          <div
+            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
             <div style="max-width: 750px;">
-              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(255,255,255,0.15); color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.6rem;">UNIVERS 03 &bull; SURFACES CÉRAMIQUES &bull; CATALOGUE COMPLET 166 PAGES</span>
-              <h2 style="font-family: var(--font-heading); font-size: 1.85rem; color: #fff; margin-bottom: 0.5rem;">Carrelage &amp; Grès Cérame Grand Format</h2>
+              <span
+                style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; background: rgba(255,255,255,0.15); color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.6rem;">UNIVERS
+                03 &bull; SURFACES CÉRAMIQUES &bull; CATALOGUE COMPLET 166 PAGES</span>
+              <h2 style="font-family: var(--font-heading); font-size: 1.85rem; color: #fff; margin-bottom: 0.5rem;">
+                Carrelage &amp; Grès Cérame Grand Format</h2>
               <p style="color: var(--warm-grey); font-size: 0.92rem; line-height: 1.6; margin: 0;">
-                Séries céramiques de prestige : Volcano, Emperador, Carrara Gold, Corniolo, dalles d'extérieur antidérapantes certifiées R11 et revêtements muraux coordonnés.
+                Séries céramiques de prestige : Volcano, Emperador, Carrara Gold, Corniolo, dalles d'extérieur
+                antidérapantes certifiées R11 et revêtements muraux coordonnés.
               </p>
             </div>
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <a href="catalogues.html?cat=carrelage" class="btn btn--outline btn--sm" style="padding: 0.75rem 1.4rem; background: rgba(255,255,255,0.1);">
+              <a href="catalogues.html?cat=carrelage" class="btn btn--outline btn--sm"
+                style="padding: 0.75rem 1.4rem; background: rgba(255,255,255,0.1);">
                 📖 Feuilleter l'ouvrage (166p)
               </a>
-              <a href="assets/catalogues/catalogue-carrelage-gres-cerame-myhouse.pdf" target="_blank" download class="btn btn--outline btn--sm" style="padding: 0.75rem 1.4rem;">
+              <a href="assets/catalogues/catalogue-carrelage-gres-cerame-myhouse.pdf" target="_blank" download
+                class="btn btn--outline btn--sm" style="padding: 0.75rem 1.4rem;">
                 📥 Télécharger PDF
               </a>
             </div>
@@ -327,19 +404,27 @@
 
       <!-- Global Fallback / Empty Search Message Container -->
       <div id="search-empty-state" style="display: none; text-align: center; padding: 4rem 1rem; color: var(--stone);">
-        <p style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--ink);">Aucune collection ne correspond à votre recherche.</p>
-        <p style="font-size: 0.95rem;">Contactez notre équipe showroom sur WhatsApp pour toute référence personnalisée.</p>
-        <a href="https://wa.me/21651056656?text=Bonjour%20MY%20HOUSE,%20je%20recherche%20une%20r%C3%A9f%C3%A9rence%20particuli%C3%A8re." target="_blank" class="btn btn--primary btn--sm" style="margin-top: 1rem;">Contacter le showroom</a>
+        <p style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--ink);">Aucune collection ne correspond à votre
+          recherche.</p>
+        <p style="font-size: 0.95rem;">Contactez notre équipe showroom sur WhatsApp pour toute référence personnalisée.
+        </p>
+        <a href="https://wa.me/21651056656?text=Bonjour%20MY%20HOUSE,%20je%20recherche%20une%20r%C3%A9f%C3%A9rence%20particuli%C3%A8re."
+          target="_blank" class="btn btn--primary btn--sm" style="margin-top: 1rem;">Contacter le showroom</a>
       </div>
 
       <!-- Informative Box on Standards & Guarantee -->
-      <div style="margin-top: var(--space-4xl); background: var(--white); border-radius: var(--radius-md); padding: var(--space-2xl); border-left: 4px solid var(--house-red); box-shadow: var(--shadow-sm);">
+      <div
+        style="margin-top: var(--space-4xl); background: var(--white); border-radius: var(--radius-md); padding: var(--space-2xl); border-left: 4px solid var(--house-red); box-shadow: var(--shadow-sm);">
         <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1.5rem;">
           <div style="max-width: 800px;">
             <span class="section-label" style="font-size: 0.725rem;">ENGAGEMENT QUALITÉ SHOWROOM</span>
-            <h3 style="font-size: 1.35rem; font-weight: 500; margin-bottom: 0.75rem;">Garantie et Conformité aux Normes Européennes &amp; Internationales</h3>
+            <h3 style="font-size: 1.35rem; font-weight: 500; margin-bottom: 0.75rem;">Garantie et Conformité aux Normes
+              Européennes &amp; Internationales</h3>
             <p style="color: var(--stone); font-size: 0.95rem; line-height: 1.8;">
-              Toutes les gammes proposées chez <strong>MY HOUSE</strong> répondent aux standards de fabrication les plus exigeants : carrelages en grès porcelaine certifiés ISO 9001 &amp; ISO 10545 (résistance à l'usure, insensibilité aux taches et au gel), électroménager encastrable haute efficacité énergétique certifié CE, et sanitaires en résine minérale antibactérienne avec surfaces antidérapantes testées en laboratoire.
+              Toutes les gammes proposées chez <strong>MY HOUSE</strong> répondent aux standards de fabrication les plus
+              exigeants : carrelages en grès porcelaine certifiés ISO 9001 &amp; ISO 10545 (résistance à l'usure,
+              insensibilité aux taches et au gel), électroménager encastrable haute efficacité énergétique certifié CE,
+              et sanitaires en résine minérale antibactérienne avec surfaces antidérapantes testées en laboratoire.
             </p>
           </div>
           <a href="contact.html" class="btn btn--outline-dark btn--sm">Demander un conseil personnalisé &rarr;</a>
@@ -358,14 +443,23 @@
             <img src="assets/images/brand/logo-white.svg" alt="MY HOUSE" style="height: 36px;">
           </a>
           <p class="footer__brand-text" data-i18n="footer_desc">
-            Showroom d'exception spécialisé dans les carrelages de luxe, le grès cérame grand format et les univers de salle de bain contemporains à Hammam Sousse, Tunisie.
+            Showroom d'exception spécialisé dans les carrelages de luxe, le grès cérame grand format et les univers de
+            salle de bain contemporains à Hammam Sousse, Tunisie.
           </p>
           <div class="footer__social">
-            <a href="https://www.instagram.com/myhouse.sousse2026" class="footer__social-link" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <a href="https://www.instagram.com/myhouse.sousse2026" class="footer__social-link" target="_blank"
+              rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61596303636473" class="footer__social-link" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+            <a href="https://www.facebook.com/profile.php?id=61596303636473" class="footer__social-link" target="_blank"
+              rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+              </svg>
             </a>
           </div>
         </div>
@@ -390,15 +484,25 @@
         <div>
           <h4 class="footer__title">Showroom</h4>
           <div class="footer__contact-item">
-            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>MY HOUSE Céramique & Cuisine, Rte de la Plage (à côté de City Market), Hammam Sousse 4011, Tunisie</span>
+            <svg viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>MY HOUSE Céramique & Cuisine, Rte de la Plage (à côté de City Market), Hammam Sousse 4011,
+              Tunisie</span>
           </div>
           <div class="footer__contact-item">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
             <a href="tel:+21651056656" style="color: inherit;">+216 51 056 656</a>
           </div>
           <div class="footer__contact-item">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
             <span>Lun - Sam : 08:00 - 19:00</span>
           </div>
         </div>
@@ -410,12 +514,16 @@
   </footer>
 
   <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/21651056656?text=Bonjour%20MY%20HOUSE,%20je%20souhaite%20des%20renseignements%20sur%20vos%20collections." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.301-.15-1.78-.879-2.056-.98-.276-.1-.477-.15-.678.15-.2.301-.778.98-.953 1.18-.176.2-.351.226-.653.075s-1.272-.469-2.424-1.496c-.896-.799-1.501-1.787-1.677-2.088-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.2-.301.301-.502.101-.2.05-.376-.025-.527-.075-.15-.678-1.635-.929-2.239-.245-.588-.494-.509-.678-.518l-.578-.01c-.2 0-.527.075-.803.376s-1.054 1.029-1.054 2.509 1.079 2.91 1.229 3.111c.15.2 2.124 3.243 5.147 4.549.719.311 1.28.497 1.718.636.723.23 1.381.198 1.901.12.58-.088 1.78-.728 2.031-1.431.251-.703.251-1.305.176-1.431-.076-.126-.277-.201-.578-.351z"/></svg>
+  <a href="https://wa.me/21651056656?text=Bonjour%20MY%20HOUSE,%20je%20souhaite%20des%20renseignements%20sur%20vos%20collections."
+    class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.301-.15-1.78-.879-2.056-.98-.276-.1-.477-.15-.678.15-.2.301-.778.98-.953 1.18-.176.2-.351.226-.653.075s-1.272-.469-2.424-1.496c-.896-.799-1.501-1.787-1.677-2.088-.176-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.176.2-.301.301-.502.101-.2.05-.376-.025-.527-.075-.15-.678-1.635-.929-2.239-.245-.588-.494-.509-.678-.518l-.578-.01c-.2 0-.527.075-.803.376s-1.054 1.029-1.054 2.509 1.079 2.91 1.229 3.111c.15.2 2.124 3.243 5.147 4.549.719.311 1.28.497 1.718.636.723.23 1.381.198 1.901.12.58-.088 1.78-.728 2.031-1.431.251-.703.251-1.305.176-1.431-.076-.126-.277-.201-.578-.351z" />
+    </svg>
   </a>
 
   <script src="js/products-data.js"></script>
   <script src="js/main.js"></script>
 </body>
-</html>
 
+</html>
