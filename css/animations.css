@@ -1754,3 +1754,270 @@ p, .section-subtitle, .showroom-split__text, .bathroom-concept__text {
     gap: var(--space-xl) !important;
   }
 }
+
+/* ============================================================
+   IPHONE (14, 15, 16, PRO, MAX) & MODERN MOBILE OPTIMIZATIONS
+   Dynamic Island · Safe Area Insets · 100dvh · Touch Targets
+   ============================================================ */
+
+/* Global iOS Tap Highlight & Smooth Scrolling */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(75px + env(safe-area-inset-top, 0px));
+}
+
+body {
+  overflow-x: hidden !important;
+  width: 100%;
+  position: relative;
+}
+
+/* Safe Area Insets for Header & Dynamic Island */
+.nav {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.nav__inner {
+  padding-left: max(var(--space-md), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-md), env(safe-area-inset-right, 0px));
+}
+
+/* Dynamic Viewport Height for Hero on iOS */
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh !important;
+}
+
+/* Floating Actions Safe from iOS Home Indicator Bar */
+.whatsapp-float {
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+  right: calc(16px + env(safe-area-inset-right, 0px)) !important;
+  z-index: 999;
+}
+
+.mh-back-to-top {
+  bottom: calc(78px + env(safe-area-inset-bottom, 0px)) !important;
+  right: calc(16px + env(safe-area-inset-right, 0px)) !important;
+  z-index: 998;
+}
+
+[dir="rtl"] .whatsapp-float {
+  right: auto !important;
+  left: calc(16px + env(safe-area-inset-left, 0px)) !important;
+}
+
+[dir="rtl"] .mh-back-to-top {
+  right: auto !important;
+  left: calc(16px + env(safe-area-inset-left, 0px)) !important;
+}
+
+/* Mobile Fullscreen Menu for iPhone */
+@media (max-width: 900px) {
+  .nav__menu {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    background-color: #FAF8F5 !important;
+    padding-top: calc(85px + env(safe-area-inset-top, 0px)) !important;
+    padding-bottom: calc(35px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-left: calc(24px + env(safe-area-inset-left, 0px)) !important;
+    padding-right: calc(24px + env(safe-area-inset-right, 0px)) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
+  }
+
+  .nav__burger {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .nav__burger span {
+    width: 26px;
+    height: 2px;
+  }
+}
+
+/* Prevent iOS Auto-Zoom on Form Inputs (Must be >= 16px) */
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea,
+  .form-input,
+  .form-select,
+  .form-textarea,
+  .collections-search-input,
+  .catalog-search__input {
+    font-size: 16px !important;
+  }
+
+  /* Apple 44px Minimum Touch Targets */
+  .btn {
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .catalog-filter {
+    min-height: 42px;
+    padding: 0.65rem 1.25rem;
+  }
+}
+
+/* iPhone Screen Width Tuning (375px - 430px) */
+@media (max-width: 600px) {
+  .container {
+    padding-left: calc(16px + env(safe-area-inset-left, 0px)) !important;
+    padding-right: calc(16px + env(safe-area-inset-right, 0px)) !important;
+  }
+
+  /* Hero adjustments for iPhone */
+  .hero__title {
+    font-size: clamp(2.2rem, 9.5vw, 2.9rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .hero__subtitle {
+    font-size: 0.98rem !important;
+    line-height: 1.65 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hero__buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Atmosphere switcher pills on iPhone */
+  .hero-switcher {
+    width: 100%;
+    gap: 0.4rem;
+    margin-top: 1.75rem;
+  }
+
+  .hero-switcher__btn {
+    flex: 1 1 0;
+    padding: 0.55rem 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  /* Prestige Strip on iPhone */
+  .hero-prestige-strip {
+    padding: 1.15rem 0;
+  }
+
+  .hero-prestige-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .hero-prestige-item {
+    padding: 0.4rem 0;
+  }
+
+  /* Collections Page 4-Universe Navigation Bar on iPhone */
+  .universes-nav-bar-luxury {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.6rem !important;
+  }
+
+  .universe-jump-pill {
+    padding: 0.85rem 0.65rem !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .universe-jump-pill__tag {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  .universe-jump-pill__title {
+    font-size: 0.85rem !important;
+    margin: 0.2rem 0 !important;
+  }
+
+  .universe-jump-pill__sub {
+    display: none !important;
+  }
+
+  /* Universe Banners on Mobile */
+  .universe-header-banner {
+    padding: 1.75rem 1.25rem !important;
+  }
+
+  .universe-header-banner__title {
+    font-size: 1.5rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .universe-header-banner__actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .universe-header-banner__actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Contact Page on iPhone */
+  .quick-actions-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .quick-action-chip {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-map {
+    height: 300px;
+    margin-top: 2rem;
+  }
+
+  /* Space Visualizer on iPhone */
+  .space-visualizer__frame {
+    height: 280px !important;
+  }
+
+  .space-visualizer__steps {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .space-visualizer__step {
+    padding: 0.75rem 1rem !important;
+  }
+
+  /* Catalog Reader Safe padding for bottom controls on iPhone */
+  .book-bottom-bar {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
