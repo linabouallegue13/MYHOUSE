@@ -2021,3 +2021,129 @@ body {
     padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
+
+/* ============================================================
+   PAGE HERO & HEADER TOP RESPONSIVENESS (iPhone 14 / 15 / 16)
+   Prevents Nav Overlap · Fluid Titles · Comfortable Margins
+   ============================================================ */
+
+.page-hero {
+  position: relative;
+  min-height: 340px;
+  min-height: clamp(300px, 42vh, 460px) !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-top: calc(90px + env(safe-area-inset-top, 0px)) !important;
+  padding-bottom: 2.75rem !important;
+  box-sizing: border-box !important;
+}
+
+.page-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  width: 100%;
+  max-width: 900px;
+  padding-left: max(1.25rem, env(safe-area-inset-left, 0px)) !important;
+  padding-right: max(1.25rem, env(safe-area-inset-right, 0px)) !important;
+  box-sizing: border-box !important;
+}
+
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 7.5vw, 3.5rem) !important;
+  line-height: 1.18 !important;
+  letter-spacing: -0.015em;
+  margin: 0.4rem auto 0.75rem !important;
+  word-wrap: break-word;
+  max-width: 780px;
+}
+
+.page-hero__subtitle {
+  font-size: clamp(0.92rem, 3.6vw, 1.15rem) !important;
+  line-height: 1.6 !important;
+  max-width: 620px;
+  margin: 0 auto !important;
+  opacity: 0.92;
+}
+
+/* ============================================================
+   A PROPOS & CONTACT US RESPONSIVE MOBILE ARCHITECTURE
+   ============================================================ */
+
+/* A Propos Stats Grid */
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .about-stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    text-align: center;
+  }
+}
+
+/* A Propos Showroom Presentation Banner */
+.showroom-banner-box {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3xl);
+  box-shadow: var(--shadow-md);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .showroom-banner-box {
+    grid-template-columns: 1fr !important;
+    padding: 1.75rem 1.25rem !important;
+    gap: 2rem !important;
+  }
+  .showroom-banner-box > div:last-child {
+    height: 280px !important;
+  }
+}
+
+/* Contact Grid & Form Responsiveness */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.25rem !important;
+  }
+
+  .contact-grid > div:last-child {
+    padding: 1.75rem 1.25rem !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .contact-grid h2.section-title {
+    font-size: 1.75rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .form-group--row {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+
+  .contact-info__item {
+    margin-bottom: 1.25rem !important;
+  }
+
+  .contact-info__value a {
+    word-break: break-all;
+  }
+
+  .hours-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+}
