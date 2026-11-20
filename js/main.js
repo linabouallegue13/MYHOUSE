@@ -660,11 +660,14 @@ function initAnimatedCounters() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
-        const target = parseInt(el.dataset.target, 10);
-        const suffix = el.dataset.suffix || '';
-        const prefix = el.dataset.prefix || '';
+        const rawVal = el.dataset.target || el.dataset.counter;
+        if (!rawVal) return;
+        const target = parseInt(rawVal, 10);
+        if (isNaN(target)) return;
+        const suffix = el.dataset.suffix || el.dataset.counterSuffix || '';
+        const prefix = el.dataset.prefix || el.dataset.counterPrefix || '';
         let count = 0;
-        const duration = 1500;
+        const duration = 1400;
         const stepTime = 25;
         const steps = duration / stepTime;
         const increment = target / steps;
@@ -682,7 +685,7 @@ function initAnimatedCounters() {
         observer.unobserve(el);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.2 });
 
   counters.forEach(c => observer.observe(c));
 }

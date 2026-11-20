@@ -21,7 +21,6 @@
     initEnhancedReveal();
     initSplitText();
     initParallax();
-    initStatCounters();
     initHeroAtmosphereSwitcher();
     initSpaceVisualizerAutoPlay();
 
