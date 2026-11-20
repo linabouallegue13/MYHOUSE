@@ -22,6 +22,8 @@
     initSplitText();
     initParallax();
     initStatCounters();
+    initHeroAtmosphereSwitcher();
+    initSpaceVisualizerAutoPlay();
 
     if (!isTouchDevice() && !isMobile()) {
       initCustomCursor();
@@ -309,6 +311,73 @@
     };
 
     loop();
+  }
+
+  /* ============================================================
+     HERO ATMOSPHERE SWITCHER
+     ============================================================ */
+  function initHeroAtmosphereSwitcher() {
+    const buttons = $$('.hero-switcher__btn');
+    const heroBg = $('.hero__bg');
+    if (!buttons.length || !heroBg) return;
+
+    const atmospheres = {
+      carrelage: 'assets/images/headers/hero_home.jpg',
+      sanitaire: 'assets/images/headers/hero_bathrooms.jpg',
+      cuisine: 'assets/images/electromenager/kitchen_hero_lifestyle.jpg'
+    };
+
+    const setAtmosphere = (key) => {
+      if (!atmospheres[key]) return;
+      buttons.forEach(b => b.classList.toggle('active', b.dataset.atmosphere === key));
+      heroBg.style.transition = 'opacity 0.45s ease';
+      heroBg.style.opacity = '0.35';
+      setTimeout(() => {
+        heroBg.style.backgroundImage = `url('${atmospheres[key]}')`;
+        heroBg.style.opacity = '1';
+      }, 250);
+    };
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        setAtmosphere(btn.dataset.atmosphere);
+      });
+    });
+  }
+
+  /* ============================================================
+     SPACE VISUALIZER AUTO-PLAY
+     ============================================================ */
+  function initSpaceVisualizerAutoPlay() {
+    const visualizer = $('.space-visualizer');
+    const steps = $$('.space-visualizer__step');
+    const slides = $$('.space-visualizer__slide');
+    if (!visualizer || !steps.length || !slides.length) return;
+
+    let current = 0;
+    let isPaused = false;
+
+    const goTo = (index) => {
+      current = index % steps.length;
+      steps.forEach((s, i) => s.classList.toggle('active', i === current));
+      slides.forEach((sl, i) => sl.classList.toggle('active', i === current));
+    };
+
+    setInterval(() => {
+      if (!isPaused) {
+        goTo(current + 1);
+      }
+    }, 5500);
+
+    visualizer.addEventListener('mouseenter', () => { isPaused = true; });
+    visualizer.addEventListener('mouseleave', () => { isPaused = false; });
+
+    steps.forEach((step, idx) => {
+      step.addEventListener('click', () => {
+        goTo(idx);
+      });
+    });
   }
 
 })();

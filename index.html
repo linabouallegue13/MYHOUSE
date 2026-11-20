@@ -56,10 +56,10 @@
     <div class="hero__overlay"></div>
     <div class="hero__content reveal">
       <div class="hero__label"
-        style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); padding: 0.45rem 1.4rem; border-radius: 9999px; border: 1px solid rgba(220,208,186,0.35); letter-spacing: 0.15em;">
+        style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 0.45rem 1.4rem; border-radius: 9999px; border: 1px solid rgba(220,208,186,0.35); letter-spacing: 0.15em;">
         <span style="color: var(--sand);">✦</span> BIENVENUE AU SHOWROOM &bull; HAMMAM SOUSSE
       </div>
-      <h1 class="hero__title">L'art de vivre et de bâtir avec distinction.</h1>
+      <h1 class="hero__title">L'art de <span class="text-italic-luxury">vivre</span> et de bâtir avec <span class="text-italic-luxury">distinction</span>.</h1>
       <p class="hero__subtitle">
         Toute l'équipe de <strong>MY HOUSE</strong> vous accueille chaleureusement au showroom pour concrétiser vos
         projets d'habitat les plus raffinés : <strong>Carrelage &amp; Grès cérame</strong> grand format,
@@ -67,10 +67,23 @@
         réuni sous un même toit.
       </p>
       <div class="hero__buttons">
-        <a href="collections.html" class="btn btn--primary">Explorer nos 3 Univers</a>
+        <a href="collections.html" class="btn btn--primary">Explorer nos 4 Univers</a>
         <a href="catalogues.html" class="btn btn--outline" style="border-color: var(--sand); color: #fff;">Feuilleter
           les catalogues</a>
         <a href="contact.html" class="btn btn--outline">Visiter le showroom</a>
+      </div>
+
+      <!-- Interactive Hero Atmosphere Switcher -->
+      <div class="hero-switcher" aria-label="Choisir une ambiance">
+        <button type="button" class="hero-switcher__btn active" data-atmosphere="carrelage">
+          <span class="hero-switcher__dot"></span> Marbre &amp; Grès
+        </button>
+        <button type="button" class="hero-switcher__btn" data-atmosphere="sanitaire">
+          <span class="hero-switcher__dot"></span> Salles de Bain &amp; Spa
+        </button>
+        <button type="button" class="hero-switcher__btn" data-atmosphere="cuisine">
+          <span class="hero-switcher__dot"></span> Cuisine Contemporaine
+        </button>
       </div>
     </div>
     <div class="hero__scroll">
@@ -78,6 +91,35 @@
       <div class="hero__scroll-line"></div>
     </div>
   </section>
+
+  <!-- Prestige Authority Strip -->
+  <div class="hero-prestige-strip" aria-label="Prestige MY HOUSE">
+    <div class="container">
+      <div class="hero-prestige-grid">
+        <div class="hero-prestige-item">
+          <span class="hero-prestige-item__icon">✦</span>
+          <div>
+            <div class="hero-prestige-item__title">Showroom d'Exception</div>
+            <div class="hero-prestige-item__desc">Rte de la Plage, Hammam Sousse</div>
+          </div>
+        </div>
+        <div class="hero-prestige-item">
+          <span class="hero-prestige-item__icon">◈</span>
+          <div>
+            <div class="hero-prestige-item__title">+35 Ans de Savoir-Faire</div>
+            <div class="hero-prestige-item__desc">Sélection céramique &amp; marques de référence</div>
+          </div>
+        </div>
+        <div class="hero-prestige-item">
+          <span class="hero-prestige-item__icon">★</span>
+          <div>
+            <div class="hero-prestige-item__title">4 Univers Réunis</div>
+            <div class="hero-prestige-item__desc">Carrelage, Sanitaires, Électro &amp; Accessoires</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Kinetic Luxury Marquee -->
   <div class="luxury-marquee" aria-hidden="true">
     <div class="luxury-marquee__track">
@@ -265,24 +307,28 @@
             <div class="space-visualizer__step-title">Grès Cérame Effet Marbre Poli</div>
             <div class="space-visualizer__step-desc">Reflets miroir profonds, veinures dramatiques et format royal
               60&times;120 cm pour de grands volumes.</div>
+            <div class="space-visualizer__step-progress"></div>
           </div>
           <div class="space-visualizer__step">
             <div class="space-visualizer__step-num">02 / CUISINE &amp; ÉLECTROMÉNAGER</div>
             <div class="space-visualizer__step-title">Électroménager Contemporain &amp; Encastrable</div>
             <div class="space-visualizer__step-desc">Tables induction avec aspiration centrale, fours multifonctions et
               hottes silencieuses intégrés dans vos plans de travail.</div>
+            <div class="space-visualizer__step-progress"></div>
           </div>
           <div class="space-visualizer__step">
             <div class="space-visualizer__step-num">03 / SANITAIRES &amp; SALLES DE BAIN</div>
             <div class="space-visualizer__step-title">Baignoires Îlots &amp; Douches Minérales</div>
             <div class="space-visualizer__step-desc">Toucher velouté, baignoires autoportantes ergonomiques et receveurs
               texturés ardoise antidérapants.</div>
+            <div class="space-visualizer__step-progress"></div>
           </div>
           <div class="space-visualizer__step">
             <div class="space-visualizer__step-num">04 / EXTÉRIEUR &amp; VILLA</div>
             <div class="space-visualizer__step-title">Dallage Antidérapant Haute Adhérence R11</div>
             <div class="space-visualizer__step-desc">Continuité esthétique intérieur/extérieur résistante aux UV, au sel
               et aux variations climatiques.</div>
+            <div class="space-visualizer__step-progress"></div>
           </div>
         </div>
       </div>
@@ -388,78 +434,150 @@
     </div>
   </section>
 
-  <!-- The 4 Core Product Universes -->
-  <section class="section section--white">
+  <!-- The 4 Core Product Universes (Architectural Magazine Overhaul) -->
+  <section class="section" style="background: #14171A; color: var(--ivory); padding: 6rem 0; position: relative;">
     <div class="container">
       <div class="text-center reveal" style="margin-bottom: var(--space-3xl);">
-        <span class="section-label section-label--animated">UNIVERS DU SHOWROOM</span>
-        <h2 class="section-title" style="margin-top:0.5rem;">Tout pour créer un intérieur d'exception</h2>
-        <p class="section-subtitle section-subtitle--centered reveal reveal-delay-2">
-          Une sélection harmonieuse et complète réunissant les quatre univers indispensables pour sublimer votre
-          habitat.
+        <span class="section-label section-label--animated" style="color: var(--sand);">UNIVERS DU SHOWROOM</span>
+        <h2 class="section-title split-text" style="color: #fff; margin-top:0.5rem;">Tout pour concevoir un intérieur d'exception</h2>
+        <p class="section-subtitle section-subtitle--centered reveal reveal-delay-2" style="color: var(--warm-grey);">
+          Une sélection rigoureuse et complète réunissant les quatre piliers indispensables pour sublimer chaque volume de votre habitat.
         </p>
       </div>
 
-      <div class="categories-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="universes-editorial-grid">
 
         <!-- Gamme 1: Carrelage & Grès Cérame -->
-        <div class="category-card reveal" onclick="location.href='collections.html'">
-          <img src="assets/images/catalog/cat_p11_0.jpeg" alt="Carrelage et grès cérame de luxe" loading="lazy">
-          <div class="category-card__overlay"></div>
-          <div class="category-card__content">
-            <span
-              style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); display: block; margin-bottom: 4px;">UNIVERS
-              01</span>
-            <h3 class="category-card__title">Carrelage &amp; Grès Cérame</h3>
-            <span class="category-card__count">Effet marbre, pierre, béton, bois &amp; extérieur</span>
+        <div class="universe-card-editorial reveal" onclick="location.href='collections.html'">
+          <img src="assets/images/catalog/carrara_gold_landscape_1200.jpg" alt="Carrelage et grès cérame de luxe" class="universe-card-editorial__img" loading="lazy">
+          <div class="universe-card-editorial__overlay"></div>
+          <div class="universe-card-editorial__watermark">01</div>
+          <div class="universe-card-editorial__content">
+            <span class="universe-card-editorial__tag">UNIVERS 01 &bull; SURFACES</span>
+            <h3 class="universe-card-editorial__title">Carrelage &amp; Grès Cérame</h3>
+            <p class="universe-card-editorial__desc">Effet marbre royal, pierre minérale, béton ciré et dalles de terrasse antidérapantes R11.</p>
+            <span class="universe-card-editorial__link">Explorer les séries &rarr;</span>
           </div>
         </div>
 
         <!-- Gamme 2: Sanitaires & Salles de bain -->
-        <div class="category-card reveal reveal-delay-1" onclick="location.href='collections.html#section-sanitaires'">
-          <img src="assets/images/sanitaire/bath_freestanding_mineral.jpg" alt="Sanitaires et baignoires contemporaines"
-            loading="lazy">
-          <div class="category-card__overlay"></div>
-          <div class="category-card__content">
-            <span
-              style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); display: block; margin-bottom: 4px;">UNIVERS
-              02</span>
-            <h3 class="category-card__title">Sanitaires &amp; Bains</h3>
-            <span class="category-card__count">Baignoires îlots, receveurs, vasques &amp; balnéo</span>
+        <div class="universe-card-editorial reveal reveal-delay-1" onclick="location.href='collections.html#section-sanitaires'">
+          <img src="assets/images/sanitaire/bath_balneo_luxury_1200.jpg" alt="Sanitaires et baignoires contemporaines" class="universe-card-editorial__img" loading="lazy">
+          <div class="universe-card-editorial__overlay"></div>
+          <div class="universe-card-editorial__watermark">02</div>
+          <div class="universe-card-editorial__content">
+            <span class="universe-card-editorial__tag">UNIVERS 02 &bull; BIEN-ÊTRE</span>
+            <h3 class="universe-card-editorial__title">Sanitaires &amp; Bains</h3>
+            <p class="universe-card-editorial__desc">Baignoires îlots en résine minérale, receveurs ardoisés antidérapants et robinetterie noire mat.</p>
+            <span class="universe-card-editorial__link">Découvrir l'univers &rarr;</span>
           </div>
         </div>
 
         <!-- Gamme 3: Électroménager -->
-        <div class="category-card reveal reveal-delay-2"
-          onclick="location.href='collections.html#section-electromenager'">
-          <img src="assets/images/electromenager/appliance_oven_built_in.jpg"
-            alt="Électroménager contemporain encastrable" loading="lazy">
-          <div class="category-card__overlay"></div>
-          <div class="category-card__content">
-            <span
-              style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); display: block; margin-bottom: 4px;">UNIVERS
-              03</span>
-            <h3 class="category-card__title">Électroménager</h3>
-            <span class="category-card__count">Fours encastrables, induction, hottes &amp; froid</span>
+        <div class="universe-card-editorial reveal reveal-delay-2" onclick="location.href='collections.html#section-electromenager'">
+          <img src="assets/images/electromenager/kitchen_hero_lifestyle.jpg" alt="Électroménager contemporain encastrable" class="universe-card-editorial__img" loading="lazy">
+          <div class="universe-card-editorial__overlay"></div>
+          <div class="universe-card-editorial__watermark">03</div>
+          <div class="universe-card-editorial__content">
+            <span class="universe-card-editorial__tag">UNIVERS 03 &bull; CUISSON</span>
+            <h3 class="universe-card-editorial__title">Électroménager Contemporain</h3>
+            <p class="universe-card-editorial__desc">Fours haute précision, plaques à induction avec aspiration intégrée et hottes silencieuses.</p>
+            <span class="universe-card-editorial__link">Voir les équipements &rarr;</span>
           </div>
         </div>
 
         <!-- Gamme 4: Équipements & Accessoires Maison -->
-        <div class="category-card reveal reveal-delay-3"
-          onclick="location.href='collections.html#section-electromenager'">
-          <img src="assets/images/accessoires/sink_kitchen_granite.jpg" alt="Équipements et accessoires pour la maison"
-            loading="lazy">
-          <div class="category-card__overlay"></div>
-          <div class="category-card__content">
-            <span
-              style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); display: block; margin-bottom: 4px;">UNIVERS
-              04</span>
-            <h3 class="category-card__title">Équipements Maison</h3>
-            <span class="category-card__count">Éviers minéraux, mitigeurs, miroirs LED</span>
+        <div class="universe-card-editorial reveal reveal-delay-3" onclick="location.href='collections.html#section-electromenager'">
+          <img src="assets/images/accessoires/home_accessories_warm.jpg" alt="Équipements et accessoires pour la maison" class="universe-card-editorial__img" loading="lazy">
+          <div class="universe-card-editorial__overlay"></div>
+          <div class="universe-card-editorial__watermark">04</div>
+          <div class="universe-card-editorial__content">
+            <span class="universe-card-editorial__tag">UNIVERS 04 &bull; DÉTAILS</span>
+            <h3 class="universe-card-editorial__title">Équipements &amp; Accessoires</h3>
+            <p class="universe-card-editorial__desc">Éviers minéraux en quartz/granite, miroirs rétroéclairés LED et systèmes d'évacuation intégrés.</p>
+            <span class="universe-card-editorial__link">Explorer les accessoires &rarr;</span>
           </div>
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- Realisations & Architect Trust Section -->
+  <section class="section-realisations">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label section-label--animated" style="color: var(--sand);">PROJETS D'EXCEPTION</span>
+        <h2 class="section-title split-text" style="color: #fff; margin-top: 0.5rem;">De la conception à l'émotion bâtie</h2>
+        <p class="section-subtitle section-subtitle--centered reveal reveal-delay-2" style="color: var(--warm-grey);">
+          Une sélection de résidences d'architectes et de villas de prestige sublimées par les revêtements et équipements MY HOUSE.
+        </p>
+      </div>
+
+      <div class="realisations-grid">
+
+        <!-- Projet 1 -->
+        <div class="realisation-card reveal">
+          <div class="realisation-card__media">
+            <img src="assets/images/catalog/cat_p11_0.jpeg" alt="Villa Saphir à Chott Meriem" loading="lazy">
+            <div class="realisation-card__overlay"></div>
+            <span class="realisation-card__tag">VILLA PRIVÉE</span>
+          </div>
+          <div class="realisation-card__body">
+            <h3 class="realisation-card__title">Villa Saphir</h3>
+            <div class="realisation-card__location">Chott Meriem &bull; Sousse</div>
+            <p class="realisation-card__desc">
+              Grand format <strong>Carrara Gold 60&times;120 cm</strong> poli miroir dans les pièces de réception et baignoire îlot en résine minérale soyeuse.
+            </p>
+          </div>
+        </div>
+
+        <!-- Projet 2 -->
+        <div class="realisation-card reveal reveal-delay-1">
+          <div class="realisation-card__media">
+            <img src="assets/images/catalog/cat_p9_0.jpeg" alt="Penthouse Marina à Port El Kantaoui" loading="lazy">
+            <div class="realisation-card__overlay"></div>
+            <span class="realisation-card__tag">PENTHOUSE</span>
+          </div>
+          <div class="realisation-card__body">
+            <h3 class="realisation-card__title">Penthouse Marina</h3>
+            <div class="realisation-card__location">Port El Kantaoui</div>
+            <p class="realisation-card__desc">
+              Revêtement intégral <strong>Volcano Marbre Noir</strong> rectifié et cuisine contemporaine équipée avec table induction à aspiration centrale.
+            </p>
+          </div>
+        </div>
+
+        <!-- Projet 3 -->
+        <div class="realisation-card reveal reveal-delay-2">
+          <div class="realisation-card__media">
+            <img src="assets/images/sanitaire/suite_marble_palace.jpg" alt="Résidence Les Oliviers à Sousse Corniche" loading="lazy">
+            <div class="realisation-card__overlay"></div>
+            <span class="realisation-card__tag">RÉSIDENCE ARCHITECTURALE</span>
+          </div>
+          <div class="realisation-card__body">
+            <h3 class="realisation-card__title">Résidence Les Oliviers</h3>
+            <div class="realisation-card__location">Sousse Corniche</div>
+            <p class="realisation-card__desc">
+              Suites de bain équipées en <strong>receveurs ardoisés extra-plats</strong> et robinetterie encastrée minimaliste noire mat.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Architect Quote Box -->
+      <div class="architect-quote-wrap reveal" style="margin-top: 4rem;">
+        <div class="architect-quote__mark">&ldquo;</div>
+        <div>
+          <p class="architect-quote__text">
+            Chez MY HOUSE, la précision des calibres, la finesse des joints et la profondeur des finitions permettent de concrétiser des perspectives d'intérieur sans concession. Une adresse incontournable pour nos chantiers les plus exigeants en Tunisie.
+          </p>
+          <div class="architect-quote__author">M. K. &bull; Architecte D.P.L.G.</div>
+          <div class="architect-quote__role">Cabinet d'Architecture &amp; Design d'Intérieur &bull; Sousse</div>
+        </div>
+      </div>
+
     </div>
   </section>
 
