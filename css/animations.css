@@ -1,0 +1,725 @@
+/* ============================================================
+   MY HOUSE — Premium Animation System
+   Luxury Editorial Interactions & Motion Design
+   ============================================================ */
+
+/* ---------- Google Fonts Upgrade ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Readex+Pro:wght@200;300;400;500;600&display=swap');
+
+/* ---------- Typography Upgrade ---------- */
+:root {
+  --font-display: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-primary: 'Readex Pro', sans-serif;
+
+  /* Animation Easings */
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-editorial: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-snap: cubic-bezier(0.4, 0, 0, 1);
+
+  /* Animation Durations */
+  --dur-fast: 0.3s;
+  --dur-base: 0.6s;
+  --dur-slow: 1s;
+  --dur-xslow: 1.4s;
+
+  /* Cursor */
+  --cursor-size: 10px;
+  --cursor-size-hover: 44px;
+}
+
+/* RTL Typography Override — Keep Arabic fonts cohesive & readable */
+[dir="rtl"],
+[dir="rtl"] body,
+[dir="rtl"] .hero__title,
+[dir="rtl"] .page-hero__title,
+[dir="rtl"] .section-title,
+[dir="rtl"] .collection-card__name {
+  font-family: var(--font-primary) !important;
+  letter-spacing: normal !important;
+}
+
+/* ============================================================
+   TYPOGRAPHY REFINEMENTS
+   ============================================================ */
+
+/* Hero titles — Playfair Display for editorial prestige */
+.hero__title,
+.page-hero__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* Section titles — Cormorant Garamond for elegance */
+.section-title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Collection card names */
+.collection-card__name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* Section labels — refined uppercase tracking */
+.section-label {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+}
+
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor [role="button"],
+  html.has-custom-cursor .collection-card,
+  html.has-custom-cursor .product-card {
+    cursor: none !important;
+  }
+}
+
+.mh-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+  transition: opacity 0.3s ease;
+}
+
+/* Inner dot */
+.mh-cursor__dot {
+  position: absolute;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  background: var(--ivory);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s var(--ease-luxury),
+              height 0.3s var(--ease-luxury),
+              background 0.3s ease;
+}
+
+/* Outer ring — follows with lag */
+.mh-cursor__ring {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid rgba(246, 242, 234, 0.7);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.35s var(--ease-luxury),
+              height 0.35s var(--ease-luxury),
+              border-color 0.3s ease,
+              background 0.3s ease;
+}
+
+/* Hover state — cursor expands softly */
+.mh-cursor.is-hovering .mh-cursor__dot {
+  width: 6px;
+  height: 6px;
+  background: var(--house-red);
+}
+
+.mh-cursor.is-hovering .mh-cursor__ring {
+  width: var(--cursor-size-hover);
+  height: var(--cursor-size-hover);
+  border-color: rgba(179, 32, 42, 0.6);
+  background: rgba(179, 32, 42, 0.08);
+}
+
+/* Click pulse */
+.mh-cursor.is-clicking .mh-cursor__dot {
+  transform: translate(-50%, -50%) scale(0.6);
+}
+
+.mh-cursor.is-clicking .mh-cursor__ring {
+  transform: translate(-50%, -50%) scale(1.3);
+  opacity: 0.5;
+}
+
+/* ============================================================
+   PAGE LOADER / CINEMATIC CURTAIN (INDEX ONLY)
+   ============================================================ */
+
+.mh-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: all;
+}
+
+.mh-loader__curtain {
+  position: absolute;
+  inset: 0;
+  background: #121416;
+  transform-origin: top;
+  transform: scaleY(1);
+}
+
+.mh-loader__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--ivory);
+  opacity: 1;
+}
+
+.mh-loader__logo {
+  width: 76px;
+  height: auto;
+  margin: 0 auto 1.25rem;
+  opacity: 0;
+  animation: loaderLogoIn 0.7s var(--ease-luxury) 0.15s forwards;
+}
+
+.mh-loader__text {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--sand);
+  opacity: 0;
+  animation: loaderTextIn 0.7s var(--ease-luxury) 0.35s forwards;
+}
+
+.mh-loader__line {
+  width: 50px;
+  height: 2px;
+  background: var(--house-red);
+  margin: 1rem auto 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: loaderLineIn 0.8s var(--ease-luxury) 0.55s forwards;
+}
+
+/* Loader transition off */
+.mh-loader.is-done {
+  pointer-events: none;
+}
+
+.mh-loader.is-done .mh-loader__curtain {
+  animation: curtainUp 0.85s var(--ease-editorial) forwards;
+}
+
+.mh-loader.is-done .mh-loader__content {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes loaderLogoIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loaderTextIn {
+  from { opacity: 0; letter-spacing: 0.5em; }
+  to   { opacity: 1; letter-spacing: 0.35em; }
+}
+
+@keyframes loaderLineIn {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes curtainUp {
+  from { transform: scaleY(1); transform-origin: top; }
+  to   { transform: scaleY(0); transform-origin: top; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; }
+}
+
+/* ============================================================
+   ENHANCED SCROLL REVEAL SYSTEM
+   ============================================================ */
+
+/* Base reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur-slow) var(--ease-luxury),
+              transform var(--dur-slow) var(--ease-luxury);
+  will-change: opacity, transform;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Direction variants */
+.reveal--left {
+  transform: translateX(-35px);
+}
+.reveal--left.revealed {
+  transform: translateX(0);
+}
+
+.reveal--right {
+  transform: translateX(35px);
+}
+.reveal--right.revealed {
+  transform: translateX(0);
+}
+
+.reveal--scale {
+  transform: scale(0.95);
+}
+.reveal--scale.revealed {
+  transform: scale(1);
+}
+
+/* Delay classes */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.55s; }
+.reveal-delay-6 { transition-delay: 0.7s; }
+
+/* Stagger container */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease-luxury), transform 0.7s var(--ease-luxury);
+}
+.reveal-stagger.revealed > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
+.reveal-stagger.revealed > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.08s; }
+.reveal-stagger.revealed > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.16s; }
+.reveal-stagger.revealed > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.24s; }
+.reveal-stagger.revealed > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.32s; }
+.reveal-stagger.revealed > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.40s; }
+
+/* ============================================================
+   SPLIT TEXT HEADLINE ANIMATION
+   ============================================================ */
+
+.split-text {
+  overflow: hidden;
+}
+
+.split-text .word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  margin-right: 0.25em;
+}
+
+.split-text .word .char {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+  transition: transform 0.8s var(--ease-luxury),
+              opacity 0.8s var(--ease-luxury);
+}
+
+.split-text.revealed .word .char {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Word reveal fallback for Arabic and languages where chars connect */
+.split-text.word-mode .word {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.8s var(--ease-luxury), opacity 0.8s var(--ease-luxury);
+}
+.split-text.word-mode.revealed .word {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ============================================================
+   HERO ENTRANCE ANIMATION
+   ============================================================ */
+
+@keyframes heroLabelIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroTitleIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroSubIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 0.92; transform: translateY(0); }
+}
+
+@keyframes heroBtnsIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+body.page-ready .hero__label {
+  animation: heroLabelIn 0.8s var(--ease-luxury) 0.1s both;
+}
+
+body.page-ready .hero__title {
+  animation: heroTitleIn 1.0s var(--ease-luxury) 0.25s both;
+}
+
+body.page-ready .hero__subtitle {
+  animation: heroSubIn 0.9s var(--ease-luxury) 0.45s both;
+}
+
+body.page-ready .hero__buttons {
+  animation: heroBtnsIn 0.9s var(--ease-luxury) 0.65s both;
+}
+
+body.page-ready .hero__scroll {
+  animation: heroBtnsIn 0.9s var(--ease-luxury) 0.95s both;
+}
+
+body.page-ready .page-hero__title {
+  animation: heroTitleIn 0.9s var(--ease-luxury) 0.2s both;
+}
+
+body.page-ready .page-hero__subtitle {
+  animation: heroSubIn 0.9s var(--ease-luxury) 0.4s both;
+}
+
+/* ============================================================
+   PARALLAX HERO BACKGROUND
+   ============================================================ */
+
+.hero__bg,
+.page-hero__bg {
+  will-change: transform;
+  transform: scale(1.08) translateY(var(--parallax-y, 0px));
+}
+
+/* ============================================================
+   COLLECTION CARDS — PREMIUM HOVER
+   ============================================================ */
+
+.collection-card {
+  transition: transform 0.45s var(--ease-luxury),
+              box-shadow 0.45s var(--ease-luxury);
+}
+
+.collection-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(23, 25, 27, 0.16);
+}
+
+.collection-card__image {
+  overflow: hidden;
+  position: relative;
+}
+
+.collection-card__image img {
+  transform: scale(1);
+  transition: transform 0.75s var(--ease-luxury);
+  will-change: transform;
+}
+
+.collection-card:hover .collection-card__image img {
+  transform: scale(1.06);
+}
+
+/* Subtle gloss sweep */
+.collection-card__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.75s var(--ease-luxury);
+  pointer-events: none;
+}
+
+.collection-card:hover .collection-card__image::after {
+  transform: translateX(100%);
+}
+
+/* ============================================================
+   PRODUCT CARDS — HOVER LIFT
+   ============================================================ */
+
+.product-card {
+  transition: transform 0.45s var(--ease-luxury),
+              box-shadow 0.45s var(--ease-luxury);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(23, 25, 27, 0.12);
+}
+
+.product-card .product-card__image img,
+.product-card__img {
+  transition: transform 0.75s var(--ease-luxury);
+}
+
+.product-card:hover .product-card__image img,
+.product-card:hover .product-card__img {
+  transform: scale(1.05);
+}
+
+/* ============================================================
+   NAV — SMOOTH INTERACTIONS
+   ============================================================ */
+
+.nav {
+  transition: background 0.4s var(--ease-luxury),
+              box-shadow 0.4s var(--ease-luxury),
+              backdrop-filter 0.4s var(--ease-luxury);
+}
+
+.nav__link {
+  position: relative;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--sand);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s var(--ease-luxury);
+}
+
+.nav__link:hover::after,
+.nav__link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ============================================================
+   BUTTONS — LUXURY REFINEMENT
+   ============================================================ */
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s var(--ease-luxury),
+              box-shadow 0.25s var(--ease-luxury),
+              background-color 0.25s ease,
+              border-color 0.25s ease,
+              color 0.25s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* ============================================================
+   SECTION LABEL — ANIMATED UNDERLINE
+   ============================================================ */
+
+.section-label--animated {
+  position: relative;
+  display: inline-block;
+}
+
+.section-label--animated::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--house-red);
+  transition: width 0.7s var(--ease-luxury);
+}
+
+.reveal.revealed .section-label--animated::after,
+.section-label--animated.revealed::after {
+  width: 100%;
+}
+
+/* ============================================================
+   DECORATIVE LINE DRAW
+   ============================================================ */
+
+.line-draw {
+  display: block;
+  height: 1px;
+  background: var(--sand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s var(--ease-luxury);
+}
+
+.line-draw.revealed {
+  transform: scaleX(1);
+}
+
+[dir="rtl"] .line-draw {
+  transform-origin: right;
+}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+
+.luxury-marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.luxury-marquee__track {
+  display: flex;
+  gap: 3rem;
+  animation: marqueeScroll 28s linear infinite;
+  width: max-content;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.luxury-marquee:hover .luxury-marquee__track {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   WHATSAPP BUTTON PULSE
+   ============================================================ */
+
+.whatsapp-float {
+  position: fixed;
+}
+
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #25D366;
+  opacity: 0;
+  animation: waPulse 2.6s ease-out 2s infinite;
+}
+
+@keyframes waPulse {
+  0%   { transform: scale(0.95); opacity: 0.7; }
+  70%  { transform: scale(1.35); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* ============================================================
+   IMAGE FADE-IN ENHANCEMENT
+   ============================================================ */
+
+img {
+  transition: opacity 0.5s ease;
+}
+
+/* Avoid any invisible images fallback */
+.nav__logo-icon,
+.nav__logo img,
+.footer__logo img,
+.mh-loader__logo {
+  opacity: 1 !important;
+}
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+
+.mh-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: var(--house-red);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 99997;
+  transition: transform 0.08s linear;
+}
+
+[dir="rtl"] .mh-progress {
+  transform-origin: right;
+}
+
+/* ============================================================
+   RTL SUPPORT
+   ============================================================ */
+
+[dir="rtl"] .reveal--left {
+  transform: translateX(35px);
+}
+
+[dir="rtl"] .reveal--right {
+  transform: translateX(-35px);
+}
+
+[dir="rtl"] .reveal--left.revealed,
+[dir="rtl"] .reveal--right.revealed {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .nav__link::after {
+  right: 0;
+  left: auto;
+}
+
+/* ============================================================
+   ACCESSIBILITY & RESPONSIVE
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal--left,
+  .reveal--right,
+  .reveal--scale,
+  .split-text .word .char,
+  .split-text.word-mode .word,
+  .reveal-stagger > *,
+  .mh-cursor,
+  .mh-loader,
+  .hero__bg,
+  .page-hero__bg {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .mh-loader {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .reveal {
+    transform: translateY(18px);
+  }
+
+  .mh-cursor {
+    display: none !important;
+  }
+}

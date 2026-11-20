@@ -9,6 +9,7 @@
     content="MY HOUSE est votre showroom d'exception à Hammam Sousse, Tunisie. Collections exclusives de carrelage effet marbre, pierre, béton, grès cérame et salles de bain haut de gamme.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 
 <body>
@@ -109,10 +110,10 @@
   <!-- Featured Collections Section -->
   <section class="section section--ivory">
     <div class="container">
-      <div class="text-center" style="margin-bottom: var(--space-3xl);">
-        <span class="section-label">COLLECTIONS EMBLÉMATIQUES</span>
-        <h2 class="section-title">L'art des matières &amp; des finitions</h2>
-        <p class="section-subtitle section-subtitle--centered">
+      <div class="text-center reveal" style="margin-bottom: var(--space-3xl);">
+        <span class="section-label section-label--animated">COLLECTIONS EMBLÉMATIQUES</span>
+        <h2 class="section-title split-text" style="margin-top: 0.5rem;">L'art des matières &amp; des finitions</h2>
+        <p class="section-subtitle section-subtitle--centered reveal reveal-delay-2">
           Une sélection rigoureuse de carreaux d'exception alliant technologie céramique avancée, textures organiques et
           formats contemporains.
         </p>
@@ -301,8 +302,8 @@
             style="object-fit: cover; width:100%; height:100%;">
         </div>
         <div class="showroom-split__content reveal reveal-delay-1">
-          <span class="section-label">L'EXPÉRIENCE MY HOUSE</span>
-          <h2 class="section-title">Où chaque maison prend forme avec distinction.</h2>
+          <span class="section-label section-label--animated">L'EXPÉRIENCE MY HOUSE</span>
+          <h2 class="section-title split-text" style="margin-top:0.5rem;">Où chaque maison prend forme avec distinction.</h2>
           <p class="showroom-split__text">
             Implanté à Hammam Sousse, <strong>MY HOUSE</strong> est bien plus qu'un distributeur de matériaux : c'est un
             atelier d'inspiration et d'expertise dédié aux architectes, designers et particuliers exigeants.
@@ -315,11 +316,11 @@
           <div
             style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-lg);">
             <div>
-              <div class="stat-number" data-target="35" data-prefix="+" data-suffix=" ans">+35 ans</div>
+              <div class="stat-number" data-counter="35" data-counter-suffix=" ans">+35 ans</div>
               <div style="font-size: 0.85rem; color: var(--stone);">D'héritage &amp; d'art céramique</div>
             </div>
             <div>
-              <div class="stat-number" data-target="100" data-suffix="%">100%</div>
+              <div class="stat-number" data-counter="100" data-counter-suffix="%">100%</div>
               <div style="font-size: 0.85rem; color: var(--stone);">Certifié ISO 9001 &amp; Éco-responsable</div>
             </div>
           </div>
@@ -390,10 +391,10 @@
   <!-- The 4 Core Product Universes -->
   <section class="section section--white">
     <div class="container">
-      <div class="text-center" style="margin-bottom: var(--space-3xl);">
-        <span class="section-label">UNIVERS DU SHOWROOM</span>
-        <h2 class="section-title">Tout pour créer un intérieur d'exception</h2>
-        <p class="section-subtitle section-subtitle--centered">
+      <div class="text-center reveal" style="margin-bottom: var(--space-3xl);">
+        <span class="section-label section-label--animated">UNIVERS DU SHOWROOM</span>
+        <h2 class="section-title" style="margin-top:0.5rem;">Tout pour créer un intérieur d'exception</h2>
+        <p class="section-subtitle section-subtitle--centered reveal reveal-delay-2">
           Une sélection harmonieuse et complète réunissant les quatre univers indispensables pour sublimer votre
           habitat.
         </p>
@@ -511,7 +512,7 @@
             alt="Électroménager encastrable haut de gamme">
         </div>
         <div>
-          <span class="section-label">ÉLECTROMÉNAGER &amp; ESPACES DE CUISSON</span>
+          <span class="section-label section-label--animated">ÉLECTROMÉNAGER &amp; ESPACES DE CUISSON</span>
           <h2 class="split-reveal__title">L'art culinaire sublimé par l'épure technologique.</h2>
           <p class="split-reveal__lead">
             Chez <strong>MY HOUSE</strong>, nous concevons votre cuisine comme un espace de vie et de partage. Nos
@@ -559,7 +560,7 @@
           </div>
         </div>
         <div style="order: 1;">
-          <span class="section-label">SANITAIRES &amp; UNIVERS DE BAIN</span>
+          <span class="section-label section-label--animated">SANITAIRES &amp; UNIVERS DE BAIN</span>
           <h2 class="split-reveal__title">Baignoires îlots &amp; receveurs minéraux : l'intimité raffinée.</h2>
           <p class="split-reveal__lead">
             Transformez votre salle de bain en un véritable sanctuaire de relaxation. Nos baignoires autoportantes
@@ -609,7 +610,7 @@
         style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--space-2xl); flex-wrap: wrap; gap: var(--space-md);">
         <div>
           <span class="section-label" style="color: var(--gold-light);">ÉDITIONS COMPLÈTES 2026</span>
-          <h2 class="section-title" style="color: #fff;">Consultez nos catalogues comme un vrai livre</h2>
+          <h2 class="section-title reveal" style="color: #fff; margin-top: 0.5rem;">Consultez nos catalogues comme un vrai livre</h2>
           <p class="section-subtitle" style="color: var(--text-muted);">
             Feuilletez en ligne l'intégralité de nos catalogues officiels en haute définition, ou téléchargez-les au
             format PDF pour découvrir toutes les cotes, dimensions et fiches techniques.
@@ -815,6 +816,7 @@
 
   <script src="js/products-data.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
 </body>
 
 </html>
