@@ -47,6 +47,15 @@ function initNavigation() {
       });
     });
   }
+
+  // Auto-highlight active navigation link dynamically
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav__link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
 }
 
 /* ---------- Language Switcher (FR / AR with RTL) ---------- */
@@ -557,7 +566,14 @@ function initContactForm() {
     const waUrl = `https://wa.me/21651056656?text=${encodeURIComponent(text)}`;
     window.open(waUrl, '_blank');
 
-    alert("Merci pour votre message ! Vous allez être redirigé vers WhatsApp pour finaliser l'envoi direct à nos conseillers.");
+    let toast = form.querySelector('.form-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'form-toast';
+      form.appendChild(toast);
+    }
+    toast.innerHTML = `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Votre message est prêt. Redirection instantanée vers nos conseillers WhatsApp...</span>`;
+    setTimeout(() => { if (toast) toast.remove(); }, 6000);
     form.reset();
   });
 }
@@ -787,7 +803,7 @@ function initFavoritesSystem() {
 
   document.getElementById('export-favs-wa').addEventListener('click', () => {
     if (myFavorites.length === 0) {
-      alert("Votre sélection est vide. Ajoutez d'abord des collections !");
+      showToast("Votre sélection est vide. Cliquez sur le cœur d'une collection pour l'ajouter.");
       return;
     }
     const list = myFavorites.map(f => `- ${f.name} (${f.dimensions}, ${f.finish})`).join('\n');
@@ -1079,4 +1095,20 @@ function updateCatalogFilterCounts() {
       btn.appendChild(badge);
     }
   });
+}
+
+/* ---------- Global Luxury Toast Notification ---------- */
+function showToast(message, duration = 4000) {
+  let toast = document.querySelector('.mh-toast-notification');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'mh-toast-notification';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.add('is-visible');
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => {
+    toast.classList.remove('is-visible');
+  }, duration);
 }

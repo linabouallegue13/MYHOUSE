@@ -23,6 +23,9 @@
     initParallax();
     initHeroAtmosphereSwitcher();
     initSpaceVisualizerAutoPlay();
+    initBackToTop();
+    initInspirationsFilter();
+    initInspirationsLightbox();
 
     if (!isTouchDevice() && !isMobile()) {
       initCustomCursor();
@@ -376,6 +379,164 @@
       step.addEventListener('click', () => {
         goTo(idx);
       });
+    });
+  }
+
+
+  /* ============================================================
+     BACK TO TOP BUTTON
+     ============================================================ */
+  function initBackToTop() {
+    const btn = document.createElement('button');
+    btn.className = 'mh-back-to-top';
+    btn.setAttribute('type', 'button');
+    btn.setAttribute('aria-label', 'Retour en haut');
+    btn.innerHTML = `
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    `;
+    document.body.appendChild(btn);
+
+    const onScroll = () => {
+      if (window.scrollY > 400) {
+        btn.classList.add('is-visible');
+      } else {
+        btn.classList.remove('is-visible');
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ============================================================
+     INSPIRATIONS FILTER TABS
+     ============================================================ */
+  function initInspirationsFilter() {
+    const filterBtns = $$('.insp-filter-btn');
+    const items = $$('.gallery-item[data-category]');
+    if (!filterBtns.length || !items.length) return;
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.filter;
+        filterBtns.forEach(b => b.classList.toggle('active', b === btn));
+
+        items.forEach(item => {
+          const itemCat = item.dataset.category;
+          const match = (cat === 'all' || itemCat === cat);
+          if (match) {
+            item.style.display = '';
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(15px)';
+            requestAnimationFrame(() => {
+              item.style.transition = 'opacity 0.4s ease, transform 0.4s var(--ease-luxury)';
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0)';
+            });
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  /* ============================================================
+     INSPIRATIONS LIGHTBOX MODAL
+     ============================================================ */
+  function initInspirationsLightbox() {
+    const galleryItems = $$('.gallery-item');
+    if (!galleryItems.length) return;
+
+    // Create lightbox DOM
+    const lightbox = document.createElement('div');
+    lightbox.className = 'insp-lightbox';
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightbox.innerHTML = `
+      <div class="insp-lightbox__dialog">
+        <button type="button" class="insp-lightbox__close" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="insp-lightbox__img-wrap">
+          <img class="insp-lightbox__img" src="" alt="">
+        </div>
+        <div class="insp-lightbox__footer">
+          <div>
+            <h3 class="insp-lightbox__title"></h3>
+            <p class="insp-lightbox__desc"></p>
+          </div>
+          <a class="btn btn--primary insp-lightbox__cta" target="_blank" rel="noopener" href="">
+            Demander conseil sur ce projet &rarr;
+          </a>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    const img = lightbox.querySelector('.insp-lightbox__img');
+    const titleEl = lightbox.querySelector('.insp-lightbox__title');
+    const descEl = lightbox.querySelector('.insp-lightbox__desc');
+    const ctaEl = lightbox.querySelector('.insp-lightbox__cta');
+    const closeBtn = lightbox.querySelector('.insp-lightbox__close');
+
+    const open = (item) => {
+      const srcImg = item.querySelector('img');
+      const caption = item.querySelector('.gallery-item__caption');
+      if (!srcImg) return;
+
+      img.src = srcImg.src;
+      img.alt = srcImg.alt || 'Inspiration MY HOUSE';
+      const text = caption ? caption.textContent.trim() : (srcImg.alt || 'Réalisation d\'exception');
+      titleEl.textContent = text;
+      descEl.textContent = 'Projet réalisé avec les matériaux et finitions haut de gamme MY HOUSE Showroom.';
+
+      const waMsg = encodeURIComponent(`Bonjour MY HOUSE, je souhaite des renseignements sur cette inspiration vue sur votre site : ${text}`);
+      ctaEl.href = `https://wa.me/21651056656?text=${waMsg}`;
+
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const close = () => {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    galleryItems.forEach(item => {
+      // Add zoom icon indicator
+      if (!item.querySelector('.gallery-item__zoom-icon')) {
+        const icon = document.createElement('div');
+        icon.className = 'gallery-item__zoom-icon';
+        icon.innerHTML = `
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+        `;
+        item.appendChild(icon);
+      }
+
+      item.addEventListener('click', () => open(item));
+    });
+
+    closeBtn.addEventListener('click', close);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) close();
     });
   }
 

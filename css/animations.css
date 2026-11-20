@@ -1371,3 +1371,552 @@ img {
 [dir="rtl"] .collections-search-input {
   padding: 0 3.4rem 0 1.5rem;
 }
+
+
+/* ============================================================
+   UI/UX COMFORT & LUXURY ENHANCEMENTS (30-Year Design System)
+   Soft for eyes · Smooth Interactions · Tactile Polish
+   ============================================================ */
+
+/* ---------- Visual Softness & Text Rendering ---------- */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+  background-color: #FAF8F5 !important;
+  color: #191B1E !important;
+}
+
+p, .section-subtitle, .showroom-split__text, .bathroom-concept__text {
+  line-height: 1.85 !important;
+  letter-spacing: 0.01em;
+}
+
+/* Global Focus Ring (Accessible & Luxury) */
+:focus-visible {
+  outline: 2px solid var(--house-red) !important;
+  outline-offset: 3px !important;
+}
+
+/* ---------- Back To Top Floating Action ---------- */
+.mh-back-to-top {
+  position: fixed;
+  bottom: 96px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(25, 27, 30, 0.88);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  color: #FAF8F5;
+  border: 1px solid rgba(220, 208, 186, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.9);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 998;
+}
+
+.mh-back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.mh-back-to-top:hover {
+  background: var(--house-red);
+  color: #ffffff;
+  border-color: var(--house-red);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 14px 32px rgba(179, 32, 42, 0.4);
+}
+
+.mh-back-to-top svg {
+  transition: transform 0.3s ease;
+}
+
+.mh-back-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+[dir="rtl"] .mh-back-to-top {
+  right: auto;
+  left: 28px;
+}
+
+/* ---------- Inspirations Filter Bar ---------- */
+.insp-filter-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0 auto var(--space-3xl);
+  max-width: 950px;
+}
+
+.insp-filter-btn {
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  background: #FFFFFF;
+  color: #191B1E;
+  border: 1.5px solid rgba(220, 208, 186, 0.6);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(23, 25, 27, 0.04);
+}
+
+.insp-filter-btn:hover {
+  border-color: var(--house-red);
+  color: var(--house-red);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(179, 32, 42, 0.12);
+}
+
+.insp-filter-btn.active {
+  background: #191B1E;
+  color: #FFFFFF;
+  border-color: #191B1E;
+  box-shadow: 0 6px 20px rgba(25, 27, 30, 0.25);
+}
+
+/* Gallery Item Interactive Cursor & Polish */
+.gallery-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(23, 25, 27, 0.08);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(23, 25, 27, 0.16);
+}
+
+.gallery-item__zoom-icon {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(25, 27, 30, 0.65);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 3;
+}
+
+[dir="rtl"] .gallery-item__zoom-icon {
+  right: auto;
+  left: 1.25rem;
+}
+
+.gallery-item:hover .gallery-item__zoom-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---------- Inspirations Lightbox Modal ---------- */
+.insp-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 17, 19, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.insp-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.insp-lightbox__dialog {
+  position: relative;
+  max-width: 1050px;
+  width: 100%;
+  max-height: 90vh;
+  background: #191B1E;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(220, 208, 186, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+  transform: scale(0.96) translateY(12px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.insp-lightbox.is-open .insp-lightbox__dialog {
+  transform: scale(1) translateY(0);
+}
+
+.insp-lightbox__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+[dir="rtl"] .insp-lightbox__close {
+  right: auto;
+  left: 1.25rem;
+}
+
+.insp-lightbox__close:hover {
+  background: var(--house-red);
+  transform: rotate(90deg);
+}
+
+.insp-lightbox__img-wrap {
+  width: 100%;
+  height: 60vh;
+  min-height: 360px;
+  background: #0D0F11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.insp-lightbox__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.insp-lightbox__footer {
+  padding: 1.5rem 2rem;
+  background: #191B1E;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.insp-lightbox__title {
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin: 0 0 0.35rem 0;
+}
+
+.insp-lightbox__desc {
+  color: var(--sand);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* ---------- Brand Heritage Timeline (A Propos) ---------- */
+.brand-timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: var(--space-3xl) auto 0;
+  padding: var(--space-xl) 0;
+}
+
+.brand-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, transparent 0%, var(--sand) 15%, var(--sand) 85%, transparent 100%);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 1.5rem 2.5rem;
+  box-sizing: border-box;
+}
+
+.timeline-item--left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item--right {
+  left: 50%;
+  text-align: left;
+}
+
+.timeline-item__dot {
+  position: absolute;
+  top: 2rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--house-red);
+  border: 4px solid #FAF8F5;
+  box-shadow: 0 0 0 2px var(--house-red);
+  z-index: 2;
+}
+
+.timeline-item--left .timeline-item__dot {
+  right: -9px;
+}
+
+.timeline-item--right .timeline-item__dot {
+  left: -9px;
+}
+
+.timeline-item__card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  border: 1px solid rgba(220, 208, 186, 0.45);
+  box-shadow: 0 8px 25px rgba(23, 25, 27, 0.05);
+  transition: transform 0.4s var(--ease-luxury), box-shadow 0.4s var(--ease-luxury);
+}
+
+.timeline-item__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(23, 25, 27, 0.1);
+}
+
+.timeline-item__year {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--house-red);
+  margin-bottom: 0.35rem;
+}
+
+.timeline-item__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #191B1E;
+  margin-bottom: 0.6rem;
+}
+
+.timeline-item__text {
+  font-size: 0.92rem;
+  color: var(--stone);
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .brand-timeline::before {
+    left: 20px;
+  }
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 50px;
+    padding-right: 0;
+    text-align: left !important;
+  }
+  .timeline-item__dot {
+    left: 11px !important;
+    right: auto !important;
+  }
+}
+
+/* RTL Timeline */
+[dir="rtl"] .brand-timeline::before {
+  left: 50%;
+}
+[dir="rtl"] .timeline-item--left {
+  text-align: left;
+}
+[dir="rtl"] .timeline-item--right {
+  text-align: right;
+}
+@media (max-width: 768px) {
+  [dir="rtl"] .brand-timeline::before {
+    left: auto;
+    right: 20px;
+  }
+  [dir="rtl"] .timeline-item {
+    padding-left: 0;
+    padding-right: 50px;
+    text-align: right !important;
+  }
+  [dir="rtl"] .timeline-item__dot {
+    left: auto !important;
+    right: 11px !important;
+  }
+}
+
+/* ---------- Live Status Badge & Quick Chips (Contact) ---------- */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  background: rgba(39, 174, 96, 0.08);
+  border: 1px solid rgba(39, 174, 96, 0.25);
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #219653;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.status-pill__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #27AE60;
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.25);
+  animation: pulseGreen 2s infinite ease-in-out;
+}
+
+@keyframes pulseGreen {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.5); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 6px rgba(39, 174, 96, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); }
+}
+
+.quick-actions-bar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.quick-action-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(220, 208, 186, 0.5);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #191B1E;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(23, 25, 27, 0.04);
+}
+
+.quick-action-chip:hover {
+  border-color: var(--house-red);
+  color: var(--house-red);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(179, 32, 42, 0.12);
+}
+
+.quick-action-chip svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Luxury Input Field Upgrades */
+.contact-form .form-input,
+.contact-form .form-select,
+.contact-form .form-textarea {
+  background-color: #FAF8F5 !important;
+  border: 1.5px solid #E2DCD2 !important;
+  border-radius: var(--radius-md) !important;
+  padding: 0.95rem 1.25rem !important;
+  font-size: 0.95rem !important;
+  color: #191B1E !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.contact-form .form-input:focus,
+.contact-form .form-select:focus,
+.contact-form .form-textarea:focus {
+  background-color: #FFFFFF !important;
+  border-color: var(--house-red) !important;
+  box-shadow: 0 0 0 4px rgba(179, 32, 42, 0.12) !important;
+}
+
+.contact-form .form-label {
+  font-weight: 500 !important;
+  color: #333639 !important;
+  margin-bottom: 0.35rem !important;
+}
+
+/* Form Toast Notification */
+.form-toast {
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #E8F5E9;
+  color: #1B5E20;
+  border: 1px solid #C8E6C9;
+}
+
+/* Global Toast Notification */
+.mh-toast-notification {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(25, 27, 30, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #FAF8F5;
+  border: 1px solid rgba(220, 208, 186, 0.35);
+  padding: 0.85rem 1.8rem;
+  border-radius: 9999px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+  z-index: 999999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  max-width: 90vw;
+  text-align: center;
+}
+
+.mh-toast-notification.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
