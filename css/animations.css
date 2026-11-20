@@ -1096,3 +1096,278 @@ img {
     background: url('../assets/images/catalog/carrara_gold_landscape_1200.jpg') center/cover no-repeat;
   }
 }
+
+
+/* ============================================================
+   COLLECTIONS PAGE LUXURY OVERHAUL
+   ============================================================ */
+
+/* Collections Hero Search Container */
+.collections-search-bar {
+  max-width: 680px;
+  margin: 2rem auto 0;
+  position: relative;
+}
+
+.collections-search-input {
+  width: 100%;
+  height: 56px;
+  padding: 0 1.5rem 0 3.4rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(220, 208, 186, 0.4);
+  border-radius: 9999px;
+  font-size: 1rem;
+  color: var(--ink);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s var(--ease-luxury);
+  outline: none;
+}
+
+.collections-search-input:focus {
+  background: #fff;
+  border-color: var(--house-red);
+  box-shadow: 0 10px 35px rgba(179, 32, 42, 0.15);
+}
+
+.collections-search-icon {
+  position: absolute;
+  left: 1.35rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--stone);
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.collections-search-input:focus ~ .collections-search-icon {
+  color: var(--house-red);
+}
+
+/* 3 Universes Selector Nav Bar */
+.universes-nav-bar-luxury {
+  background: #17191B;
+  border: 1px solid rgba(220, 208, 186, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 0.6rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+}
+
+.universe-jump-pill {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  color: rgba(246, 242, 234, 0.7);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s var(--ease-luxury);
+  position: relative;
+  overflow: hidden;
+}
+
+.universe-jump-pill:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-color: rgba(220, 208, 186, 0.2);
+}
+
+.universe-jump-pill.active {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  border-color: rgba(220, 208, 186, 0.4);
+}
+
+.universe-jump-pill.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1.25rem;
+  right: 1.25rem;
+  height: 2.5px;
+  background: var(--house-red);
+}
+
+.universe-jump-pill__tag {
+  font-family: var(--font-primary);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sand);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+}
+
+.universe-jump-pill__title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 0.15rem;
+  line-height: 1.2;
+}
+
+.universe-jump-pill__sub {
+  font-size: 0.75rem;
+  color: var(--warm-grey);
+}
+
+@media (max-width: 900px) {
+  .universes-nav-bar-luxury {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .universes-nav-bar-luxury {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Universe Section Header Luxury Banner */
+.universe-header-banner {
+  background: linear-gradient(135deg, #181B1E 0%, #111315 100%);
+  border: 1px solid rgba(220, 208, 186, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.universe-header-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--house-red);
+}
+
+.universe-header-banner__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(220, 208, 186, 0.12);
+  border: 1px solid rgba(220, 208, 186, 0.25);
+  color: var(--sand);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.universe-header-banner__title {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.universe-header-banner__desc {
+  color: var(--warm-grey);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0;
+}
+
+.universe-header-banner__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Atelier Architecture Tools Layout */
+.atelier-tools-section {
+  margin-top: 5rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(220, 208, 186, 0.3);
+}
+
+.atelier-tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .atelier-tools-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.atelier-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: 0 6px 25px rgba(23, 25, 27, 0.06);
+  border: 1px solid rgba(220, 208, 186, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Product Card Luxury Overrides */
+.product-card {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(220, 208, 186, 0.3);
+  transition: transform 0.45s var(--ease-luxury), box-shadow 0.45s var(--ease-luxury), border-color 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(179, 32, 42, 0.4);
+  box-shadow: 0 16px 40px rgba(23, 25, 27, 0.12);
+}
+
+.product-card__name {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+/* Catalog Promo Card in Grids */
+.catalog-promo-card {
+  background: linear-gradient(135deg, #17191B 0%, #202428 100%) !important;
+  color: #fff !important;
+  border: 1px solid rgba(220, 208, 186, 0.3) !important;
+}
+
+.catalog-promo-card h3 {
+  font-family: var(--font-display);
+  color: #fff !important;
+}
+
+/* RTL Adjustments */
+[dir="rtl"] .universe-header-banner::before {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .collections-search-icon {
+  left: auto;
+  right: 1.35rem;
+}
+
+[dir="rtl"] .collections-search-input {
+  padding: 0 3.4rem 0 1.5rem;
+}
