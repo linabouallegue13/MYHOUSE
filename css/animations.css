@@ -1745,3 +1745,12 @@ p, .section-subtitle, .showroom-split__text, .bathroom-concept__text {
   visibility: visible;
   transform: translateX(-50%) translateY(0);
 }
+
+/* Responsive Split Editorial Layout */
+@media (max-width: 900px) {
+  .editorial-split,
+  div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-xl) !important;
+  }
+}
