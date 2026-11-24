@@ -458,6 +458,65 @@
   <script src="js/products-data.js"></script>
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
+
+  <!-- Modal Guide du Visiteur (Première Visite) -->
+  <div id="welcome-guide-backdrop" class="welcome-guide-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="welcome-guide-modal">
+      <button type="button" id="welcome-guide-close" class="welcome-guide-close" aria-label="Fermer le guide">&times;</button>
+      
+      <div class="welcome-guide-header">
+        <div class="welcome-guide-badge">✦ BIENVENUE CHEZ MY HOUSE</div>
+        <h3 class="welcome-guide-title">Comment préparer votre projet ?</h3>
+        <p class="welcome-guide-desc">
+          Notre site est votre matériauthèque interactive. Voici les 3 étapes simples pour concrétiser votre aménagement :
+        </p>
+      </div>
+
+      <div class="welcome-steps-grid">
+        <div class="welcome-step-card">
+          <div class="welcome-step-num">1</div>
+          <div class="welcome-step-content">
+            <h4>📖 Explorez &amp; Feuilletez</h4>
+            <p>Découvrez nos 3 univers (Carrelage, Sanitaires, Électroménager) et nos catalogues officiels 2026 interactifs en haute définition.</p>
+          </div>
+        </div>
+
+        <div class="welcome-step-card">
+          <div class="welcome-step-num">2</div>
+          <div class="welcome-step-content">
+            <h4>📸 Capturez vos Coups de Cœur</h4>
+            <p>Faites une capture d'écran de vos pages préférées, ou notez les références des produits (dimensions, coloris, finitions).</p>
+          </div>
+        </div>
+
+        <div class="welcome-step-card">
+          <div class="welcome-step-num">3</div>
+          <div class="welcome-step-content">
+            <h4>📍 Venez au Showroom &amp; Échangeons</h4>
+            <p>Rendez-vous à notre Flagship à Hammam Sousse avec vos captures et vos plans. Nos conseillers vous accompagnent pour toucher les matières et élaborer votre devis sur-mesure.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="welcome-guide-footer">
+        <label class="welcome-guide-dont-show">
+          <input type="checkbox" id="welcome-guide-dont-show-cb" checked>
+          <span>Ne plus afficher automatiquement</span>
+        </label>
+        <div class="welcome-guide-actions">
+          <a href="contact.html" class="btn btn--outline" style="border-color: rgba(220,208,186,0.4); color: var(--sand);">Localiser le Showroom</a>
+          <button type="button" id="welcome-guide-got-it" class="btn btn--primary">J'ai compris &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Helper Pill (accessible anytime) -->
+  <button type="button" class="guide-trigger-pill js-open-guide" aria-label="Ouvrir le guide de préparation du projet">
+    <span class="icon">✦</span>
+    <span>Guide : Préparer mon projet</span>
+  </button>
 </body>
+
 
 </html>

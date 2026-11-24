@@ -647,6 +647,61 @@
   </section>
 
 
+  
+  <!-- Section Votre Projet en 3 Étapes -->
+  <section class="section section--sand" style="background: #F8F5EE; border-top: 1px solid var(--border-light); padding: 5rem 0;">
+    <div class="container">
+      <div class="text-center reveal" style="max-width: 680px; margin: 0 auto 3.5rem;">
+        <span class="section-label section-label--animated">VOTRE PARCOURS D'EXCEPTION</span>
+        <h2 class="section-title split-text" style="margin-top: 0.5rem; color: var(--charcoal);">Comment donner vie à votre projet ?</h2>
+        <p class="section-subtitle section-subtitle--centered reveal reveal-delay-2" style="color: var(--stone); margin: 0 auto;">
+          De votre première inspiration en ligne jusqu'à la pose dans votre habitat, nous vous guidons à chaque étape.
+        </p>
+      </div>
+
+      <div class="steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        
+        <!-- Étape 1 -->
+        <div class="step-card reveal" style="background: #fff; border-radius: var(--radius-lg); padding: 2.25rem 1.75rem; border: 1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow-sm); position: relative;">
+          <div style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: var(--gold-primary); opacity: 0.4; line-height: 1; margin-bottom: 1rem;">01</div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.22rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.75rem;">1. Feuilletez &amp; Explorez</h3>
+          <p style="color: var(--stone); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            Parcourez nos 3 univers (Carrelage, Sanitaires, Électroménager) et consultez nos catalogues officiels 2026 interactifs en haute définition comme un véritable livre.
+          </p>
+          <a href="catalogues.html" style="font-size: 0.85rem; font-weight: 600; color: var(--house-red); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+            Ouvrir les catalogues &rarr;
+          </a>
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="step-card reveal reveal-delay-1" style="background: #fff; border-radius: var(--radius-lg); padding: 2.25rem 1.75rem; border: 1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow-sm); position: relative;">
+          <div style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: var(--gold-primary); opacity: 0.4; line-height: 1; margin-bottom: 1rem;">02</div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.22rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.75rem;">2. Capturez vos Coups de Cœur</h3>
+          <p style="color: var(--stone); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            Faites des captures d'écran de vos pages préférées ou notez les références de vos produits favoris (dimensions, finitions, coloris) pour préparer votre visite.
+          </p>
+          <a href="collections.html" style="font-size: 0.85rem; font-weight: 600; color: var(--house-red); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+            Explorer les collections &rarr;
+          </a>
+        </div>
+
+        <!-- Étape 3 -->
+        <div class="step-card reveal reveal-delay-2" style="background: #fff; border-radius: var(--radius-lg); padding: 2.25rem 1.75rem; border: 1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow-sm); position: relative;">
+          <div style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: var(--gold-primary); opacity: 0.4; line-height: 1; margin-bottom: 1rem;">03</div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.22rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.75rem;">3. Rendez-vous au Showroom</h3>
+          <p style="color: var(--stone); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">
+            Venez à notre Flagship à Hammam Sousse avec vos captures et vos plans. Nos conseillers vous accueillent pour toucher les matières et concevoir votre devis sur-mesure.
+          </p>
+          <a href="contact.html" style="font-size: 0.85rem; font-weight: 600; color: var(--house-red); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
+            Localiser le showroom &rarr;
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
   <!-- Section Catalogues Officiels Interactifs -->
   <section class="section section--dark"
     style="background: linear-gradient(180deg, #111315 0%, #17191B 100%); border-top: 1px solid rgba(255,255,255,0.06); padding: 5rem 0;">
@@ -863,6 +918,65 @@
   <script src="js/products-data.js"></script>
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
+
+  <!-- Modal Guide du Visiteur (Première Visite) -->
+  <div id="welcome-guide-backdrop" class="welcome-guide-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="welcome-guide-modal">
+      <button type="button" id="welcome-guide-close" class="welcome-guide-close" aria-label="Fermer le guide">&times;</button>
+      
+      <div class="welcome-guide-header">
+        <div class="welcome-guide-badge">✦ BIENVENUE CHEZ MY HOUSE</div>
+        <h3 class="welcome-guide-title">Comment préparer votre projet ?</h3>
+        <p class="welcome-guide-desc">
+          Notre site est votre matériauthèque interactive. Voici les 3 étapes simples pour concrétiser votre aménagement :
+        </p>
+      </div>
+
+      <div class="welcome-steps-grid">
+        <div class="welcome-step-card">
+          <div class="welcome-step-num">1</div>
+          <div class="welcome-step-content">
+            <h4>📖 Explorez &amp; Feuilletez</h4>
+            <p>Découvrez nos 3 univers (Carrelage, Sanitaires, Électroménager) et nos catalogues officiels 2026 interactifs en haute définition.</p>
+          </div>
+        </div>
+
+        <div class="welcome-step-card">
+          <div class="welcome-step-num">2</div>
+          <div class="welcome-step-content">
+            <h4>📸 Capturez vos Coups de Cœur</h4>
+            <p>Faites une capture d'écran de vos pages préférées, ou notez les références des produits (dimensions, coloris, finitions).</p>
+          </div>
+        </div>
+
+        <div class="welcome-step-card">
+          <div class="welcome-step-num">3</div>
+          <div class="welcome-step-content">
+            <h4>📍 Venez au Showroom &amp; Échangeons</h4>
+            <p>Rendez-vous à notre Flagship à Hammam Sousse avec vos captures et vos plans. Nos conseillers vous accompagnent pour toucher les matières et élaborer votre devis sur-mesure.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="welcome-guide-footer">
+        <label class="welcome-guide-dont-show">
+          <input type="checkbox" id="welcome-guide-dont-show-cb" checked>
+          <span>Ne plus afficher automatiquement</span>
+        </label>
+        <div class="welcome-guide-actions">
+          <a href="catalogues.html" class="btn btn--outline" style="border-color: rgba(220,208,186,0.4); color: var(--sand);">Voir les Catalogues</a>
+          <button type="button" id="welcome-guide-got-it" class="btn btn--primary">J'ai compris &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Helper Pill (accessible anytime) -->
+  <button type="button" class="guide-trigger-pill js-open-guide" aria-label="Ouvrir le guide de préparation du projet">
+    <span class="icon">✦</span>
+    <span>Guide : Préparer mon projet</span>
+  </button>
 </body>
+
 
 </html>

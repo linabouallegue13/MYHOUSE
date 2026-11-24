@@ -3375,3 +3375,259 @@ h6 {
   box-shadow: 0 8px 24px rgba(179, 32, 42, 0.45);
   transform: translateY(-2px);
 }
+
+
+/* ==========================================================================
+   FIRST-TIME VISITOR WELCOME GUIDE MODAL & STEP CARDS
+   ========================================================================== */
+.welcome-guide-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(10, 12, 14, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+}
+
+.welcome-guide-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.welcome-guide-modal {
+  background: #17191B;
+  border: 1px solid rgba(220, 208, 186, 0.25);
+  border-radius: var(--radius-lg, 16px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 40px rgba(200, 169, 110, 0.08);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.25rem;
+  color: #fff;
+  position: relative;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.welcome-guide-backdrop.active .welcome-guide-modal {
+  transform: translateY(0) scale(1);
+}
+
+.welcome-guide-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.welcome-guide-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: rotate(90deg);
+}
+
+.welcome-guide-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.welcome-guide-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sand, #DCD0BA);
+  background: rgba(220, 208, 186, 0.1);
+  border: 1px solid rgba(220, 208, 186, 0.25);
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  margin-bottom: 0.75rem;
+}
+
+.welcome-guide-title {
+  font-family: var(--font-heading, 'Cinzel', serif);
+  font-size: 1.65rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-guide-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.welcome-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.welcome-step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.15rem 1.25rem;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.welcome-step-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(220, 208, 186, 0.35);
+}
+
+.welcome-step-num {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.25), rgba(200, 169, 110, 0.08));
+  border: 1px solid rgba(200, 169, 110, 0.4);
+  color: var(--sand, #DCD0BA);
+  font-family: var(--font-heading, 'Cinzel', serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-step-content h4 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.welcome-step-content p {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.welcome-guide-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.welcome-guide-dont-show {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  user-select: none;
+}
+
+.welcome-guide-dont-show input {
+  accent-color: var(--gold-primary, #C8A96E);
+  cursor: pointer;
+}
+
+.welcome-guide-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+/* Floating Helper Pill for returning visitors */
+.guide-trigger-pill {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999;
+  background: rgba(23, 25, 27, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(220, 208, 186, 0.35);
+  color: #fff;
+  padding: 0.6rem 1.15rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.guide-trigger-pill:hover {
+  background: #17191B;
+  border-color: var(--sand, #DCD0BA);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.guide-trigger-pill span.icon {
+  color: var(--sand, #DCD0BA);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .welcome-guide-modal {
+    padding: 1.5rem 1.25rem;
+  }
+  .welcome-guide-title {
+    font-size: 1.35rem;
+  }
+  .welcome-guide-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .welcome-guide-actions {
+    margin-left: 0;
+    flex-direction: column;
+  }
+  .welcome-guide-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+  .guide-trigger-pill {
+    bottom: 84px; /* avoid overlapping with bottom bar if present */
+    left: 16px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.78rem;
+  }
+}

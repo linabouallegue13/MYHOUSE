@@ -1133,3 +1133,77 @@ function showToast(message, duration = 4000) {
     toast.classList.remove('is-visible');
   }, duration);
 }
+
+
+/* ==========================================================================
+   FIRST-TIME VISITOR WELCOME GUIDE MODAL
+   ========================================================================== */
+function initWelcomeGuide() {
+  const backdrop = document.getElementById('welcome-guide-backdrop');
+  if (!backdrop) return;
+
+  const closeBtn = document.getElementById('welcome-guide-close');
+  const gotItBtn = document.getElementById('welcome-guide-got-it');
+  const triggerPills = document.querySelectorAll('.js-open-guide');
+  const dontShowCheckbox = document.getElementById('welcome-guide-dont-show-cb');
+
+  function openGuide() {
+    backdrop.classList.add('active');
+    backdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeGuide(permanent = false) {
+    backdrop.classList.remove('active');
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (permanent || (dontShowCheckbox && dontShowCheckbox.checked)) {
+      try {
+        localStorage.setItem('myhouse_welcome_guide_dismissed', 'true');
+      } catch (e) {}
+    }
+  }
+
+  // Open on trigger pills
+  triggerPills.forEach(pill => {
+    pill.addEventListener('click', (e) => {
+      e.preventDefault();
+      openGuide();
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', () => closeGuide(false));
+  if (gotItBtn) gotItBtn.addEventListener('click', () => closeGuide(true));
+
+  // Backdrop click
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) {
+      closeGuide(false);
+    }
+  });
+
+  // ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop.classList.contains('active')) {
+      closeGuide(false);
+    }
+  });
+
+  // Check first visit on homepage
+  try {
+    const dismissed = localStorage.getItem('myhouse_welcome_guide_dismissed');
+    if (!dismissed) {
+      // Auto-open after a brief, elegant delay so the user first sees the showroom hero
+      setTimeout(() => {
+        openGuide();
+      }, 1400);
+    }
+  } catch (e) {}
+}
+
+// Call on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initWelcomeGuide);
+} else {
+  initWelcomeGuide();
+}
