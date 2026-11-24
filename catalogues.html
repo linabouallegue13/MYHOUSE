@@ -574,10 +574,39 @@
       flex-wrap: wrap;
     }
 
-    @media (max-width: 900px) {
+    /* Landscape Hint Pill for Mobile Portrait */
+    .portrait-landscape-tip {
+      display: none;
+      text-align: center;
+      margin: 0 auto 1.25rem;
+      padding: 0.55rem 1.2rem;
+      background: rgba(184, 151, 120, 0.15);
+      border: 1px dashed var(--gold-primary);
+      border-radius: 9999px;
+      color: var(--gold-light);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      max-width: fit-content;
+      animation: pulseTip 2.5s infinite;
+    }
+    @keyframes pulseTip {
+      0%, 100% { transform: scale(1); opacity: 0.95; }
+      50% { transform: scale(1.02); opacity: 1; }
+    }
+
+    /* Portrait Only Mobile Styles (Width < 768px & Portrait) */
+    @media (max-width: 768px) and (orientation: portrait) {
+      .portrait-landscape-tip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
       .book-stage-area {
         min-height: 440px;
-        padding: 1.5rem 0.5rem;
+        height: 60vh;
+        padding: 1rem 0.5rem;
       }
 
       .open-book {
@@ -585,11 +614,11 @@
       }
 
       .book-spine-shadow {
-        display: none;
+        display: none !important;
       }
 
       .book-leaf.leaf-left {
-        display: none;
+        display: none !important;
       }
 
       .stage-arrow {
@@ -607,13 +636,18 @@
       }
 
       .book-top-bar {
-        padding: 1rem;
+        padding: 0.85rem 1rem;
+      }
+
+      .book-top-info h3 {
+        font-size: 1.1rem;
       }
 
       .book-bottom-bar {
         padding: 1rem;
         flex-direction: column;
         align-items: stretch;
+        gap: 0.75rem;
       }
 
       .book-nav-pills {
@@ -623,6 +657,137 @@
 
       .book-slider-wrap {
         max-width: 100%;
+      }
+    }
+
+    /* Universal Landscape Mode (All Landscape Screens: Mobile, Tablet, Desktop) */
+    @media (orientation: landscape) {
+      .portrait-landscape-tip {
+        display: none !important;
+      }
+
+      .open-book {
+        flex-direction: row !important;
+      }
+
+      .open-book:not(.is-cover) .book-leaf.leaf-left {
+        display: flex !important;
+      }
+
+      .open-book:not(.is-cover) .book-spine-shadow {
+        display: block !important;
+      }
+    }
+
+    /* Ultra-Optimized Landscape Fullscreen & Mobile/Tablet Landscape Viewport (Max-Height <= 650px) */
+    @media (orientation: landscape) and (max-height: 650px) {
+      .catalog-reader-section {
+        padding: 0.5rem 0 1.5rem !important;
+      }
+
+      .catalog-tabs {
+        margin-bottom: 0.75rem !important;
+        gap: 0.5rem !important;
+      }
+
+      .catalog-tab-btn {
+        padding: 0.45rem 1rem !important;
+        font-size: 0.82rem !important;
+      }
+
+      .catalog-tab-badge {
+        display: none;
+      }
+
+      /* Compact Top Bar in Landscape */
+      .book-top-bar {
+        padding: 0.35rem 1rem !important;
+        min-height: 38px !important;
+      }
+
+      .book-top-info h3 {
+        font-size: 0.92rem !important;
+        margin: 0 !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 40vw;
+      }
+
+      .book-top-info p {
+        display: none !important;
+      }
+
+      .book-top-actions {
+        gap: 0.4rem !important;
+      }
+
+      .book-btn-action {
+        padding: 0.32rem 0.75rem !important;
+        font-size: 0.76rem !important;
+        border-radius: 6px !important;
+      }
+
+      /* Stage Area Takes Maximum Viewport in Landscape */
+      .book-stage-area {
+        min-height: calc(100vh - 82px) !important;
+        height: calc(100vh - 82px) !important;
+        padding: 0.2rem 0.5rem !important;
+      }
+
+      .book-wrapper:fullscreen .book-stage-area,
+      .book-wrapper:-webkit-full-screen .book-stage-area,
+      .book-wrapper.is-fullscreen .book-stage-area {
+        height: calc(100vh - 72px) !important;
+        min-height: calc(100vh - 72px) !important;
+        padding: 0.15rem 0.25rem !important;
+      }
+
+      /* Compact Bottom Bar in Landscape */
+      .book-bottom-bar {
+        padding: 0.35rem 1rem !important;
+        min-height: 38px !important;
+        gap: 0.75rem !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+      }
+
+      .book-page-counter {
+        font-size: 0.8rem !important;
+        min-width: 120px !important;
+      }
+
+      .book-slider-wrap {
+        flex: 1 !important;
+        max-width: 260px !important;
+      }
+
+      .btn-page-ctrl {
+        padding: 0.25rem 0.65rem !important;
+        font-size: 0.75rem !important;
+      }
+
+      /* Stage Navigation Arrows */
+      .stage-arrow {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 1.1rem !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+      }
+
+      .stage-arrow.prev {
+        left: 0.35rem !important;
+      }
+
+      .stage-arrow.next {
+        right: 0.35rem !important;
+      }
+
+      .book-hint {
+        bottom: 0.4rem !important;
+        padding: 0.25rem 0.75rem !important;
+        font-size: 0.72rem !important;
       }
     }
   </style>
@@ -717,6 +882,12 @@
           <span class="catalog-tab-badge">166 pages</span>
         </button>
       </div>
+    </div>
+
+    <!-- Landscape Rotation Tip for Mobile -->
+    <div class="portrait-landscape-tip" id="portraitTip">
+      <span>↻</span>
+      <span>Passez votre écran en <strong>mode paysage</strong> pour feuilleter en double page plein écran</span>
     </div>
 
     <!-- Real Book Outer Frame (Full-Viewport Width) -->
@@ -1007,21 +1178,31 @@
       return String(n).padStart(3, '0');
     }
 
+    function isLandscapeMode() {
+      const winW = window.innerWidth;
+      const winH = window.innerHeight;
+      const mediaLandscape = window.matchMedia && window.matchMedia('(orientation: landscape)').matches;
+      return (winW > winH) || mediaLandscape;
+    }
+
     function calculatePageSizes() {
       const cat = CATALOGS[activeKey];
       const winW = window.innerWidth;
-      const isMobile = winW < 900;
+      const winH = window.innerHeight;
+      const isLandscape = isLandscapeMode();
+      const isPortraitMobile = !isLandscape && (winW < 768);
+
       const stage = document.querySelector('.book-stage-area');
       const stageW = stage ? stage.clientWidth : winW;
-      const stageH = stage ? stage.clientHeight : Math.round(window.innerHeight * 0.78);
+      const stageH = stage ? stage.clientHeight : Math.max(380, Math.round(winH * 0.75));
 
       let singleW, singleH;
 
-      if (isMobile) {
-        // Mobile single page layout
+      if (isPortraitMobile) {
+        // Single page mode for portrait phones
         singleW = Math.min(stageW - 24, 620);
         singleH = Math.round(singleW * cat.ratio);
-        const maxMobileH = stageH - 50;
+        const maxMobileH = stageH - 32;
         if (singleH > maxMobileH) {
           singleH = Math.round(maxMobileH);
           singleW = Math.round(singleH / cat.ratio);
@@ -1031,32 +1212,55 @@
         leafRight.style.width = singleW + 'px';
         leafRight.style.height = singleH + 'px';
       } else {
-        // Desktop double page layout: Spread = 2 * singleW side-by-side
-        // Reserve room for prev/next stage arrows (approx 140px total)
-        const maxSpreadW = stageW - 140;
-        const maxSpreadH = stageH - 24;
+        // Landscape / Tablet / Desktop: DOUBLE-PAGE SPREAD!
+        if (currentSpread === 0) {
+          // Cover page: centered single leaf
+          const maxCoverH = stageH - 16;
+          const maxCoverW = Math.min(stageW - 80, 750);
+          singleH = maxCoverH;
+          singleW = Math.round(singleH / cat.ratio);
+          if (singleW > maxCoverW) {
+            singleW = maxCoverW;
+            singleH = Math.round(singleW * cat.ratio);
+          }
+          leafLeft.style.width = '0px';
+          leafLeft.style.height = '0px';
+          leafRight.style.width = singleW + 'px';
+          leafRight.style.height = singleH + 'px';
+        } else {
+          // Open book: 2 leaves side-by-side
+          // Reserve padding for side arrows (compact in landscape mobile ~70px, desktop ~120px)
+          const arrowPadding = winW < 900 ? 76 : 120;
+          const maxSpreadW = stageW - arrowPadding;
+          const maxSpreadH = stageH - 12;
 
-        // Fit height first
-        singleH = maxSpreadH;
-        singleW = Math.round(singleH / cat.ratio);
+          // Fit height first to maximize screen height in landscape
+          singleH = maxSpreadH;
+          singleW = Math.round(singleH / cat.ratio);
 
-        // If 2 pages side-by-side exceed available width, constrain by width
-        if (singleW * 2 > maxSpreadW) {
-          singleW = Math.floor(maxSpreadW / 2);
-          singleH = Math.round(singleW * cat.ratio);
+          // If double page width exceeds available spread width, constrain by width
+          if (singleW * 2 > maxSpreadW) {
+            singleW = Math.floor(maxSpreadW / 2);
+            singleH = Math.round(singleW * cat.ratio);
+          }
+
+          leafLeft.style.width = singleW + 'px';
+          leafLeft.style.height = singleH + 'px';
+          leafRight.style.width = singleW + 'px';
+          leafRight.style.height = singleH + 'px';
         }
-
-        leafLeft.style.width = singleW + 'px';
-        leafLeft.style.height = singleH + 'px';
-        leafRight.style.width = singleW + 'px';
-        leafRight.style.height = singleH + 'px';
       }
     }
 
     function toggleFullscreen() {
       if (!document.fullscreenElement && !bookWrapper.classList.contains('is-fullscreen')) {
         if (bookWrapper.requestFullscreen) {
-          bookWrapper.requestFullscreen().catch(() => {
+          bookWrapper.requestFullscreen().then(() => {
+            // Attempt to suggest landscape orientation if supported
+            if (screen.orientation && screen.orientation.lock) {
+              screen.orientation.lock('landscape').catch(() => {});
+            }
+          }).catch(() => {
             bookWrapper.classList.add('is-fullscreen');
           });
         } else {
@@ -1066,6 +1270,9 @@
       } else {
         if (document.exitFullscreen && document.fullscreenElement) {
           document.exitFullscreen().catch(() => { });
+        }
+        if (screen.orientation && screen.orientation.unlock) {
+          try { screen.orientation.unlock(); } catch(e) {}
         }
         bookWrapper.classList.remove('is-fullscreen');
         if (txtFullscreen) txtFullscreen.textContent = 'Plein Écran';
@@ -1119,7 +1326,9 @@
 
     function renderSpread(direction = null) {
       const cat = CATALOGS[activeKey];
-      const isMobile = window.innerWidth < 900;
+      const winW = window.innerWidth;
+      const isLandscape = isLandscapeMode();
+      const isPortraitMobile = !isLandscape && (winW < 768);
       calculatePageSizes();
 
       if (direction === 'forward') {
@@ -1132,8 +1341,8 @@
         leafLeft.classList.add('turning-backward');
       }
 
-      if (isMobile) {
-        // Mobile single page mode
+      if (isPortraitMobile) {
+        // Mobile single page mode (only in portrait)
         openBook.classList.add('is-cover');
         const pNum = Math.min(currentSpread + 1, cat.totalPages);
         imgRight.src = `${cat.folder}/page_${pad(pNum)}.jpg`;
@@ -1144,7 +1353,7 @@
         return;
       }
 
-      // Desktop double page mode
+      // Landscape & Desktop: Double-Page Spread
       if (currentSpread === 0) {
         // Cover
         openBook.classList.add('is-cover');
@@ -1196,9 +1405,11 @@
     // Navigation events
     function flipNext() {
       const cat = CATALOGS[activeKey];
-      const isMobile = window.innerWidth < 900;
+      const winW = window.innerWidth;
+      const isLandscape = isLandscapeMode();
+      const isPortraitMobile = !isLandscape && (winW < 768);
 
-      if (isMobile) {
+      if (isPortraitMobile) {
         if (currentSpread < cat.totalPages - 1) {
           currentSpread++;
           renderSpread('forward');
@@ -1238,8 +1449,10 @@
     // Slider
     bookSlider.addEventListener('input', (e) => {
       const p = parseInt(e.target.value, 10);
-      const isMobile = window.innerWidth < 900;
-      if (isMobile) {
+      const winW = window.innerWidth;
+      const isLandscape = isLandscapeMode();
+      const isPortraitMobile = !isLandscape && (winW < 768);
+      if (isPortraitMobile) {
         currentSpread = p - 1;
       } else {
         currentSpread = p <= 1 ? 0 : Math.floor(p / 2);
@@ -1254,8 +1467,10 @@
 
     document.getElementById('btnLast').addEventListener('click', () => {
       const cat = CATALOGS[activeKey];
-      const isMobile = window.innerWidth < 900;
-      currentSpread = isMobile ? cat.totalPages - 1 : Math.ceil((cat.totalPages - 1) / 2);
+      const winW = window.innerWidth;
+      const isLandscape = isLandscapeMode();
+      const isPortraitMobile = !isLandscape && (winW < 768);
+      currentSpread = isPortraitMobile ? cat.totalPages - 1 : Math.ceil((cat.totalPages - 1) / 2);
       renderSpread('forward');
     });
 
@@ -1266,8 +1481,10 @@
 
     document.getElementById('btnNext10').addEventListener('click', () => {
       const cat = CATALOGS[activeKey];
-      const isMobile = window.innerWidth < 900;
-      const maxSpread = isMobile ? cat.totalPages - 1 : Math.ceil((cat.totalPages - 1) / 2);
+      const winW = window.innerWidth;
+      const isLandscape = isLandscapeMode();
+      const isPortraitMobile = !isLandscape && (winW < 768);
+      const maxSpread = isPortraitMobile ? cat.totalPages - 1 : Math.ceil((cat.totalPages - 1) / 2);
       currentSpread = Math.min(maxSpread, currentSpread + 5);
       renderSpread('forward');
     });
@@ -1279,9 +1496,16 @@
       });
     });
 
-    // Window resize
+    // Window resize & orientation change
     window.addEventListener('resize', () => {
       renderSpread();
+    });
+
+    window.addEventListener('orientationchange', () => {
+      setTimeout(() => {
+        calculatePageSizes();
+        renderSpread();
+      }, 150);
     });
 
     // Init with URL param support (?cat=sanitaire | ?cat=electromenager | ?cat=carrelage)
