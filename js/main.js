@@ -292,9 +292,30 @@ function initCatalog() {
   }
 
   // Selected 3 premier flagship references per universe
-  const SANITAIRES_TOP3_IDS = ['baignoire-ilot-mineral', 'baignoire-balneo-spa', 'receveur-ardoise-mineral'];
-  const ELECTRO_TOP3_IDS = ['four-quadra-66', 'table-induction-aspirante', 'micro-ondes-integre'];
-  const CARRELAGE_TOP3_IDS = ['volcano', 'emperador', 'carrara-gold'];
+  const SANITAIRES_FEATURED_IDS = [
+    'baignoire-ilot-mineral',
+    'baignoire-design-ovale',
+    'baignoire-balneo-spa',
+    'receveur-ardoise-mineral',
+    'receveur-extra-plat',
+    'onyx-bath'
+  ];
+  const ELECTRO_FEATURED_IDS = [
+    'four-quadra-66',
+    'micro-ondes-quadra-25',
+    'table-induction-aspirante',
+    'table-gaz-verre-noir',
+    'hotte-triangle',
+    'four-smart-56'
+  ];
+  const CARRELAGE_FEATURED_IDS = [
+    'volcano',
+    'emperador',
+    'carrara-gold',
+    'sahara-noir',
+    'calacatta-gold',
+    'travertin-romano'
+  ];
 
   function createCatalogPromoCard(universeId) {
     const card = document.createElement('div');
@@ -351,13 +372,13 @@ function initCatalog() {
     // Filter by Universe and Search Term, showing the 3 curated references unless searching
     const sanitairesList = PRODUCTS_DATA.filter(item => {
       if (item.category !== 'sanitaire' && item.category !== 'bain') return false;
-      if (!searchTerm && !SANITAIRES_TOP3_IDS.includes(item.id)) return false;
+      if (!searchTerm && !SANITAIRES_FEATURED_IDS.includes(item.id)) return false;
       return matchesSearch(item);
     });
 
     const electroList = PRODUCTS_DATA.filter(item => {
       if (item.category !== 'electromenager' && item.category !== 'accessoires') return false;
-      if (!searchTerm && !ELECTRO_TOP3_IDS.includes(item.id)) return false;
+      if (!searchTerm && !ELECTRO_FEATURED_IDS.includes(item.id)) return false;
       return matchesSearch(item);
     });
 
@@ -365,7 +386,7 @@ function initCatalog() {
       const isCarrelage = ['marbre', 'pierre', 'beton', 'interieur', 'exterieur', 'gres'].includes(item.category);
       if (!isCarrelage) return false;
       if (activeCarrelageCat !== 'all-carrelage' && item.category !== activeCarrelageCat) return false;
-      if (!searchTerm && activeCarrelageCat === 'all-carrelage' && !CARRELAGE_TOP3_IDS.includes(item.id)) return false;
+      if (!searchTerm && activeCarrelageCat === 'all-carrelage' && !CARRELAGE_FEATURED_IDS.includes(item.id)) return false;
       return matchesSearch(item);
     });
 
