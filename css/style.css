@@ -86,6 +86,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -96,10 +98,18 @@ body {
   color: var(--ink);
   background-color: var(--ivory);
   overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+img,
+picture,
+video,
+iframe {
+  max-width: 100%;
 }
 
 img {
-  max-width: 100%;
   height: auto;
   display: block;
 }
@@ -3745,5 +3755,272 @@ h6 {
     width: auto;
     padding: 0.4rem 0.9rem;
     font-size: 0.82rem;
+  }
+}
+
+/* ==========================================================================
+   EDITORIAL SPLIT (Inspirations) & COMPREHENSIVE PHONE RESPONSIVENESS
+   ========================================================================== */
+.editorial-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  margin-top: var(--space-3xl);
+  align-items: center;
+}
+
+.editorial-split--reversed .editorial-split__media {
+  order: 2;
+}
+
+.editorial-split__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: 380px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.editorial-split__title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.editorial-split__text {
+  color: var(--stone);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* Prevent Grid / Flex children from forcing horizontal overflow */
+.container,
+.section,
+.collections-grid > *,
+.products-grid > *,
+.categories-grid > *,
+.expertise-grid > *,
+.showroom-split > *,
+.bathroom-concept > *,
+.editorial-split > *,
+.steps-grid > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  /* Scale down oversized typography (!important overrides editorial rules cleanly on phones) */
+  .hero__title {
+    font-size: clamp(1.45rem, 6vw, 1.95rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__subtitle {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero__label {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.16em !important;
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero__content {
+    padding: 0 var(--space-md);
+    width: 100%;
+  }
+
+  .page-hero__content {
+    padding: 0 var(--space-md);
+    width: 100%;
+  }
+
+  .page-hero__title {
+    font-size: clamp(1.4rem, 5.5vw, 1.85rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  .page-hero__subtitle {
+    font-size: 0.88rem !important;
+    line-height: 1.5;
+  }
+
+  .section-title {
+    font-size: clamp(1.35rem, 5.2vw, 1.75rem) !important;
+    line-height: 1.25 !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem !important;
+  }
+
+  .section-label {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  .cta-banner__title {
+    font-size: 1.45rem !important;
+  }
+
+  .category-card__title {
+    font-size: 1.3rem !important;
+  }
+
+  .product-card__name {
+    font-size: 1.12rem !important;
+  }
+
+  .bathroom-concept__title {
+    font-size: 1.4rem !important;
+  }
+
+  .expertise-item__title {
+    font-size: 1.12rem !important;
+  }
+
+  .stat-number {
+    font-size: 1.85rem !important;
+  }
+
+  .btn {
+    padding: 0.72rem 1.25rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em !important;
+  }
+
+  /* Constrain pictures & media containers on phones */
+  .showroom-split__image,
+  .bathroom-concept__image {
+    width: 100%;
+    max-height: 260px;
+  }
+
+  .product-card__image {
+    aspect-ratio: 4 / 3;
+    max-height: 250px;
+  }
+
+  .gallery-item {
+    max-height: 250px;
+  }
+
+  .editorial-split {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+  }
+
+  .editorial-split--reversed .editorial-split__media {
+    order: 0;
+  }
+
+  .editorial-split__media {
+    height: 230px;
+  }
+
+  .editorial-split__title {
+    font-size: 1.35rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .editorial-split__text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .tile-calculator {
+    padding: 1.25rem;
+  }
+
+  .luxury-marquee__item {
+    font-size: 0.72rem;
+    gap: 1.25rem;
+  }
+
+  .whatsapp-float {
+    bottom: 16px;
+    right: 12px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .favorites-toggle-btn {
+    right: 12px;
+    bottom: 72px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .guide-trigger-pill {
+    bottom: 16px;
+    left: 12px;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.74rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section {
+    padding: 2.75rem 0;
+  }
+
+  .hero {
+    min-height: 480px;
+    height: auto;
+    padding: calc(var(--nav-height) + 2rem) 0 3.25rem;
+  }
+
+  .hero__content {
+    padding: 0 1rem;
+  }
+
+  .hero__title {
+    font-size: 1.38rem !important;
+  }
+
+  .hero__buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .page-hero {
+    min-height: 230px;
+    height: auto;
+    padding: calc(var(--nav-height) + 1.75rem) 0 2.25rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem !important;
+  }
+
+  .product-card__image {
+    max-height: 220px;
+  }
+
+  .product-card__name {
+    font-size: 1.05rem !important;
+  }
+
+  .category-card__title {
+    font-size: 1.18rem !important;
+  }
+
+  .expertise-item {
+    padding: 1.5rem 1.15rem !important;
   }
 }

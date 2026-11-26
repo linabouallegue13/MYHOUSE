@@ -491,7 +491,7 @@
     /* Catalog Cards Overview Grid */
     .catalogs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
       gap: 2rem;
       margin-top: 4rem;
     }
@@ -597,6 +597,41 @@
 
     /* Portrait Only Mobile Styles (Width < 768px & Portrait) */
     @media (max-width: 768px) and (orientation: portrait) {
+      .catalog-tabs-wrap {
+        padding: 0 1rem;
+      }
+
+      .catalog-tabs {
+        gap: 0.6rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .catalog-tab-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.65rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .catalogs-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-top: 2rem;
+      }
+
+      .catalog-card__thumb {
+        height: 190px;
+      }
+
+      .book-top-actions {
+        gap: 0.4rem;
+      }
+
+      .book-btn-action {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.78rem;
+      }
+
       .portrait-landscape-tip {
         display: inline-flex;
         align-items: center;
